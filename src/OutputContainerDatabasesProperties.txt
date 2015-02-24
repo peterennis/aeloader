@@ -1,0 +1,21 @@
+>>>SummaryInfo
+              Name          SummaryInfo
+              Owner         admin
+              UserName      admin
+              Permissions    1048575 
+              AllPermissions               1048575 
+              Container     Databases
+              DateCreated   2/21/2015 12:05:33 PM 
+              LastUpdated   2/21/2015 12:05:33 PM 
+              Title         Database1
+              Author        Peter
+>>>UserDefined
+              Name          UserDefined
+              Owner         admin
+              UserName      admin
+              Permissions    1048575 
+              AllPermissions               1048575 
+              Container     Databases
+              DateCreated   2/21/2015 12:05:33 PM 
+              LastUpdated   2/21/2015 12:05:33 PM 
+              ReplicateProject            True

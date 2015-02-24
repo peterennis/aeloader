@@ -1,0 +1,1301 @@
+9/6/2005      Now=14:11     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=14:21     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=14:27     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=14:43     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=14:56     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=15:29     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=15:45     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=16:09     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=16:15     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/6/2005      Now=16:17     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=11:14     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = !!!FIX THIS FUNCTION!!!
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=11:15     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = !!!FIX THIS FUNCTION!!!
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=11:23     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=11:27     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = C:\DSFRC\NoHo\CARE2000_410Patch2.mde.
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=12:11     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = C:\DSFRC\NoHo\CARE2000_410Patch2.mde
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=12:13     
+gstrTheApp = C:\DSFRC\NoHo\CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = C:\DSFRC\NoHo\CARE2000_410Patch2.mde
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=12:14     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/7/2005      Now=12:28     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/7/2005      Now=12:31     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/7/2005      Now=12:33     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/7/2005      Now=12:53     gconTHIS_APP_VERSION = 1.0.9
+9/7/2005      Now=12:53     gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+9/7/2005      Now=12:53     NOT UPDATING: No change to version number
+9/7/2005      Now=13:02     gconTHIS_APP_VERSION = 1.0.9
+9/7/2005      Now=13:02     gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+9/7/2005      Now=13:02     NOT UPDATING: No change to file version name
+9/7/2005      Now=13:17     mstrAppNewFileVersion = CARE2000_410Patch2.mde
+9/7/2005      Now=13:17     gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+9/7/2005      Now=13:17     NOT UPDATING: No change to file version name
+9/7/2005      Now=13:58     mstrAppNewFileVersion = CARE2000_410Patch2.mde
+9/7/2005      Now=13:58     gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+9/7/2005      Now=13:58     NOT UPDATING: No change to file version name
+9/7/2005      Now=14:03     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=15:22     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=15:42     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=15:44     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=15:44     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=16:02     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=16:18     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=16:24     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=16:25     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=16:26     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/7/2005      Now=16:27     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/8/2005      Now=14:04     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/8/2005      Now=14:16     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/8/2005      Now=14:19     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=14:21     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=14:35     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:00     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:03     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:07     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:15     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:18     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:22     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:26     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:30     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:32     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=15:59     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch2-T1.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/8/2005      Now=16:04     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch2-T1.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2-T1.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/9/2005      Now=11:10     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/9/2005      Now=11:14     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/9/2005      Now=11:18     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/9/2005      Now=13:32     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/9/2005      Now=13:33     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/9/2005      Now=13:34     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/9/2005      Now=13:42     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/9/2005      Now=13:43     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/9/2005      Now=13:45     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = 
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+
+_______________________________________________
+9/9/2005      Now=14:05     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/9/2005      Now=14:13     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/9/2005      Now=14:29     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch4.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch4.mde
+APP_UPDATE_USER: pfe, all
+
+_______________________________________________
+9/14/2005     Now=10:18     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch5.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch5.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/14/2005     Now=10:20     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch5.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch5.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/14/2005     Now=14:11     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch6.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/15/2005     Now=11:44     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/15/2005     Now=14:42     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/15/2005     Now=14:46     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch4.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch4.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/15/2005     Now=15:38     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch4.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch4.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/15/2005     Now=15:52     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch4.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch4.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/15/2005     Now=15:55     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch5.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch5.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/15/2005     Now=15:57     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/15/2005     Now=16:31     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/16/2005     Now=10:36     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch4.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch4.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+9/16/2005     Now=12:49     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch2.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch2.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+10/21/2005    Now=12:38     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe
+
+_______________________________________________
+10/25/2005    Now=14:44     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch4.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch4.mde
+APP_UPDATE_USER: pfe, hmocker, administrator
+
+_______________________________________________
+10/26/2005    Now=11:17     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch5.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch5.mde
+APP_UPDATE_USER: pfe, hmocker, administrator
+
+_______________________________________________
+10/26/2005    Now=13:41     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch6.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe, hmocker, administrator
+
+_______________________________________________
+10/30/2005    Now=12:26     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch3.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch3.mde
+APP_UPDATE_USER: pfe, hmocker, administrator
+
+_______________________________________________
+10/30/2005    Now=12:58     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch4.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch4.mde
+APP_UPDATE_USER: pfe, hmocker, administrator
+
+_______________________________________________
+10/30/2005    Now=13:21     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch5.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch5.mde
+APP_UPDATE_USER: pfe, hmocker, administrator
+
+_______________________________________________
+10/30/2005    Now=13:57     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch6.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe, hmocker, administrator
+
+_______________________________________________
+4/22/2006     Now=14:12     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch11.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch11.mde
+APP_UPDATE_USER: pfe, administrator
+
+_______________________________________________
+5/15/2006     Now=16:08     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch6.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe, administrator
+
+_______________________________________________
+5/15/2006     Now=16:12     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch6.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe, administrator
+
+_______________________________________________
+6/8/2007      Now=15:37     
+gstrAppName = NoHo CARE
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrLocalLibPath = NONE
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NAME: NoHo CARE
+#APP_NEW_VERSION:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe, administrator
+
+_______________________________________________
+6/8/2007      Now=15:46     
+aeloader Version = 1.1.7
+gstrAppName = NoHo CARE
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrLocalLibPath = NONE
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NAME: NoHo CARE
+#APP_NEW_VERSION:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe, administrator
+
+_______________________________________________
+6/8/2007      Now=16:35     
+aeloader Version = 1.1.7
+gstrAppName = NoHo CARE
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrLocalLibPath = NONE
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentVer = CARE2000_410Patch2.mde
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NAME: NoHo CARE
+#APP_NEW_VERSION:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe, administrator
+
+_______________________________________________
+7/14/2008     Now=13:09     
+gstrTheApp = CARE2000_410Patch2.mde
+gstrServerPath = \\Dscc-w2k-1\Intake\
+gstrLocalPath = C:\DSFRC\NoHo\
+gstrUpdateInfoFile = DSFRC NoHo Update Info.txt
+gstrAppCurrentFileVer = 
+gstrUpdateAppFile = Not Used for APP_NEW_FILE_VERSION:
+gstrLoaderUpdateAppFile = CARE2000_410Patch6.mde
+gstrDebugFile = aeLoaderDebugFile.txt
+gfUpdateDebug = True
+_______________________________________________
+mstrUpdateText:
+APP_NEW_FILE_VERSION: CARE2000_410Patch6.mde
+APP_UPDATE_USER: pfe, administrator
+
+_______________________________________________
