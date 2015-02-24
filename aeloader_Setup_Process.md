@@ -31,5 +31,18 @@ IDE
 8. Move old versions to 2do folder
 9. Configure and run aeloader_EXPORT
 10. Create aeloader project on github
-11. Make first commit
-12. 
+11. Make first commit to local master
+12. Push to github using gitbash
+
+<code>
+Peter@VAIO ~
+$ cd /c/ae/aeloader
+Peter@VAIO /c/ae/aeloader (master)
+$
+</code>
+
+push an existing repository from the command line
+>git remote add origin https://github.com/peterennis/aeloader.git
+>git push -u origin master
+
+
