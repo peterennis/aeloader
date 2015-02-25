@@ -3,6 +3,17 @@ Public Sub CreateTheDb()
 Dim strSQL As String
 On Error GoTo ErrorTrap
 
+'Local Table
+
+strSQL="CREATE TABLE [tblAppSetup] ([AppID] Long,[gconAPP_CMD_NAME] Text (50),[gconLOCAL_PATH] Text (50),[gconAPP_NAME] Text (80),[gconAPP_EXTENSION] Text (12),[gconUPDATE_APP_FILE] Text (80),[gconSERVER_PATH] Text (50),[gconTHE_WORKGROUP] Text (50),[gconAPP_WINDOW_NAME] Text (80) )"
+Currentdb.Execute strSQL
+
+strSQL="CREATE INDEX [AppID] ON [tblAppSetup] ([gconAPP_WINDOW_NAME]) "
+Currentdb.Execute strSQL
+
+strSQL="CREATE UNIQUE INDEX [PrimaryKey] ON [tblAppSetup] ([gconAPP_WINDOW_NAME])  WITH PRIMARY DISALLOW NULL "
+Currentdb.Execute strSQL
+
 'Access 2010 - Compact And Repair
 SendKeys "%F{END}{ENTER}%F{TAB}{TAB}{ENTER}", False
 Exit Sub

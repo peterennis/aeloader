@@ -1,7 +1,17 @@
+tblAppSetup
+              AppID          109          TextBox
+              gconAPP_CMD_NAME             109          TextBox
+              gconLOCAL_PATH               109          TextBox
+              gconAPP_NAME   109          TextBox
+              gconAPP_EXTENSION            109          TextBox
+              gconUPDATE_APP_FILE          109          TextBox
+              gconSERVER_PATH              109          TextBox
+              gconTHE_WORKGROUP            109          TextBox
+              gconAPP_WINDOW_NAME          109          TextBox
 Count of Check box = 0
-Count of Text box  = 0
+Count of Text box  = 9
 Count of List box  = 0
 Count of Combo box = 0
 Count of Else      = 0
-Count of Display Controls = 0
-Count of All Fields = 0
+Count of Display Controls = 9
+Count of All Fields = 9

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:od="urn:schemas-microsoft-com:officedata">
+  <xsd:element name="dataroot">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="tblAppSetup" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="generated" type="xsd:dateTime"></xsd:attribute>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="tblAppSetup">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <od:index index-name="AppID" index-key="AppID " primary="no" unique="no" clustered="no" order="asc"></od:index>
+        <od:index index-name="PrimaryKey" index-key="AppID " primary="yes" unique="yes" clustered="no" order="asc"></od:index>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="AppID" minOccurs="0" od:jetType="longinteger" od:sqlSType="int" type="xsd:int"></xsd:element>
+        <xsd:element name="gconAPP_CMD_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="50"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="gconLOCAL_PATH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="50"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="gconAPP_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="80"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="gconAPP_EXTENSION" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="12"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="gconUPDATE_APP_FILE" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="80"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="gconSERVER_PATH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="50"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="gconTHE_WORKGROUP" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="50"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="gconAPP_WINDOW_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="80"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+

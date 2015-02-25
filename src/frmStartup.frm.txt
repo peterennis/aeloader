@@ -1,0 +1,90 @@
+Version =20
+VersionRequired =20
+Begin Form
+    PopUp = NotDefault
+    RecordSelectors = NotDefault
+    MaxButton = NotDefault
+    MinButton = NotDefault
+    ControlBox = NotDefault
+    AutoCenter = NotDefault
+    NavigationButtons = NotDefault
+    CloseButton = NotDefault
+    DividingLines = NotDefault
+    DefaultView =0
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridY =10
+    Width =0
+    DatasheetFontHeight =10
+    ItemSuffix =4
+    Left =570
+    Top =1935
+    Right =6300
+    Bottom =3975
+    DatasheetGridlinesColor =12632256
+    RecSrcDt = Begin
+        0x0d58fcf28d0fe240
+    End
+    Caption ="adaept"
+    OnOpen ="[Event Procedure]"
+    DatasheetFontName ="Arial"
+    PrtMip = Begin
+    End
+    PrtDevMode = Begin
+    End
+    PrtDevNames = Begin
+    End
+    FilterOnLoad =0
+    AllowLayoutView =0
+    DatasheetGridlinesColor12 =12632256
+    PrtDevModeW = Begin
+    End
+    PrtDevNamesW = Begin
+    End
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+        End
+        Begin CommandButton
+            Width =1701
+            Height =283
+            FontSize =8
+            FontWeight =400
+            ForeColor =-2147483630
+            FontName ="MS Sans Serif"
+            BorderLineStyle =0
+        End
+        Begin Section
+            Height =0
+            BackColor =-2147483633
+            Name ="Detail"
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+Option Explicit
+
+Private Sub Form_Open(Cancel As Integer)
+    ' Minimize Access
+'MsgBox "1"
+    DoAccessWindow (2)
+'MsgBox "2"
+    Dim bln As Boolean
+    gintApp = aeGetTheAppID
+'MsgBox "3. Setup the Parameters: gintApp = " & gintApp
+    gstrLocalPath = DLookup("gconLOCAL_PATH", "tblAppSetup", _
+                            "AppID=" & gintApp)
+'MsgBox "gconLOCAL_PATH = " & gconLOCAL_PATH
+    gstrUpdateAppFile = DLookup("gconUPDATE_APP_FILE", "tblAppSetup", _
+                            "AppID=" & gintApp)
+'MsgBox "gconUPDATE_APP_FILE = " & gconUPDATE_APP_FILE
+    bln = StartApp()
+'MsgBox "4"
+
+End Sub

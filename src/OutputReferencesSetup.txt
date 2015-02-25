@@ -1,11 +1,11 @@
 >==> The Project References >==>
-              vbaProj.Name = aeloader
+              vbaProj.Name = aeloader-open
               vbaProj.Type = '100'
               Access version = 14.0
               ADO (ActiveX Data Object) version = 6.1
               DAO (DbEngine)  version = 14.0
-              DAO (CodeDb)    version = 12.0
-              DAO (CurrentDb) version = 12.0
+              DAO (CodeDb)    version = 4.0
+              DAO (CurrentDb) version = 4.0
               <@_@>
                    References:
                             VBA           Visual Basic For Applications

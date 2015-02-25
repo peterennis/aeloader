@@ -1,21 +1,21 @@
 >>>SummaryInfo
               Name          SummaryInfo
               Owner         admin
-              UserName      admin
-              Permissions    1048575 
-              AllPermissions               1048575 
+              UserName      developer
+              Permissions    0 
+              AllPermissions               65536 
               Container     Databases
-              DateCreated   2/21/2015 12:05:33 PM 
-              LastUpdated   2/21/2015 12:05:33 PM 
-              Title         Database1
+              DateCreated   2/24/2015 11:40:20 PM 
+              LastUpdated   2/24/2015 11:40:20 PM 
+              Title         aeloader-open
               Author        Peter
 >>>UserDefined
               Name          UserDefined
               Owner         admin
-              UserName      admin
-              Permissions    1048575 
-              AllPermissions               1048575 
+              UserName      developer
+              Permissions    0 
+              AllPermissions               65536 
               Container     Databases
-              DateCreated   2/21/2015 12:05:33 PM 
-              LastUpdated   2/21/2015 12:05:33 PM 
+              DateCreated   2/24/2015 11:40:20 PM 
+              LastUpdated   2/24/2015 11:40:20 PM 
               ReplicateProject            True

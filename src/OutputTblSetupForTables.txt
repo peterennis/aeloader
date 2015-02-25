@@ -1,0 +1,16 @@
+------------------
+TABLE: tblAppSetup
+------------------
+FIELD NAME             FIELD TYPE      SIZE    DESCRIPTION
+===================    ============    ====    ===========
+AppID                  Long Integer    4                  
+gconAPP_CMD_NAME       Text            50                 
+gconLOCAL_PATH         Text            50                 
+gconAPP_NAME           Text            80                 
+gconAPP_EXTENSION      Text            12                 
+gconUPDATE_APP_FILE    Text            80                 
+gconSERVER_PATH        Text            50                 
+gconTHE_WORKGROUP      Text            50                 
+gconAPP_WINDOW_NAME    Text            80                 
+
+
