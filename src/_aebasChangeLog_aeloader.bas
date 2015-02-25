@@ -12,7 +12,7 @@ Option Explicit
 '                                           ALTERNATIVE_EXPORT 1
 '
 ' Sample constants for settings of "TheProjectName"
-Public Const gstrDATE_aeloader As String = "February 23, 2015"
+Public Const gstrDATE_aeloader As String = "February 25, 2015"
 Public Const gstrVERSION_aeloader As String = "0.0.1"
 Public Const gstrPROJECT_aeloader As String = "aeloader"
 Public Const gblnTEST_aeloader As Boolean = False
@@ -60,8 +60,6 @@ End Function
 ' %005 - Import external data from "aeloader.mdb.v108" then export with aegit, delete from 2do folder
 ' %004 - Import external data from "aeloader.mdb.v107" then export with aegit, delete from 2do folder
 ' %003 - Import external data from "aeloader.mdb.v106" then export with aegit, delete from 2do folder
-' %002 - Import external data from "aeloader.mdb.v105" then export with aegit, delete from 2do folder
-' %001 - Import external data from "aeloader not secure.mdb" then export with aegit, delete from 2do folder
 ' Issues:
 ' #010 -
 ' #009 -
@@ -77,3 +75,5 @@ End Function
 '
 '
 '20150223 v001 - First version commit
+    ' FIXED - %001 - Import external data from "aeloader not secure.mdb" then export with aegit, delete from 2do folder
+    ' FIXED - %002 - Import external data from "aeloader.mdb.v105" then export with aegit, delete from 2do folder

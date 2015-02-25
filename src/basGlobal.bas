@@ -2,10 +2,10 @@ Option Compare Database
 Option Explicit
 
 ' (c) 2000 - 2005 adaept Peter Ennis
-' 09082004 1.0.1 - Add code to minimize Access on startup.
-' 02232005 1.0.2 - Office 2003 Compatability, GetAccessVersion()
-' 02252005 1.0.3 - Use tblAppSetup, gintApp, DLookup for flexibility
-' 03032005 1.0.4 - Debug operation with Medical database
+' 09/08/2004 1.0.1 - Add code to minimize Access on startup.
+' 02/23/2005 1.0.2 - Office 2003 Compatability, GetAccessVersion()
+' 02/25/2005 1.0.3 - Use tblAppSetup, gintApp, DLookup for flexibility
+' 03/03/2005 1.0.4 - Debug operation with Medical database
 
 
 ' GLOBAL CONSTANTS
@@ -21,17 +21,17 @@ Public gstrLocalPath As String
 Public gstrUpdateAppFile As String
 '
 Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
-Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 Private Const WM_CLOSE = &H10
 Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
-Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, _
+Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, _
         ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
 '
 Global Const SW_HIDE = 0
 Global Const SW_SHOWNORMAL = 1
 Global Const SW_SHOWMINIMIZED = 2
 Global Const SW_SHOWMAXIMIZED = 3
-Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
+Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hwnd As Long, ByVal nCmdShow As Long) As Long
 '
 
 Public Function StartApp() As Boolean
@@ -99,11 +99,11 @@ On Error GoTo Err_LoadApp        ' Set up error handler.
 'MsgBox "L5"
         OpenSecured gstrTheApp, gstrTheWorkgroup, "IntakeUser", "dscc"
         
-'        i = MsgBox("L6", vbYesNo, "Test Break")
-'        If i = vbYes Then
-'            Exit Function
-'        Else
-'        End If
+        i = MsgBox("L6", vbYesNo, "Test Break")
+        If i = vbYes Then
+            Exit Function
+        Else
+        End If
         
         DoEvents
 'MsgBox "L7"
@@ -183,40 +183,41 @@ End Function
 Private Function ShutDownApplication(ByVal strApplicationName As String) As Boolean
 'Ref: http://www.a1vbcode.com/app.asp?ID=479
 
-    Dim hWnd As Long
+    Dim hwnd As Long
     Dim Result As Long
-    hWnd = FindWindow(vbNullString, strApplicationName)
+    hwnd = FindWindow(vbNullString, strApplicationName)
     'MsgBox "hWnd = " & hWnd & vbCrLf & _
     '            "strApplicationName = " & strApplicationName
-    If hWnd <> 0 Then
-        Result = PostMessage(hWnd, WM_CLOSE, 0&, 0&)
+    If hwnd <> 0 Then
+        Result = PostMessage(hwnd, WM_CLOSE, 0&, 0&)
         ShutDownApplication = True
         'MsgBox "The application window was found and shutdown."
     Else
-        'MsgBox "The application window was not found."
+        MsgBox "The application window " & _
+            strApplicationName & " was not found."
     End If
 
 End Function
 
 Private Function WindowIsOpen(ByVal strWindowTitle As String) As Long
 
-    Dim hWnd As Long
+    Dim hwnd As Long
     Dim Result As Long
-    hWnd = FindWindow(vbNullString, strWindowTitle)
-    Debug.Print "hwnd = " & hWnd
-    If hWnd <> 0 Then
-        WindowIsOpen = hWnd
+    hwnd = FindWindow(vbNullString, strWindowTitle)
+    Debug.Print "hwnd = " & hwnd
+    If hwnd <> 0 Then
+        WindowIsOpen = hwnd
     Else
         WindowIsOpen = 0
     End If
 
 End Function
 
-Private Sub MaximizeTheWindow(hWnd As Long, ByVal strWindowTitle As String)
+Private Sub MaximizeTheWindow(hwnd As Long, ByVal strWindowTitle As String)
 'Ref: http://www.digital-inn.de/archive/index.php/t-15364.html
 
     Dim lng As Long
-    lng = SendMessage(hWnd, &H112, &HF030&, 0&)
+    lng = SendMessage(hwnd, &H112, &HF030&, 0&)
     
 End Sub
 
@@ -286,6 +287,8 @@ Private Sub OpenSecured(strTheApp As String, _
         If Not IsMissing(varPw) Then cmd = cmd & " /pwd " & varPw
 'MsgBox "OSec7"
         Shell pathname:=cmd, windowstyle:=6
+        Dim bln As Boolean
+        bln = fIsAppRunning("access")
 'MsgBox "OSec8"
         Do 'Wait for shelled process to finish.
 'MsgBox "OSec9"
@@ -352,6 +355,7 @@ Dim loform As Form
         End If
     End If
     DoAccessWindow = (loX <> 0)
+
 End Function
 
 Function GetAccessVersion() As String
@@ -366,16 +370,14 @@ Function GetAccessVersion() As String
     
 End Function
 
-Private Function aeGetCmdString(intAPP As Integer) As String
-
-    Dim conAPP_SERVER_PATH As String        ' "\\Dscc-w2k-1\Intake\"
-    Dim conAPP_LOCAL_PATH As String         ' "C:\DSFRC\Intake\"
-    Dim conAPP_UPDATE_INFO_FILE As String   ' "DSFRC Update Info.txt"
-    Dim conAPP_UPDATE_APP_FILE As String    ' "Davis Street Intake PRODUCTION SQL 2000 Front End A2K.upd"
-
-
-
-End Function
+'Private Function aeGetCmdString(intAPP As Integer) As String
+'
+'    Dim conAPP_SERVER_PATH As String        ' "\\Dscc-w2k-1\Intake\"
+'    Dim conAPP_LOCAL_PATH As String         ' "C:\DSFRC\Intake\"
+'    Dim conAPP_UPDATE_INFO_FILE As String   ' "DSFRC Update Info.txt"
+'    Dim conAPP_UPDATE_APP_FILE As String    ' "Davis Street Intake PRODUCTION SQL 2000 Front End A2K.upd"
+'
+'End Function
 
 Public Function aeGetTheAppID() As Integer
 ' Ref: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnacc2k/html/acglobaloptions.asp
