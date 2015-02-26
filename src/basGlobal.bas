@@ -9,11 +9,12 @@ Option Explicit
 ' 03/21/2005 1.0.5 - Add SLCC with Logon and Password fields in startup table.
 ' 07/22/2005 1.0.6 - DoCmd.Restore added when application closes.
 ' 08/18/2005 1.0.7 - Add DSFRC Volunteers.
+' 08/24/2005 1.0.8 - Add DSFRC Finance.
 
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.0.7"
-Public Const gconTHIS_APP_VERSION_DATE = "08/18/2005"
+Public Const gconTHIS_APP_VERSION As String = "1.0.8"
+Public Const gconTHIS_APP_VERSION_DATE = "08/24/2005"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 Public gblnDEBUG As Boolean
 Public gintApp As Integer

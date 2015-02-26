@@ -1,6 +1,6 @@
 Version =20
 VersionRequired =20
-Checksum =520630311
+Checksum =-422488139
 Begin Form
     AllowDesignChanges = NotDefault
     DefaultView =0
@@ -21,7 +21,7 @@ Begin Form
         0x18d05a3b8cc3e240
     End
     GUID = Begin
-        0xb7896ffc43e34d41bda394d88bbed941
+        0x5a0051604b01f34790902a788aa2471a
     End
     DatasheetFontName ="Arial"
     FilterOnLoad =0
