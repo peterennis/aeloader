@@ -8,11 +8,12 @@ Option Explicit
 ' 03/03/2005 1.0.4 - Debug operation with Medical database
 ' 03/21/2005 1.0.5 - Add SLCC with Logon and Password fields in startup table.
 ' 07/22/2005 1.0.6 - DoCmd.Restore added when application closes.
+' 08/18/2005 1.0.7 - Add DSFRC Volunteers.
 
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.0.6"
-Public Const gconTHIS_APP_VERSION_DATE = "07/22/2005"
+Public Const gconTHIS_APP_VERSION As String = "1.0.7"
+Public Const gconTHIS_APP_VERSION_DATE = "08/18/2005"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 Public gblnDEBUG As Boolean
 Public gintApp As Integer
@@ -62,10 +63,13 @@ Public Function StartApp() As Boolean
                             "AppID=" & gintApp)
     gstrPasswordMdb = DLookup("gconPASSWORD_MDB", "tblAppSetup", _
                             "AppID=" & gintApp)
-'MsgBox "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
-'            "gstrPasswordMdb = " & gstrPasswordMdb
 'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
-'            "gstrTheApp = " & gstrTheApp
+'            "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
+'            "gstrTheAppExtension = " & gstrTheAppExtension & vbCrLf & _
+'            "gstrTheWorkgroup = " & gstrTheWorkgroup & vbCrLf & _
+'            "gstrTheApp = " & gstrTheApp & vbCrLf & _
+'            "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
+'            "gstrPasswordMdb = " & gstrPasswordMdb
     ShutDownApplication (gstrTheAppWindowName)
 'MsgBox "S2"
     '
@@ -299,7 +303,7 @@ Private Sub OpenSecured(strTheApp As String, _
         cmd = cmd & " /nostartup /user " & varUser
 'MsgBox "OSec6 Err = " & Err & " cmd = " & cmd
         If Not IsMissing(varPw) Then cmd = cmd & " /pwd " & varPw
-'MsgBox "OSec7"
+'MsgBox "OSec7" & vbCrLf & cmd
         Shell pathname:=cmd, windowstyle:=6
         Dim bln As Boolean
         bln = fIsAppRunning("access")
