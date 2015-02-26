@@ -88,14 +88,15 @@ Function fIsAppRunning(ByVal strAppName As String, _
         End If
         '
     If mlngH <> 0 Then
-        apiSendMessage mlngH, WM_USER + 18, 0, 0
-        lngX = apiIsIconic(mlngH)
-        If lngX <> 0 Then
-            lngTmp = apiShowWindow(mlngH, SW_SHOWNORMAL)
-        End If
-        If fActivate Then
-            lngTmp = apiSetForegroundWindow(mlngH)
-        End If
+''        apiSendMessage mlngH, WM_USER + 18, 0, 0
+''        lngX = apiIsIconic(mlngH)
+'        If lngX <> 0 Then
+            '#PFE# This line causes aeloader to maximize
+            'lngTmp = apiShowWindow(mlngH, SW_SHOWNORMAL)
+'        End If
+'        If fActivate Then
+''            lngTmp = apiSetForegroundWindow(mlngH)
+'        End If
         fIsAppRunning = True
     End If
 fIsAppRunning_Exit:
@@ -103,6 +104,7 @@ fIsAppRunning_Exit:
 fIsAppRunning_Err:
     fIsAppRunning = False
     Resume fIsAppRunning_Exit
+
 End Function
 
 Public Function GetBounds() As Integer
@@ -122,7 +124,7 @@ On Error GoTo Err_GetBounds
     
     If GetBounds = 5 Then
         MsgBox "5 Apps Opened! - Halt"
-        Stop
+        gblnDEBUG = True
     End If
     
 Exit_GetBounds:

@@ -17,13 +17,16 @@ Begin Form
     Width =0
     DatasheetFontHeight =10
     ItemSuffix =4
-    Left =570
-    Top =1935
+    Left =576
+    Top =1932
     Right =6300
-    Bottom =3975
+    Bottom =3972
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
         0x0d58fcf28d0fe240
+    End
+    GUID = Begin
+        0xc993a7289e7f924a8d897642e263f510
     End
     Caption ="adaept"
     OnOpen ="[Event Procedure]"
@@ -59,6 +62,9 @@ Begin Form
             Height =0
             BackColor =-2147483633
             Name ="Detail"
+            GUID = Begin
+                0xc3ada7e1c9f8fa4782265b2822763e1c
+            End
         End
     End
 End
@@ -71,11 +77,14 @@ Option Compare Database
 Option Explicit
 
 Private Sub Form_Open(Cancel As Integer)
-    ' Minimize Access
+
 'MsgBox "1"
-    DoAccessWindow (2)
+    ' Minimize the Access window
+    ShowWindow Me.Application.hWndAccessApp, 2
 'MsgBox "2"
     Dim bln As Boolean
+    
+    gblnDEBUG = False
     gintApp = aeGetTheAppID
 'MsgBox "3. Setup the Parameters: gintApp = " & gintApp
     gstrLocalPath = DLookup("gconLOCAL_PATH", "tblAppSetup", _

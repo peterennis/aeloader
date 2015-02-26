@@ -12,5 +12,7 @@ gconUPDATE_APP_FILE    Text            80
 gconSERVER_PATH        Text            50                 
 gconTHE_WORKGROUP      Text            50                 
 gconAPP_WINDOW_NAME    Text            80                 
+gconLOGON_MDB          Text            50                 
+gconPASSWORD_MDB       Text            50                 
 
 

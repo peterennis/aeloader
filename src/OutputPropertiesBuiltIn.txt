@@ -195,17 +195,17 @@ Inherited: False;
 ---
 Name: NavPane Width
 Type: dbLong
-Value: 215
+Value: 411
 Inherited: False;
 ---
 Name: NavPane View By
 Type: dbLong
-Value: 0
+Value: 2
 Inherited: False;
 ---
 Name: NavPane Sort By
 Type: dbLong
-Value: 1
+Value: 2
 Inherited: False;
 ---
 Name: ProjVer

@@ -6,12 +6,15 @@ Option Explicit
 ' 02/23/2005 1.0.2 - Office 2003 Compatability, GetAccessVersion()
 ' 02/25/2005 1.0.3 - Use tblAppSetup, gintApp, DLookup for flexibility
 ' 03/03/2005 1.0.4 - Debug operation with Medical database
+' 03/21/2005 1.0.5 - Add SLCC with Logon and Password fields in startup table.
+' 07/22/2005 1.0.6 - DoCmd.Restore added when application closes.
 
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.0.4"
-Public Const gconTHIS_APP_VERSION_DATE = "03/03/2005"
+Public Const gconTHIS_APP_VERSION As String = "1.0.6"
+Public Const gconTHIS_APP_VERSION_DATE = "07/22/2005"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
+Public gblnDEBUG As Boolean
 Public gintApp As Integer
 Public gstrTheAppWindowName As String
 Public gstrTheApp As String
@@ -19,6 +22,8 @@ Public gstrTheAppExtension As String
 Public gstrTheWorkgroup As String
 Public gstrLocalPath As String
 Public gstrUpdateAppFile As String
+Public gstrLogonMdb As String
+Public gstrPasswordMdb As String
 '
 Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
 Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
@@ -53,6 +58,12 @@ Public Function StartApp() As Boolean
     gstrTheApp = gstrLocalPath & DLookup("gconAPP_NAME", "tblAppSetup", _
                             "AppID=" & gintApp) & _
                             "." & gstrTheAppExtension
+    gstrLogonMdb = DLookup("gconLOGON_MDB", "tblAppSetup", _
+                            "AppID=" & gintApp)
+    gstrPasswordMdb = DLookup("gconPASSWORD_MDB", "tblAppSetup", _
+                            "AppID=" & gintApp)
+'MsgBox "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
+'            "gstrPasswordMdb = " & gstrPasswordMdb
 'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
 '            "gstrTheApp = " & gstrTheApp
     ShutDownApplication (gstrTheAppWindowName)
@@ -65,6 +76,7 @@ Public Function StartApp() As Boolean
 'Exit Function
 'MsgBox "S4"
 
+    DoCmd.Restore
     DoCmd.Quit
 
 End Function
@@ -94,15 +106,17 @@ On Error GoTo Err_LoadApp        ' Set up error handler.
 '            "gstrTheApp = " & gstrTheApp
 'Exit Function
 
-    Dim i As Integer
     Do
 'MsgBox "L5"
-        OpenSecured gstrTheApp, gstrTheWorkgroup, "IntakeUser", "dscc"
+        OpenSecured gstrTheApp, gstrTheWorkgroup, gstrLogonMdb, gstrPasswordMdb
         
-        i = MsgBox("L6", vbYesNo, "Test Break")
-        If i = vbYes Then
-            Exit Function
-        Else
+        If gblnDEBUG Then
+            Dim i As Integer
+            i = MsgBox("L6", vbYesNo, "Test Break")
+            If i = vbYes Then
+                Exit Function
+            Else
+            End If
         End If
         
         DoEvents
@@ -193,8 +207,8 @@ Private Function ShutDownApplication(ByVal strApplicationName As String) As Bool
         ShutDownApplication = True
         'MsgBox "The application window was found and shutdown."
     Else
-        MsgBox "The application window " & _
-            strApplicationName & " was not found."
+        'MsgBox "The application window " & _
+        '    strApplicationName & " was not found."
     End If
 
 End Function
@@ -399,6 +413,7 @@ Public Function aeGetTheAppID() As Integer
     If aeGetTheAppID = 0 Then
         MsgBox "Invalid Access Command Line Parameter!" & vbCrLf & vbCrLf & _
                 Command, vbCritical, gconTHIS_APP_NAME
+        DoCmd.Restore
         DoCmd.Quit acQuitSaveNone
     End If
 

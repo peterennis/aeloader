@@ -8,10 +8,12 @@ tblAppSetup
               gconSERVER_PATH              109          TextBox
               gconTHE_WORKGROUP            109          TextBox
               gconAPP_WINDOW_NAME          109          TextBox
+              gconLOGON_MDB  109          TextBox
+              gconPASSWORD_MDB             109          TextBox
 Count of Check box = 0
-Count of Text box  = 9
+Count of Text box  = 11
 Count of List box  = 0
 Count of Combo box = 0
 Count of Else      = 0
-Count of Display Controls = 9
-Count of All Fields = 9
+Count of Display Controls = 11
+Count of All Fields = 11
