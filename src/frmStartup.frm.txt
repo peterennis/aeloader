@@ -17,19 +17,20 @@ Begin Form
     Width =0
     DatasheetFontHeight =10
     ItemSuffix =4
-    Left =576
-    Top =1932
+    Left =570
+    Top =1935
     Right =6300
-    Bottom =3972
+    Bottom =3975
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
         0x0d58fcf28d0fe240
     End
     GUID = Begin
-        0x0eac7a7c86e2c24596243f41154357e7
+        0x6e1ea5fc807c364e936c8fd50393e315
     End
     Caption ="adaept"
     OnOpen ="[Event Procedure]"
+    MenuBar ="mbarFileExit"
     DatasheetFontName ="Arial"
     PrtMip = Begin
     End
@@ -78,22 +79,12 @@ Option Explicit
 
 Private Sub Form_Open(Cancel As Integer)
 
-'MsgBox "1"
-    ' Minimize the Access window
-    ShowWindow Me.Application.hWndAccessApp, 2
-'MsgBox "2"
     Dim bln As Boolean
     
-    gblnDEBUG = False
+    gblnSPAWN_DEBUG = False
     gintApp = aeGetTheAppID
-'MsgBox "3. Setup the Parameters: gintApp = " & gintApp
-    gstrLocalPath = DLookup("gconLOCAL_PATH", "tblAppSetup", _
-                            "AppID=" & gintApp)
-'MsgBox "gconLOCAL_PATH = " & gconLOCAL_PATH
-    gstrUpdateAppFile = DLookup("gconUPDATE_APP_FILE", "tblAppSetup", _
-                            "AppID=" & gintApp)
-'MsgBox "gconUPDATE_APP_FILE = " & gconUPDATE_APP_FILE
+    'MsgBox "frmStartup Form_Open: gintApp = " & gintApp
+    '
     bln = StartApp()
-'MsgBox "4"
 
 End Sub

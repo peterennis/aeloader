@@ -18,6 +18,13 @@
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element name="AppID" minOccurs="0" od:jetType="longinteger" od:sqlSType="int" type="xsd:int"></xsd:element>
+        <xsd:element name="gconPASS_THROUGH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="50"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
         <xsd:element name="gconAPP_CMD_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
@@ -46,6 +53,13 @@
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
+        <xsd:element name="gconAPP_SEPARATOR" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="1"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
         <xsd:element name="gconUPDATE_APP_FILE" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
@@ -71,6 +85,13 @@
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="80"></xsd:maxLength>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="gconUPDATE_INFO_FILE" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="50"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>

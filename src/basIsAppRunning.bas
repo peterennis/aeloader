@@ -91,7 +91,7 @@ Function fIsAppRunning(ByVal strAppName As String, _
 ''        apiSendMessage mlngH, WM_USER + 18, 0, 0
 ''        lngX = apiIsIconic(mlngH)
 '        If lngX <> 0 Then
-            '#PFE# This line causes aeloader to maximize
+            '#PFE# This line causes aeLoader to maximize
             'lngTmp = apiShowWindow(mlngH, SW_SHOWNORMAL)
 '        End If
 '        If fActivate Then
@@ -122,9 +122,9 @@ On Error GoTo Err_GetBounds
     ReDim Preserve malngAccessHandles(i + 1)
     GetBounds = i + 1
     
-    If GetBounds = 5 Then
-        MsgBox "5 Apps Opened! - Halt"
-        gblnDEBUG = True
+    If GetBounds = 3 Then
+        MsgBox "3 Apps Opened! - Halt"
+        gblnSPAWN_DEBUG = True
     End If
     
 Exit_GetBounds:

@@ -56,7 +56,6 @@ End Function
 ' %009 - Import external data from "aeloader.mdb.v114" then export with aegit, delete from 2do folder
 ' %008 - Import external data from "aeloader.mdb.v113" then export with aegit, delete from 2do folder
 ' #007 - Import external data from "aeloader.mdb.v112" then export with aegit, delete from 2do folder
-' #006 - Import external data from "aeloader.mdb.v111" then export with aegit, delete from 2do folder
 ' Issues:
 ' #010 -
 ' #009 -
@@ -75,6 +74,7 @@ End Function
     ' FIXED - %003 - Import external data from "aeloader.mdb.v106" then export with aegit, delete from 2do folder
     ' FIXED - %004 - Import external data from "aeloader.mdb.v107" then export with aegit, delete from 2do folder
     ' FIXED - %005 - Import external data from "aeloader.mdb.v108" then export with aegit, delete from 2do folder
+    ' FIXED - #006 - Import external data from "aeloader.mdb.v111" then export with aegit, delete from 2do folder
 '20150223 v001 - First version commit
     ' FIXED - %001 - Import external data from "aeloader not secure.mdb" then export with aegit, delete from 2do folder
     ' FIXED - %002 - Import external data from "aeloader.mdb.v105" then export with aegit, delete from 2do folder

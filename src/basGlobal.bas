@@ -10,22 +10,46 @@ Option Explicit
 ' 07/22/2005 1.0.6 - DoCmd.Restore added when application closes.
 ' 08/18/2005 1.0.7 - Add DSFRC Volunteers.
 ' 08/24/2005 1.0.8 - Add DSFRC Finance.
-
+' 08/31/2005 1.0.9 - Add NOPWD group and NopwdUser as pass through for Noho.
+' 09/15/2005 1.1.0 - Pass through test succeeds for NoHo.
+' 09/16/2005 1.1.1 - Fix bug where pass through messed up original version control.
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.0.8"
-Public Const gconTHIS_APP_VERSION_DATE = "08/24/2005"
+Public Const gconTHIS_APP_VERSION As String = "1.1.1"
+Public Const gconTHIS_APP_VERSION_DATE = "09/15/2005"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
-Public gblnDEBUG As Boolean
+Public gblnAbortUpdate As Boolean
+Public gblnSPAWN_DEBUG As Boolean
 Public gintApp As Integer
 Public gstrTheAppWindowName As String
 Public gstrTheApp As String
+Public gstrTheNewApp As String
+Public gstrTheAppNamePart As String
+Public gstrTheAppVersionPart As String
+Public gstrTheAppSeparatorChar As String
+Public gstrPassThrough As String
 Public gstrTheAppExtension As String
+Public gstrAppCmdName As String
 Public gstrTheWorkgroup As String
-Public gstrLocalPath As String
 Public gstrUpdateAppFile As String
+Public gstrLoaderUpdateAppFile As String
 Public gstrLogonMdb As String
 Public gstrPasswordMdb As String
+'
+' GLOBAL CONSTANTS FOR PASS_THROUGH UPDATE
+Public gfUpdateDebug As Boolean
+Public gstrTheCurrentUser As String
+Public gstrComputerName As String
+Public gstrLocalPath As String
+Public gstrServerPath As String
+Public gstrUpdateInfoFile As String
+Public gstrDebugFile As String
+Public gstrNetUserLogin As String
+Public gstrMdbUserLogin As String
+Public gstrSqlUserLogin As String
+Public gstrAppCurrentFileVer As String
+Public gstrUpdateText As String
+Public gstrAppNewFileVersion As String
 '
 Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
 Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
@@ -44,12 +68,47 @@ Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hw
 Public Function StartApp() As Boolean
 
     Dim strTheFile As String
+
+    gstrPassThrough = Nz(DLookup("gconPASS_THROUGH", "tblAppSetup", _
+                            "AppID=" & gintApp))
+    'MsgBox "gstrPassThrough = " & gstrPassThrough
+    If gstrPassThrough = "PassThrough" Then
+        ' Call aeLoaderUpdateSetupClass
+        Dim blnUpdate As Boolean
+        Dim cls1 As aeLoaderUpdateSetupClass
+        Set cls1 = New aeLoaderUpdateSetupClass
+        ' Setup parameters
+        cls1.aeUpdateDebug = True
+        blnUpdate = cls1.aeUpdateSetup(gconTHIS_APP_NAME, gconTHIS_APP_VERSION, aeWindowsNetworkLogin)
     
+        ' DSFRC with Network Login
+        Dim cls2 As aeLoaderUpdateTxtClass
+        Set cls2 = New aeLoaderUpdateTxtClass
+        cls2.aeUpdateDebug = True
+        blnUpdate = cls2.blnTheAppLoaderUpdateStatus()
+        Debug.Print "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
+        '
+        ' Shutdown the app if it is already open
+        'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName, vbInformation, gconTHIS_APP_NAME & ": StartApp"
+        ShutDownApplication (gstrTheAppWindowName)
+        '
+        StartApp = aeLoaderPassThroughApp(gstrLocalPath, gstrLoaderUpdateAppFile)
+        DoCmd.Quit
+        Exit Function
+    End If
+        
+    ' Minimize the Access window
+    ShowWindow Application.hWndAccessApp, 2
+    
+    ' UPDATE PROCESS USING adaeptdblib.mda LINKED
+    ' IN MDB APPLICATION
+    '
     ' Shutdown the app if it is already open
-'MsgBox "S1 gintApp = " & gintApp
     gstrTheAppWindowName = DLookup("gconAPP_WINDOW_NAME", "tblAppSetup", _
                             "AppID=" & gintApp)
     gstrLocalPath = DLookup("gconLOCAL_PATH", "tblAppSetup", _
+                            "AppID=" & gintApp)
+    gstrUpdateAppFile = DLookup("gconUPDATE_APP_FILE", "tblAppSetup", _
                             "AppID=" & gintApp)
     gstrTheAppExtension = DLookup("gconAPP_EXTENSION", "tblAppSetup", _
                             "AppID=" & gintApp)
@@ -64,99 +123,181 @@ Public Function StartApp() As Boolean
                             "AppID=" & gintApp)
     gstrPasswordMdb = DLookup("gconPASSWORD_MDB", "tblAppSetup", _
                             "AppID=" & gintApp)
-'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
-'            "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
-'            "gstrTheAppExtension = " & gstrTheAppExtension & vbCrLf & _
-'            "gstrTheWorkgroup = " & gstrTheWorkgroup & vbCrLf & _
-'            "gstrTheApp = " & gstrTheApp & vbCrLf & _
-'            "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
-'            "gstrPasswordMdb = " & gstrPasswordMdb
+    'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
+            "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
+            "gstrUpdateAppFile = " & gstrUpdateAppFile & vbCrLf & _
+            "gstrTheAppExtension = " & gstrTheAppExtension & vbCrLf & _
+            "gstrTheWorkgroup = " & gstrTheWorkgroup & vbCrLf & _
+            "gstrTheApp = " & gstrTheApp & vbCrLf & _
+            "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
+            "gstrPasswordMdb = " & gstrPasswordMdb
     ShutDownApplication (gstrTheAppWindowName)
-'MsgBox "S2"
     '
     strTheFile = gstrLocalPath & gstrUpdateAppFile
     
-'MsgBox "S3 strTheFile = " & strTheFile
-    StartApp = LoadApp(strTheFile)
-'Exit Function
-'MsgBox "S4"
+    'MsgBox "StartApp: strTheFile = " & strTheFile
+    StartApp = aeLoaderApp(strTheFile)
 
     DoCmd.Restore
     DoCmd.Quit
 
 End Function
 
-Private Function LoadApp(strAbsAppName As String) As Boolean
+Public Function aeLoaderPassThroughApp(strPath As String, strFileName As String) As Boolean
+' What:         Load the selected pass through application
+' Author:       Peter F. Ennis
+' Created:      9/13/2003
+' Passed in:    Absolute application file name as a string
+' Returns:      True if successful
+' Last Mod:
+    
+On Error GoTo Err_aeLoaderPassThroughApp        ' Set up error handler.
+
+1    If FileExists(strPath & strFileName) Then
+2        'MsgBox strPath & strFileName & " FOUND." & vbCrLf & _
+            "WRITE CODE TO KILL OLD APPS", vbInformation, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
+         Debug.Print ">aeLoaderPassThroughApp: strPath = " & strPath
+         Debug.Print ">aeLoaderPassThroughApp: strFileName = " & strFileName
+3        KillOldApps strPath, strFileName
+4    End If
+
+5    Do
+6        OpenNotSecured strPath & strFileName  ', gstrTheWorkgroup
+        
+7        If gblnSPAWN_DEBUG Then
+8            Dim i As Integer
+9            i = MsgBox("L6 gblnSPAWN_DEBUG", vbYesNo, "Test Break")
+10            If i = vbYes Then
+11                Exit Function
+12            Else
+13            End If
+14        End If
+        
+15        DoEvents
+16    Loop Until WindowIsOpen(gstrTheAppWindowName)
+
+17    aeLoaderPassThroughApp = True
+    
+Exit_aeLoaderPassThroughApp:
+18    Exit Function
+
+Err_aeLoaderPassThroughApp:
+    'MsgBox Err & " " & Err.Description, vbCritical, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
+19    Select Case Err
+          Case 75
+20          ' Path/File access error: If app is open it takes time to be
+            ' shut down so try again
+21            Delay 1
+22            Resume
+23        Case Else
+24            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description, vbCritical, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
+25    End Select
+26    aeLoaderPassThroughApp = False
+27    Resume Exit_aeLoaderPassThroughApp
+
+End Function
+
+Public Sub KillOldApps(strPath As String, strFileName As String)
+
+On Error GoTo Err_KillOldApps
+
+    Dim strFName As String
+    Dim strFilePattern As String
+    
+1    Debug.Print "strPath = " & strPath
+2    Debug.Print "strFileName = " & strFileName
+3    strFilePattern = Left(strFileName, InStr(strFileName, gstrTheAppSeparatorChar))
+4    Debug.Print "strFilePattern = " & strFilePattern
+    
+    ' Display the names in strPath that represent the application to be started
+5    strFName = Dir(strPath & strFilePattern & "*")    ' Retrieve the first entry.
+6    Do While strFName <> ""    ' Start the loop.
+7         If strFName <> strFileName Then
+8             Debug.Print "Found: " & strFName
+9             Kill strPath & strFName
+10        Else
+11            Debug.Print "APP TO LOAD: " & strFName
+12        End If
+13        strFName = Dir    ' Get next entry.
+14    Loop
+15    'Stop
+      ' Make copy of app bmp startup file
+      If FileExists(strPath & gstrAppCmdName & ".bmp") Then
+            'MsgBox "Creating App bmp File"
+            FileCopy strPath & gstrAppCmdName & ".bmp", strPath & Mid(strFileName, 1, Len(strFileName) - 4) & ".bmp"
+      End If
+
+Exit_KillOldApps:
+Exit Sub
+
+Err_KillOldApps:
+    MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description, vbCritical, "KillOldApps: " & gconTHIS_APP_NAME
+    Resume Next
+
+End Sub
+
+Private Function aeLoaderApp(strAbsAppName As String) As Boolean
 ' What:         Load the selected application
 ' Author:       Peter F. Ennis
 ' Created:      8/2004
 ' Passed in:    Absolute application file name as a string
 ' Returns:      True if successful
-' Last Mod:
+' Last Mod:     09/06/2005 Use line numbers and Erl to help debugging
 
-On Error GoTo Err_LoadApp        ' Set up error handler.
-
-'MsgBox "L1"
-    If FileExists(strAbsAppName) Then
-'MsgBox "L2"
+On Error GoTo Err_aeLoaderApp        ' Set up error handler.
+     
+1    If FileExists(strAbsAppName) Then
         ' Rename the old app file
-        Name Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & gstrTheAppExtension _
+2        Name Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & gstrTheAppExtension _
                 As Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
         ' Rename the update app file
-'MsgBox "L3"
-        Name strAbsAppName As Mid(strAbsAppName, 1, _
+3        Name strAbsAppName As Mid(strAbsAppName, 1, _
                 Len(strAbsAppName) - 3) & gstrTheAppExtension
-    End If
-'MsgBox "L4 gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
-'            "gstrTheApp = " & gstrTheApp
-'Exit Function
+4    End If
 
-    Do
-'MsgBox "L5"
-        OpenSecured gstrTheApp, gstrTheWorkgroup, gstrLogonMdb, gstrPasswordMdb
+5    Do
+6        OpenSecured gstrTheApp, gstrTheWorkgroup, gstrLogonMdb, gstrPasswordMdb
         
-        If gblnDEBUG Then
-            Dim i As Integer
-            i = MsgBox("L6", vbYesNo, "Test Break")
-            If i = vbYes Then
-                Exit Function
-            Else
-            End If
-        End If
+7        If gblnSPAWN_DEBUG Then
+8            Dim i As Integer
+9            i = MsgBox("L6", vbYesNo, "Test Break")
+10            If i = vbYes Then
+11                Exit Function
+12            Else
+13            End If
+14        End If
         
-        DoEvents
-'MsgBox "L7"
-    Loop Until WindowIsOpen(gstrTheAppWindowName)
-'MsgBox "L8"
+15        DoEvents
+16    Loop Until WindowIsOpen(gstrTheAppWindowName)
     'MsgBox WindowIsOpen("Davis Street Family Resource Center")
     'MaximizeTheWindow WindowIsOpen("Davis Street Family Resource Center"), "Davis Street Family Resource Center"
-    
-    LoadApp = True
-    
-Exit_LoadApp:
-    Exit Function
 
-Err_LoadApp:
-    'MsgBox Err & " " & Err.Description, vbCritical, "LoadApp: " & gconTHIS_APP_NAME
-    Select Case Err
+17    aeLoaderApp = True
+    
+Exit_aeLoaderApp:
+18    Exit Function
+
+Err_aeLoaderApp:
+    'MsgBox Err & " " & Err.Description, vbCritical, "aeLoaderApp: " & gconTHIS_APP_NAME
+19    Select Case Err
         Case 58
             ' OLD app file exists
-            Kill Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
-            Resume
-        Case 75
+20            Kill Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
+21            Resume
+22        Case 75
             ' Path/File access error: If app is open it takes time to be
             ' shut down so try again
-            Delay 1
-            Resume
-        Case Else
-            MsgBox Err & " " & Err.Description, vbCritical, gconTHIS_APP_NAME & ": LoadApp"
-    End Select
-    LoadApp = False
-    Resume Exit_LoadApp
+23            Delay 1
+24            Resume
+25        Case Else
+26            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description, vbCritical, gconTHIS_APP_NAME & ": aeLoaderApp"
+27    End Select
+28    aeLoaderApp = False
+29    Resume Exit_aeLoaderApp
 
 End Function
 
-Private Function FileExists(strAbsFileName As String) As Boolean
+Public Function FileExists(strAbsFileName As String) As Boolean
 ' What:         Test for existence of a file.
 ' Author:       Peter F. Ennis
 ' Created:      11/1998
@@ -199,7 +340,7 @@ Err_FileExists:
 
 End Function
 
-Private Function ShutDownApplication(ByVal strApplicationName As String) As Boolean
+Public Function ShutDownApplication(ByVal strApplicationName As String) As Boolean
 'Ref: http://www.a1vbcode.com/app.asp?ID=479
 
     Dim hwnd As Long
@@ -209,11 +350,18 @@ Private Function ShutDownApplication(ByVal strApplicationName As String) As Bool
     '            "strApplicationName = " & strApplicationName
     If hwnd <> 0 Then
         Result = PostMessage(hwnd, WM_CLOSE, 0&, 0&)
+        'MsgBox "The application window was found for shutdown."
         ShutDownApplication = True
-        'MsgBox "The application window was found and shutdown."
+        ' If the app is NoHo it will not shutdown but give a Quit message
+        ' so close the loader
+        If gstrTheAppWindowName = "NoHo CARE" Then
+            DoCmd.Quit
+        End If
     Else
         'MsgBox "The application window " & _
-        '    strApplicationName & " was not found."
+            strApplicationName & " was not found.", vbInformation, _
+            gconTHIS_APP_NAME & ": ShutDownApplication"
+        'DoCmd.Quit
     End If
 
 End Function
@@ -270,11 +418,8 @@ Private Sub OpenSecured(strTheApp As String, _
     Dim cmd As String
     
     On Error Resume Next
-'MsgBox "OSec1"
     Set objAccess = GetObject(, "Access.Application")
-'MsgBox "OSec2 Err = " & Err
     If Err = 0 Then 'an instance of Access is open
-'MsgBox "OSec3 Err = " & Err
         If IsMissing(varUser) Then varUser = "Admin"
         
 ' ******** EXAMPLE ********
@@ -287,7 +432,6 @@ Private Sub OpenSecured(strTheApp As String, _
 '        MsgBox cmd
 ' **************************
 
-'MsgBox "OSec4 Err = " & Err
     If GetAccessVersion = "9.0" Then        ' Access 2000
         cmd = """C:\Program Files\Microsoft Office\Office\MSAccess.exe""" & " "
     ElseIf GetAccessVersion = "11.0" Then   ' Access 2003
@@ -298,24 +442,44 @@ Private Sub OpenSecured(strTheApp As String, _
                  "/wrkgrp" & " " & _
                  """" & strTheWorkgroup & """"
     'MsgBox cmd
-'Exit Sub
         '
-'MsgBox "OSec5 Err = " & Err
         cmd = cmd & " /nostartup /user " & varUser
-'MsgBox "OSec6 Err = " & Err & " cmd = " & cmd
         If Not IsMissing(varPw) Then cmd = cmd & " /pwd " & varPw
-'MsgBox "OSec7" & vbCrLf & cmd
         Shell pathname:=cmd, windowstyle:=6
         Dim bln As Boolean
         bln = fIsAppRunning("access")
-'MsgBox "OSec8"
         Do 'Wait for shelled process to finish.
-'MsgBox "OSec9"
             Err = 0
             Set objAccess = GetObject(, "Access.Application")
         Loop While Err <> 0
-'MsgBox "OSec10"
     End If
+
+End Sub
+
+Private Sub OpenNotSecured(strTheApp As String)
+    
+    Dim objAccess As Object
+    Dim cmd As String
+    
+    On Error Resume Next
+    Set objAccess = GetObject(, "Access.Application")
+            
+    If GetAccessVersion = "9.0" Then        ' Access 2000
+        cmd = """C:\Program Files\Microsoft Office\Office\MSAccess.exe""" & " "
+    ElseIf GetAccessVersion = "11.0" Then   ' Access 2003
+        cmd = """C:\Program Files\Microsoft Office\Office11\MSAccess.exe""" & " "
+    End If
+
+    cmd = cmd & """" & strTheApp & """"
+    'MsgBox cmd, vbInformation, "OpenNotSecured"
+    '
+    Shell pathname:=cmd, windowstyle:=vbMaximizedFocus
+    Dim bln As Boolean
+    bln = fIsAppRunning("access")
+    Do 'Wait for shelled process to finish.
+        Err = 0
+        Set objAccess = GetObject(, "Access.Application")
+    Loop While Err <> 0
 
 End Sub
 
@@ -389,22 +553,27 @@ Function GetAccessVersion() As String
     
 End Function
 
-'Private Function aeGetCmdString(intAPP As Integer) As String
-'
-'    Dim conAPP_SERVER_PATH As String        ' "\\Dscc-w2k-1\Intake\"
-'    Dim conAPP_LOCAL_PATH As String         ' "C:\DSFRC\Intake\"
-'    Dim conAPP_UPDATE_INFO_FILE As String   ' "DSFRC Update Info.txt"
-'    Dim conAPP_UPDATE_APP_FILE As String    ' "Davis Street Intake PRODUCTION SQL 2000 Front End A2K.upd"
-'
-'End Function
-
 Public Function aeGetTheAppID() As Integer
 ' Ref: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnacc2k/html/acglobaloptions.asp
 
-    aeGetTheAppID = Nz(DLookup("AppID", "tblAppSetup", _
-                    "gconAPP_CMD_NAME='" & Command & "'"), 0)
-    'MsgBox "aeGetTheAppID = " & aeGetTheAppID
+    Dim intAppID As Integer
 
+    'MsgBox "Command = " & Command
+    gstrAppCmdName = Command
+    intAppID = DLookup("[AppID]", "[tblAppSetup]", _
+                        "[gconAPP_CMD_NAME] = '" & gstrAppCmdName & "'")
+    'MsgBox "intAppID = " & intAppID
+
+    If intAppID = 0 Then
+        MsgBox "Invalid Access Command Line Parameter!" & vbCrLf & vbCrLf & _
+                Command, vbCritical, gconTHIS_APP_NAME
+        DoCmd.Restore
+        DoCmd.Quit acQuitSaveNone
+        Exit Function
+    End If
+
+    aeGetTheAppID = intAppID
+    
 '    If Command = "DSFRC Intake" Then
 '        aeGetTheAppID = 1
 '        Exit Function
@@ -415,11 +584,28 @@ Public Function aeGetTheAppID() As Integer
 '        Exit Function
 '    End If
 
-    If aeGetTheAppID = 0 Then
-        MsgBox "Invalid Access Command Line Parameter!" & vbCrLf & vbCrLf & _
-                Command, vbCritical, gconTHIS_APP_NAME
-        DoCmd.Restore
-        DoCmd.Quit acQuitSaveNone
+End Function
+
+Public Function Comment(strComment As String) As Boolean
+' What:         THIS FUNCTION RETURNS TRUE IF A STRING IS A COMMENT i.e. IF
+'               THE FIRST CHARACTER IN THE FIRST LINE IS ' OR ;
+' Author:       Peter F. Ennis      Created: 11/98       By: Peter F. Ennis
+' Passed in:    Comment as a string
+' Returns:      True
+' Last Mod:     7/30/99
+
+On Error GoTo Err_Comment
+
+    Comment = False
+    If ((Mid$(strComment, 1, 1) = "'") Or (Mid$(strComment, 1, 1) = ";")) Then
+        Comment = True
     End If
+
+Exit_Comment:
+    Exit Function
+
+Err_Comment:
+    MsgBox "Comment Error " & Err & ": " & Error$, vbCritical, "aedb"
+    Resume Exit_Comment
 
 End Function
