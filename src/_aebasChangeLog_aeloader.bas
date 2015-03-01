@@ -55,7 +55,6 @@ End Function
 ' %010 -
 ' %009 - Import external data from "aeloader.mdb.v114" then export with aegit, delete from 2do folder
 ' %008 - Import external data from "aeloader.mdb.v113" then export with aegit, delete from 2do folder
-' #007 - Import external data from "aeloader.mdb.v112" then export with aegit, delete from 2do folder
 ' Issues:
 ' #010 -
 ' #009 -
@@ -70,6 +69,8 @@ End Function
 '=============================================================================================================================
 '
 '
+'20150228 v002 -
+    ' FIXED - #007 - Import external data from "aeloader.mdb.v112" then export with aegit, delete from 2do folder
 '20150225 v002 -
     ' FIXED - %003 - Import external data from "aeloader.mdb.v106" then export with aegit, delete from 2do folder
     ' FIXED - %004 - Import external data from "aeloader.mdb.v107" then export with aegit, delete from 2do folder

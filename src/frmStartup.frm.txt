@@ -26,10 +26,11 @@ Begin Form
         0x0d58fcf28d0fe240
     End
     GUID = Begin
-        0x6e1ea5fc807c364e936c8fd50393e315
+        0x85b1c31df4d09740a6bf84c66da61af9
     End
     Caption ="adaept"
     OnOpen ="[Event Procedure]"
+    OnClose ="[Event Procedure]"
     MenuBar ="mbarFileExit"
     DatasheetFontName ="Arial"
     PrtMip = Begin
@@ -76,6 +77,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
 Option Explicit
+
+Private Sub Form_Close()
+    MoveToCenter
+End Sub
 
 Private Sub Form_Open(Cancel As Integer)
 

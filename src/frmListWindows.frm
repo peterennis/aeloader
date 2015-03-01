@@ -1,6 +1,6 @@
 Version =20
 VersionRequired =20
-Checksum =-432068803
+Checksum =445517212
 Begin Form
     AllowDesignChanges = NotDefault
     DefaultView =0
@@ -21,7 +21,7 @@ Begin Form
         0x18d05a3b8cc3e240
     End
     GUID = Begin
-        0xe3c8312e14757749a9344117ab764a11
+        0x1076b11185ae2a4e8dc40fbdf6f611f3
     End
     DatasheetFontName ="Arial"
     FilterOnLoad =0
@@ -118,35 +118,35 @@ Sub AddChildWindows(ByVal hwndParent As Long, ByVal Level As Long)
       Dim WT As String
       Dim CN As String
       Dim Length As Long
-      Dim hwnd As Long
+      Dim hWnd As Long
       
         If Level = 0 Then
-          hwnd = hwndParent
+          hWnd = hwndParent
         Else
-          hwnd = GetWindow(hwndParent, GW_CHILD)
+          hWnd = GetWindow(hwndParent, GW_CHILD)
         End If
-        Do While hwnd <> 0
+        Do While hWnd <> 0
           WT = Space(256)
-          Length = GetWindowText(hwnd, WT, 255)
+          Length = GetWindowText(hWnd, WT, 255)
           WT = Left$(WT, Length)
           CN = Space(256)
-          Length = GetClassName(hwnd, CN, 255)
+          Length = GetClassName(hWnd, CN, 255)
           CN = Left$(CN, Length)
           Me!Text1 = Me!Text1 & vbCrLf & String(2 * Level, ".") _
                    & WT & " (" & CN & ")"
-          AddChildWindows hwnd, Level + 1
-          hwnd = GetWindow(hwnd, GW_HWNDNEXT)
+          AddChildWindows hWnd, Level + 1
+          hWnd = GetWindow(hWnd, GW_HWNDNEXT)
         Loop
 
 End Sub
 
 Private Sub Command1_Click()
      
-     Dim hwnd As Long
+     Dim hWnd As Long
         
-        hwnd = GetTopWindow(0)
-        If hwnd <> 0 Then
-          AddChildWindows hwnd, 0
+        hWnd = GetTopWindow(0)
+        If hWnd <> 0 Then
+          AddChildWindows hWnd, 0
         End If
 
 End Sub

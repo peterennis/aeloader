@@ -13,10 +13,13 @@ Option Explicit
 ' 08/31/2005 1.0.9 - Add NOPWD group and NopwdUser as pass through for Noho.
 ' 09/15/2005 1.1.0 - Pass through test succeeds for NoHo.
 ' 09/16/2005 1.1.1 - Fix bug where pass through messed up original version control.
+' 06/09/2006 1.1.2 - Add aeLoaderMoveSizeClass to center and reduce access db window
+'                    to its smallest size on any screen.
+'
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.1.1"
-Public Const gconTHIS_APP_VERSION_DATE = "09/15/2005"
+Public Const gconTHIS_APP_VERSION As String = "1.1.2"
+Public Const gconTHIS_APP_VERSION_DATE = "06/09/2006"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 Public gblnAbortUpdate As Boolean
 Public gblnSPAWN_DEBUG As Boolean
@@ -52,17 +55,17 @@ Public gstrUpdateText As String
 Public gstrAppNewFileVersion As String
 '
 Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
-Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
 Private Const WM_CLOSE = &H10
 Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
-Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, _
+Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, _
         ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
 '
 Global Const SW_HIDE = 0
 Global Const SW_SHOWNORMAL = 1
 Global Const SW_SHOWMINIMIZED = 2
 Global Const SW_SHOWMAXIMIZED = 3
-Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hwnd As Long, ByVal nCmdShow As Long) As Long
+Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
 '
 
 Public Function StartApp() As Boolean
@@ -343,13 +346,13 @@ End Function
 Public Function ShutDownApplication(ByVal strApplicationName As String) As Boolean
 'Ref: http://www.a1vbcode.com/app.asp?ID=479
 
-    Dim hwnd As Long
+    Dim hWnd As Long
     Dim Result As Long
-    hwnd = FindWindow(vbNullString, strApplicationName)
+    hWnd = FindWindow(vbNullString, strApplicationName)
     'MsgBox "hWnd = " & hWnd & vbCrLf & _
     '            "strApplicationName = " & strApplicationName
-    If hwnd <> 0 Then
-        Result = PostMessage(hwnd, WM_CLOSE, 0&, 0&)
+    If hWnd <> 0 Then
+        Result = PostMessage(hWnd, WM_CLOSE, 0&, 0&)
         'MsgBox "The application window was found for shutdown."
         ShutDownApplication = True
         ' If the app is NoHo it will not shutdown but give a Quit message
@@ -368,23 +371,23 @@ End Function
 
 Private Function WindowIsOpen(ByVal strWindowTitle As String) As Long
 
-    Dim hwnd As Long
+    Dim hWnd As Long
     Dim Result As Long
-    hwnd = FindWindow(vbNullString, strWindowTitle)
-    Debug.Print "hwnd = " & hwnd
-    If hwnd <> 0 Then
-        WindowIsOpen = hwnd
+    hWnd = FindWindow(vbNullString, strWindowTitle)
+    Debug.Print "hwnd = " & hWnd
+    If hWnd <> 0 Then
+        WindowIsOpen = hWnd
     Else
         WindowIsOpen = 0
     End If
 
 End Function
 
-Private Sub MaximizeTheWindow(hwnd As Long, ByVal strWindowTitle As String)
+Private Sub MaximizeTheWindow(hWnd As Long, ByVal strWindowTitle As String)
 'Ref: http://www.digital-inn.de/archive/index.php/t-15364.html
 
     Dim lng As Long
-    lng = SendMessage(hwnd, &H112, &HF030&, 0&)
+    lng = SendMessage(hWnd, &H112, &HF030&, 0&)
     
 End Sub
 
@@ -607,5 +610,15 @@ Exit_Comment:
 Err_Comment:
     MsgBox "Comment Error " & Err & ": " & Error$, vbCritical, "aedb"
     Resume Exit_Comment
+
+End Function
+
+Public Function MoveToCenter()
+
+    Dim bln As Boolean
+    Dim cls As aeLoaderMoveSizeClass
+    Set cls = New aeLoaderMoveSizeClass
+    ' Setup parameters
+    cls.aeMoveSizeCenter = True
 
 End Function

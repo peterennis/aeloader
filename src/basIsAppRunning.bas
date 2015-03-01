@@ -40,17 +40,17 @@ Private Declare Function apiFindWindow Lib "user32" Alias _
     ByVal lpWindow As String) As Long
 
 Private Declare Function apiSendMessage Lib "user32" Alias _
-    "SendMessageA" (ByVal hwnd As Long, ByVal Msg As Long, ByVal _
+    "SendMessageA" (ByVal hWnd As Long, ByVal Msg As Long, ByVal _
     wParam As Long, lParam As Long) As Long
     
 Private Declare Function apiSetForegroundWindow Lib "user32" Alias _
-    "SetForegroundWindow" (ByVal hwnd As Long) As Long
+    "SetForegroundWindow" (ByVal hWnd As Long) As Long
     
 Private Declare Function apiShowWindow Lib "user32" Alias _
-    "ShowWindow" (ByVal hwnd As Long, ByVal nCmdShow As Long) As Long
+    "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
     
 Private Declare Function apiIsIconic Lib "user32" Alias _
-    "IsIconic" (ByVal hwnd As Long) As Long
+    "IsIconic" (ByVal hWnd As Long) As Long
     
 Function fIsAppRunning(ByVal strAppName As String, _
         Optional fActivate As Boolean) As Boolean

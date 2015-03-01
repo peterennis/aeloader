@@ -1,0 +1,7 @@
+Version =196611
+ColumnsShown =0
+Begin
+    Action ="RunCode"
+    Comment ="MoveToCenter()"
+    Argument ="MoveToCenter()\015\012"
+End
