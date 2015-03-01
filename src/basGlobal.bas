@@ -15,11 +15,12 @@ Option Explicit
 ' 09/16/2005 1.1.1 - Fix bug where pass through messed up original version control.
 ' 06/09/2006 1.1.2 - Add aeLoaderMoveSizeClass to center and reduce access db window
 '                    to its smallest size on any screen.
+' 05/10/2007 1.1.3 - Allow update with user:PCname and kill .OLD mda file before rename.
 '
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.1.2"
-Public Const gconTHIS_APP_VERSION_DATE = "06/09/2006"
+Public Const gconTHIS_APP_VERSION As String = "1.1.3"
+Public Const gconTHIS_APP_VERSION_DATE = "05/10/2007"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 Public gblnAbortUpdate As Boolean
 Public gblnSPAWN_DEBUG As Boolean
@@ -71,6 +72,8 @@ Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hW
 Public Function StartApp() As Boolean
 
     Dim strTheFile As String
+
+On Error GoTo Err_StartApp
 
     gstrPassThrough = Nz(DLookup("gconPASS_THROUGH", "tblAppSetup", _
                             "AppID=" & gintApp))
@@ -134,15 +137,50 @@ Public Function StartApp() As Boolean
             "gstrTheApp = " & gstrTheApp & vbCrLf & _
             "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
             "gstrPasswordMdb = " & gstrPasswordMdb
+'MsgBox "1"
     ShutDownApplication (gstrTheAppWindowName)
+'MsgBox "2"
     '
-    strTheFile = gstrLocalPath & gstrUpdateAppFile
+    ' Update to new library
+    If FileExists("C:\DSFRC\Intake\adaeptdblib.mda.upd") Then
+'MsgBox "3"
+        Kill "C:\DSFRC\Intake\adaeptdblib.mda.OLD"
+        Name "C:\DSFRC\Intake\adaeptdblib.mda" _
+                As "C:\DSFRC\Intake\adaeptdblib.mda." & "OLD"
+        ' Rename the update app file
+'MsgBox "4"
+        Name "C:\DSFRC\Intake\adaeptdblib.mda.upd" _
+                As "C:\DSFRC\Intake\adaeptdblib.mda"
+    End If
     
+'MsgBox "5"
+    strTheFile = gstrLocalPath & gstrUpdateAppFile
     'MsgBox "StartApp: strTheFile = " & strTheFile
+'MsgBox "6"
     StartApp = aeLoaderApp(strTheFile)
+'MsgBox "7"
 
     DoCmd.Restore
     DoCmd.Quit
+
+Exit_StartApp:
+    Exit Function
+
+Err_StartApp:
+    Select Case Err
+'          Case 58
+'            ' OLD app file exists
+'            Kill Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
+'            Resume
+          Case 75
+          ' Path/File access error: If app is open it takes time to be
+            ' shut down so try again
+            Delay 1
+            Resume
+        Case Else
+            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description, vbCritical, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
+    End Select
+    Resume Exit_StartApp
 
 End Function
 
