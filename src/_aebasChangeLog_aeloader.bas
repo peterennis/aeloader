@@ -12,8 +12,8 @@ Option Explicit
 '                                           ALTERNATIVE_EXPORT 1
 '
 ' Sample constants for settings of "TheProjectName"
-Public Const gstrDATE_aeloader As String = "February 25, 2015"
-Public Const gstrVERSION_aeloader As String = "0.0.2"
+Public Const gstrDATE_aeloader As String = "February 28, 2015"
+Public Const gstrVERSION_aeloader As String = "0.0.3"
 Public Const gstrPROJECT_aeloader As String = "aeloader"
 Public Const gblnTEST_aeloader As Boolean = False
 '
@@ -53,7 +53,6 @@ End Function
 ' %012 -
 ' %011 -
 ' %010 -
-' %009 - Import external data from "aeloader.mdb.v114" then export with aegit, delete from 2do folder
 ' Issues:
 ' #010 -
 ' #009 -
@@ -68,6 +67,8 @@ End Function
 '=============================================================================================================================
 '
 '
+'20150228 v003 -
+    ' FIXED - %009 - Import external data from "aeloader.mdb.v114" then export with aegit, delete from 2do folder
 '20150228 v002 -
     ' FIXED - #007 - Import external data from "aeloader.mdb.v112" then export with aegit, delete from 2do folder
     ' FIXED - %008 - Import external data from "aeloader.mdb.v113" then export with aegit, delete from 2do folder

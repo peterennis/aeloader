@@ -16,17 +16,29 @@ Option Explicit
 ' 06/09/2006 1.1.2 - Add aeLoaderMoveSizeClass to center and reduce access db window
 '                    to its smallest size on any screen.
 ' 05/10/2007 1.1.3 - Allow update with user:PCname and kill .OLD mda file before rename.
+' 05/18/2007 1.1.4 - Updates to class modules from adaeptdblib.mda
+'                    Debugging to trap file permissions error when user is not in admin group.
+'                    Need to allow the application to delete and rename files.
 '
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.1.3"
-Public Const gconTHIS_APP_VERSION_DATE = "05/10/2007"
+Public Const gconTHIS_APP_VERSION As String = "1.1.4"
+Public Const gconTHIS_APP_VERSION_DATE = "05/18/2007"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 Public gblnAbortUpdate As Boolean
 Public gblnSPAWN_DEBUG As Boolean
 Public gintApp As Integer
 Public gstrTheAppWindowName As String
 Public gstrTheApp As String
+'
+Public gstrAppName As String
+Public gstrAppCurrentVer As String
+Public gstrDbLibVersion As String
+Public gstrAppNewVersion As String
+Public gstrLocalLibPath As String
+Public gstrDbLibName As String
+Public gstrUpdateMdb As String
+'
 Public gstrTheNewApp As String
 Public gstrTheAppNamePart As String
 Public gstrTheAppVersionPart As String
@@ -231,7 +243,9 @@ Err_aeLoaderPassThroughApp:
 21            Delay 1
 22            Resume
 23        Case Else
-24            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description, vbCritical, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
+24            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description & vbCrLf & _
+                    "strPath = " & strPath & _
+                    "strFileName = " & strFileName, vbCritical, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
 25    End Select
 26    aeLoaderPassThroughApp = False
 27    Resume Exit_aeLoaderPassThroughApp
