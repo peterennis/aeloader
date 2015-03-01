@@ -1,7 +1,7 @@
 >>>SummaryInfo
               Name          SummaryInfo
               Owner         admin
-              UserName      developer
+              UserName      admin
               Permissions    0 
               AllPermissions               65536 
               Container     Databases
@@ -12,7 +12,7 @@
 >>>UserDefined
               Name          UserDefined
               Owner         admin
-              UserName      developer
+              UserName      admin
               Permissions    0 
               AllPermissions               65536 
               Container     Databases

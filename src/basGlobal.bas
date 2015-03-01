@@ -1,30 +1,6 @@
 Option Compare Database
 Option Explicit
 
-' (c) 2000 - 2005 adaept Peter Ennis
-' 09/08/2004 1.0.1 - Add code to minimize Access on startup.
-' 02/23/2005 1.0.2 - Office 2003 Compatability, GetAccessVersion()
-' 02/25/2005 1.0.3 - Use tblAppSetup, gintApp, DLookup for flexibility
-' 03/03/2005 1.0.4 - Debug operation with Medical database
-' 03/21/2005 1.0.5 - Add SLCC with Logon and Password fields in startup table.
-' 07/22/2005 1.0.6 - DoCmd.Restore added when application closes.
-' 08/18/2005 1.0.7 - Add DSFRC Volunteers.
-' 08/24/2005 1.0.8 - Add DSFRC Finance.
-' 08/31/2005 1.0.9 - Add NOPWD group and NopwdUser as pass through for Noho.
-' 09/15/2005 1.1.0 - Pass through test succeeds for NoHo.
-' 09/16/2005 1.1.1 - Fix bug where pass through messed up original version control.
-' 06/09/2006 1.1.2 - Add aeLoaderMoveSizeClass to center and reduce access db window
-'                    to its smallest size on any screen.
-' 05/10/2007 1.1.3 - Allow update with user:PCname and kill .OLD mda file before rename.
-' 05/18/2007 1.1.4 - Updates to class modules from adaeptdblib.mda
-'                    Debugging to trap file permissions error when user is not in admin group.
-'                    Need to allow the application to delete and rename files.
-' 05/21/2007 1.1.5 - Import aeParameters_Table from adaeptdblib.mda to fix bug resulting from
-'                    starting Noho with last update of aeloader.
-' 05/22/2007 1.1.6 - Replace tblAppSetup values with aeLoaderParameters_Table.
-' 06/07/2007 1.1.7 - Update library e.g. adaeptdblib.mda.v425
-'
-
 ' GLOBAL CONSTANTS
 Public Const gconTHIS_APP_VERSION As String = "1.1.7"
 Public Const gconTHIS_APP_VERSION_DATE = "06/07/2007"
@@ -91,79 +67,71 @@ Public Function StartApp() As Boolean
 
 On Error GoTo Err_StartApp
 
-1:    gstrPassThrough = Nz(DLookup("gstrPassThrough", "aeLoaderParameters_Table", _
+    gstrPassThrough = Nz(DLookup("gstrPassThrough", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp))
-2:    'MsgBox "gintApp = " & gintApp
-3:    'MsgBox "gstrPassThrough = " & gstrPassThrough
-4:    If gstrPassThrough = "PassThrough" Then
+    'MsgBox "gintApp = " & gintApp
+    'MsgBox "gstrPassThrough = " & gstrPassThrough
+    If gstrPassThrough = "PassThrough" Then
         ' Call aeLoaderUpdateSetupClass
         '
         Dim blnUpdate As Boolean
         Dim cls1 As aeLoaderUpdateSetupClass
-'MsgBox "A"
-5:       Set cls1 = New aeLoaderUpdateSetupClass
+        
+        Set cls1 = New aeLoaderUpdateSetupClass
         
         ' Setup parameters
-'MsgBox "B"
-6:        cls1.aeUpdateDebug = True
-'MsgBox "C"
-61:          Dim strThePassThroughAppName As String
-62:          Dim strThePassThroughAppVersion As String
-63:          strThePassThroughAppName = gstrLocalPath & DLookup("gstrAppName", _
+        cls1.aeUpdateDebug = True
+        
+        Dim strThePassThroughAppName As String
+        Dim strThePassThroughAppVersion As String
+        strThePassThroughAppName = gstrLocalPath & DLookup("gstrAppName", _
                             "aeLoaderParameters_Table", "ParameterID=" & gintApp)
-64:          strThePassThroughAppVersion = gstrLocalPath & DLookup("gstrAppFileName", _
+        strThePassThroughAppVersion = gstrLocalPath & DLookup("gstrAppFileName", _
                             "aeLoaderParameters_Table", "ParameterID=" & gintApp)
-7:        blnUpdate = cls1.aeUpdateSetup(strThePassThroughAppName, _
+        blnUpdate = cls1.aeUpdateSetup(strThePassThroughAppName, _
                             strThePassThroughAppVersion, aeWindowsNetworkLogin)
-'MsgBox "D"
     
-        ' DSFRC with Network Login
         Dim cls2 As aeLoaderUpdateTxtClass
-'MsgBox "E"
-8:        Set cls2 = New aeLoaderUpdateTxtClass
-'MsgBox "F"
-
-9:        cls2.aeUpdateDebug = True
-'MsgBox "G"
-10:        blnUpdate = cls2.blnTheAppLoaderUpdateStatus()
-'MsgBox "H"
-11:        Debug.Print "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
-111:       MsgBox "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
-'MsgBox "I"
+        Set cls2 = New aeLoaderUpdateTxtClass
+        
+        cls2.aeUpdateDebug = True
+        blnUpdate = cls2.blnTheAppLoaderUpdateStatus()
+        Debug.Print "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
+        MsgBox "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
         '
         ' Shutdown the app if it is already open
         'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName, vbInformation, gconTHIS_APP_NAME & ": StartApp"
-12:        ShutDownApplication (gstrTheAppWindowName)
+        ShutDownApplication (gstrTheAppWindowName)
         '
-13:        StartApp = aeLoaderPassThroughApp(gstrLocalPath, gstrLoaderUpdateAppFile)
-14:        DoCmd.Quit
-15:        Exit Function
-16:    End If
+        StartApp = aeLoaderPassThroughApp(gstrLocalPath, gstrLoaderUpdateAppFile)
+        DoCmd.Quit
+        Exit Function
+    End If
         
     ' Minimize the Access window
-17:    ShowWindow Application.hWndAccessApp, 2
+    ShowWindow Application.hWndAccessApp, 2
     
     ' Shutdown the app if it is already open
-18:    gstrTheAppWindowName = DLookup("gstrAppWindowName", "aeLoaderParameters_Table", _
+    gstrTheAppWindowName = DLookup("gstrAppWindowName", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-19:    gstrLocalPath = DLookup("gstrLocalPath", "aeLoaderParameters_Table", _
+    gstrLocalPath = DLookup("gstrLocalPath", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-20:    gstrUpdateAppFile = DLookup("gstrUpdateAppFile", "aeLoaderParameters_Table", _
+    gstrUpdateAppFile = DLookup("gstrUpdateAppFile", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-21:    gstrTheAppExtension = DLookup("gstrAppExt", "aeLoaderParameters_Table", _
+    gstrTheAppExtension = DLookup("gstrAppExt", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-22:    gstrTheWorkgroup = DLookup("gstrServerPath", "aeLoaderParameters_Table", _
+    gstrTheWorkgroup = DLookup("gstrServerPath", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp) & _
                             DLookup("gstrTheWorkgroupFile", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-23:    gstrTheApp = gstrLocalPath & DLookup("gstrAppFileName", "aeLoaderParameters_Table", _
+    gstrTheApp = gstrLocalPath & DLookup("gstrAppFileName", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp) & _
                             "." & gstrTheAppExtension
-24:    gstrLogonMdb = DLookup("gstrLogonMdb", "aeLoaderParameters_Table", _
+    gstrLogonMdb = DLookup("gstrLogonMdb", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-25:    gstrPasswordMdb = DLookup("gstrPasswordMdb", "aeLoaderParameters_Table", _
+    gstrPasswordMdb = DLookup("gstrPasswordMdb", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-26:    'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
+    'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
             "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
             "gstrUpdateAppFile = " & gstrUpdateAppFile & vbCrLf & _
             "gstrTheAppExtension = " & gstrTheAppExtension & vbCrLf & _
@@ -171,25 +139,25 @@ On Error GoTo Err_StartApp
             "gstrTheApp = " & gstrTheApp & vbCrLf & _
             "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
             "gstrPasswordMdb = " & gstrPasswordMdb
-27:    ShutDownApplication (gstrTheAppWindowName)
+    ShutDownApplication (gstrTheAppWindowName)
     '
     ' Updates will occur in the Intake application based on the version.
     ' The corresponding library will be called e.g. adaeptdblib.mda.v425
     ' copied across and renamed to adaeptdblib.mda.upd locally.
     '
-271:    gstrLocalLibPath = DLookup("gstrLocalLibPath", "aeLoaderParameters_Table", _
+    gstrLocalLibPath = DLookup("gstrLocalLibPath", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-272:    'MsgBox "gstrLocalLibPath=" & gstrLocalLibPath
+    'MsgBox "gstrLocalLibPath=" & gstrLocalLibPath
         
     ' Update to new library
-32:    InstallNewLibrary
+    InstallNewLibrary
     
-33:    strTheFile = gstrLocalPath & gstrUpdateAppFile
-34:    'MsgBox "StartApp: strTheFile = " & strTheFile
-35:    StartApp = aeLoaderApp(strTheFile)
+    strTheFile = gstrLocalPath & gstrUpdateAppFile
+    'MsgBox "StartApp: strTheFile = " & strTheFile
+    StartApp = aeLoaderApp(strTheFile)
 
-36:    DoCmd.Restore
-37:    DoCmd.Quit
+    DoCmd.Restore
+    DoCmd.Quit
 
 Exit_StartApp:
     Exit Function
@@ -222,49 +190,49 @@ Public Function aeLoaderPassThroughApp(strPath As String, strFileName As String)
     
 On Error GoTo Err_aeLoaderPassThroughApp        ' Set up error handler.
 
-1    If FileExists(strPath & strFileName) Then
-2        'MsgBox strPath & strFileName & " FOUND." & vbCrLf & _
+    If FileExists(strPath & strFileName) Then
+        'MsgBox strPath & strFileName & " FOUND." & vbCrLf & _
             "WRITE CODE TO KILL OLD APPS", vbInformation, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
          Debug.Print ">aeLoaderPassThroughApp: strPath = " & strPath
          Debug.Print ">aeLoaderPassThroughApp: strFileName = " & strFileName
-3        KillOldApps strPath, strFileName
-4    End If
+        KillOldApps strPath, strFileName
+    End If
 
-5    Do
-6        OpenNotSecured strPath & strFileName  ', gstrTheWorkgroup
+    Do
+        OpenNotSecured strPath & strFileName  ', gstrTheWorkgroup
         
-7        If gblnSPAWN_DEBUG Then
-8            Dim i As Integer
-9            i = MsgBox("L6 gblnSPAWN_DEBUG", vbYesNo, "Test Break")
-10            If i = vbYes Then
-11                Exit Function
-12            Else
-13            End If
-14        End If
+        If gblnSPAWN_DEBUG Then
+            Dim i As Integer
+            i = MsgBox("L6 gblnSPAWN_DEBUG", vbYesNo, "Test Break")
+            If i = vbYes Then
+                Exit Function
+            Else
+            End If
+        End If
         
-15        DoEvents
-16    Loop Until WindowIsOpen(gstrTheAppWindowName)
+        DoEvents
+    Loop Until WindowIsOpen(gstrTheAppWindowName)
 
-17    aeLoaderPassThroughApp = True
+    aeLoaderPassThroughApp = True
     
 Exit_aeLoaderPassThroughApp:
-18    Exit Function
+    Exit Function
 
 Err_aeLoaderPassThroughApp:
     'MsgBox Err & " " & Err.Description, vbCritical, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
-19    Select Case Err
+    Select Case Err
           Case 75
-20          ' Path/File access error: If app is open it takes time to be
+          ' Path/File access error: If app is open it takes time to be
             ' shut down so try again
-21            Delay 1
-22            Resume
-23        Case Else
-24            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description & vbCrLf & _
+            Delay 1
+            Resume
+        Case Else
+            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description & vbCrLf & _
                     "strPath = " & strPath & _
                     "strFileName = " & strFileName, vbCritical, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
-25    End Select
-26    aeLoaderPassThroughApp = False
-27    Resume Exit_aeLoaderPassThroughApp
+    End Select
+    aeLoaderPassThroughApp = False
+    Resume Exit_aeLoaderPassThroughApp
 
 End Function
 
@@ -275,23 +243,23 @@ On Error GoTo Err_KillOldApps
     Dim strFName As String
     Dim strFilePattern As String
     
-1    Debug.Print "strPath = " & strPath
-2    Debug.Print "strFileName = " & strFileName
-3    strFilePattern = Left(strFileName, InStr(strFileName, gstrTheAppSeparatorChar))
-4    Debug.Print "strFilePattern = " & strFilePattern
+    Debug.Print "strPath = " & strPath
+    Debug.Print "strFileName = " & strFileName
+    strFilePattern = Left(strFileName, InStr(strFileName, gstrTheAppSeparatorChar))
+    Debug.Print "strFilePattern = " & strFilePattern
     
     ' Display the names in strPath that represent the application to be started
-5    strFName = Dir(strPath & strFilePattern & "*")    ' Retrieve the first entry.
-6    Do While strFName <> ""    ' Start the loop.
-7         If strFName <> strFileName Then
-8             Debug.Print "Found: " & strFName
-9             Kill strPath & strFName
-10        Else
-11            Debug.Print "APP TO LOAD: " & strFName
-12        End If
-13        strFName = Dir    ' Get next entry.
-14    Loop
-15    'Stop
+    strFName = Dir(strPath & strFilePattern & "*")    ' Retrieve the first entry.
+    Do While strFName <> ""    ' Start the loop.
+         If strFName <> strFileName Then
+             Debug.Print "Found: " & strFName
+             Kill strPath & strFName
+        Else
+            Debug.Print "APP TO LOAD: " & strFName
+        End If
+        strFName = Dir    ' Get next entry.
+    Loop
+    'Stop
       ' Make copy of app bmp startup file
       If FileExists(strPath & gstrAppCmdName & ".bmp") Then
             'MsgBox "Creating App bmp File"
@@ -317,54 +285,54 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
 
 On Error GoTo Err_aeLoaderApp        ' Set up error handler.
      
-1    If FileExists(strAbsAppName) Then
+    If FileExists(strAbsAppName) Then
         ' Rename the old app file
-2        Name Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & gstrTheAppExtension _
+        Name Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & gstrTheAppExtension _
                 As Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
         ' Rename the update app file
-3        Name strAbsAppName As Mid(strAbsAppName, 1, _
+        Name strAbsAppName As Mid(strAbsAppName, 1, _
                 Len(strAbsAppName) - 3) & gstrTheAppExtension
-4    End If
+    End If
 
-5    Do
-6        OpenSecured gstrTheApp, gstrTheWorkgroup, gstrLogonMdb, gstrPasswordMdb
+    Do
+        OpenSecured gstrTheApp, gstrTheWorkgroup, gstrLogonMdb, gstrPasswordMdb
         
-7        If gblnSPAWN_DEBUG Then
-8            Dim i As Integer
-9            i = MsgBox("L6", vbYesNo, "Test Break")
-10            If i = vbYes Then
-11                Exit Function
-12            Else
-13            End If
-14        End If
+        If gblnSPAWN_DEBUG Then
+            Dim i As Integer
+            i = MsgBox("L6", vbYesNo, "Test Break")
+            If i = vbYes Then
+                Exit Function
+            Else
+            End If
+        End If
         
-15        DoEvents
-16    Loop Until WindowIsOpen(gstrTheAppWindowName)
+        DoEvents
+    Loop Until WindowIsOpen(gstrTheAppWindowName)
     'MsgBox WindowIsOpen("Davis Street Family Resource Center")
     'MaximizeTheWindow WindowIsOpen("Davis Street Family Resource Center"), "Davis Street Family Resource Center"
 
-17    aeLoaderApp = True
+    aeLoaderApp = True
     
 Exit_aeLoaderApp:
-18    Exit Function
+    Exit Function
 
 Err_aeLoaderApp:
     'MsgBox Err & " " & Err.Description, vbCritical, "aeLoaderApp: " & gconTHIS_APP_NAME
-19    Select Case Err
+    Select Case Err
         Case 58
             ' OLD app file exists
-20            Kill Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
-21            Resume
-22        Case 75
+            Kill Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
+            Resume
+        Case 75
             ' Path/File access error: If app is open it takes time to be
             ' shut down so try again
-23            Delay 1
-24            Resume
-25        Case Else
-26            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description, vbCritical, gconTHIS_APP_NAME & ": aeLoaderApp"
-27    End Select
-28    aeLoaderApp = False
-29    Resume Exit_aeLoaderApp
+            Delay 1
+            Resume
+        Case Else
+            MsgBox "Erl:" & Erl & " Error# " & Err & " " & Err.Description, vbCritical, gconTHIS_APP_NAME & ": aeLoaderApp"
+    End Select
+    aeLoaderApp = False
+    Resume Exit_aeLoaderApp
 
 End Function
 
@@ -588,17 +556,19 @@ Function DoAccessWindow(nCmdShow As Long)
 'Normal window:
 '       ?DoAccessWindow(SW_SHOWNORMAL)
 '
-Dim loX  As Long
-Dim loform As Form
+    Dim loX  As Long
+    Dim loform As Form
+
     On Error Resume Next
+
     Set loform = Screen.ActiveForm
     If Err <> 0 Then 'no Activeform
-      If nCmdShow = SW_HIDE Then
-        MsgBox "Cannot hide Access unless a form is on screen"
-      Else
-        loX = apiShowWindow(hWndAccessApp, nCmdShow)
-        Err.Clear
-      End If
+        If nCmdShow = SW_HIDE Then
+            MsgBox "Cannot hide Access unless a form is on screen"
+        Else
+            loX = apiShowWindow(hWndAccessApp, nCmdShow)
+            Err.Clear
+        End If
     Else
         If nCmdShow = SW_SHOWMINIMIZED And loform.Modal = True Then
             MsgBox "Cannot minimize Access with " & (loform.Caption + " ") & "form on screen"
