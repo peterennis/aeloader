@@ -1,22 +1,27 @@
-tblAppSetup
-              AppID          109          TextBox
-              gconPASS_THROUGH             109          TextBox
-              gconAPP_CMD_NAME             109          TextBox
-              gconLOCAL_PATH               109          TextBox
-              gconAPP_NAME   109          TextBox
-              gconAPP_EXTENSION            109          TextBox
-              gconAPP_SEPARATOR            109          TextBox
-              gconUPDATE_APP_FILE          109          TextBox
-              gconSERVER_PATH              109          TextBox
-              gconTHE_WORKGROUP            109          TextBox
-              gconAPP_WINDOW_NAME          109          TextBox
-              gconUPDATE_INFO_FILE         109          TextBox
-              gconLOGON_MDB  109          TextBox
-              gconPASSWORD_MDB             109          TextBox
+aeLoaderParameters_Table
+              ParameterID    0            
+              gstrPassThrough              109          TextBox
+              gstrAppName    109          TextBox
+              gstrAppFileName              109          TextBox
+              gstrAppWindowName            109          TextBox
+              gstrAppExt     109          TextBox
+              gstrAppSeparator             109          TextBox
+              gstrServerPath               109          TextBox
+              gstrLocalPath  109          TextBox
+              gstrLocalLibPath             109          TextBox
+              gstrUpdateInfoFile           109          TextBox
+              gstrUpdateAppFile            109          TextBox
+              gstrDbLibVersion             109          TextBox
+              gstrDbLibName  109          TextBox
+              gstrDebugFile  109          TextBox
+              gstrAppNewVersion            109          TextBox
+              gstrTheWorkgroupFile         109          TextBox
+              gstrLogonMdb   109          TextBox
+              gstrPasswordMdb              109          TextBox
 Count of Check box = 0
-Count of Text box  = 14
+Count of Text box  = 18
 Count of List box  = 0
 Count of Combo box = 0
-Count of Else      = 0
-Count of Display Controls = 14
-Count of All Fields = 14
+Count of Else      = 1
+Count of Display Controls = 18
+Count of All Fields = 18

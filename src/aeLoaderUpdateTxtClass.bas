@@ -52,11 +52,11 @@ Private Sub aeDebugIt(strAbsLogFile As String, strData As String)
     Close #101
 End Sub
 
-Private Sub aeOpenFrmUpdateNotes()
+Private Sub aeOpenFrmLoaderUpdateNotes()
     If aeUpdateDebug Then
-        DoCmd.OpenForm "frmUpdateNotes", , , , , acDialog, True
+        DoCmd.OpenForm "frmLoaderUpdateNotes", , , , , acDialog, True
     Else
-        DoCmd.OpenForm "frmUpdateNotes", , , , , acDialog
+        DoCmd.OpenForm "frmLoaderUpdateNotes", , , , , acDialog
     End If
 End Sub
 
@@ -168,142 +168,141 @@ On Error GoTo Err_blnTheAppLoaderUpdateStatus
 '?                "Please configure and use aeUpdateSetupClass", vbCritical, "aedb update library"
 '?        Exit Function
 '?    End If
-    mstrUpdateText = ""                         ' Initialize update text string variable
-    strAbsoluteFileName = gstrServerPath & gstrUpdateInfoFile
-    'MsgBox "strAbsoluteFileName = " & strAbsoluteFileName
-    If Not FileExists(strAbsoluteFileName) Then
-        'MsgBox strAbsoluteFileName & " NOT FOUND!", vbCritical, "Application Update Function"
-        blnTheAppLoaderUpdateStatus = False
-        Exit Function
-    Else
+    
+1:    mstrUpdateText = ""                         ' Initialize update text string variable
+2:    strAbsoluteFileName = gstrServerPath & gstrUpdateInfoFile
+3:    'MsgBox "strAbsoluteFileName = " & strAbsoluteFileName
+4:    If Not FileExists(strAbsoluteFileName) Then
+5:        'MsgBox strAbsoluteFileName & " NOT FOUND!", vbCritical, "Application Update Function"
+6:        blnTheAppLoaderUpdateStatus = False
+7:        Exit Function
+8:    Else
         'READ AND ASSIGN THE VALUES AND INFORMATION IN UPDATE INFO FILE
-        blnTheAppLoaderUpdateStatus = True                        ' Initialize global update flag
-        intFileNum = FreeFile                               ' Get available file number.
-'MsgBox "1"
-        Open strAbsoluteFileName For Input As intFileNum    ' Open to read file.
-'MsgBox "2"
-        Do While Not EOF(intFileNum)                        ' Check for end of file.
-'MsgBox "3"
-            Line Input #intFileNum, strFileData             ' Read line of data.
-'MsgBox "4"
+9:        blnTheAppLoaderUpdateStatus = True                        ' Initialize global update flag
+10:        intFileNum = FreeFile                               ' Get available file number.
+
+11:        Open strAbsoluteFileName For Input As intFileNum    ' Open to read file.
+12:        Do While Not EOF(intFileNum)                        ' Check for end of file.
+13:            Line Input #intFileNum, strFileData             ' Read line of data.
             'Debug.Print strFileData
-            intTemp = InStr(1, strFileData, ":") - 1
+14:            intTemp = InStr(1, strFileData, ":") - 1
             'Debug.Print Comment(strFileData)
-'MsgBox "5"
-            If (intTemp > 0) And Not Comment(strFileData) Then
-'MsgBox "5.1"
-                strUpdateID = Mid(strFileData, 1, intTemp)
-'MsgBox "5.2"
-                intTemp2 = Len(strFileData) - intTemp - 1
-'MsgBox "5.3"
-                strUpdateID_Param = Trim(right(strFileData, intTemp2))
+15:            If (intTemp > 0) And Not Comment(strFileData) Then
+16:                strUpdateID = Mid(strFileData, 1, intTemp)
+17:                intTemp2 = Len(strFileData) - intTemp - 1
+18:                strUpdateID_Param = Trim(Right(strFileData, intTemp2))
                 'Debug.Print strUpdateID_Param
-'MsgBox "5.4"
-                If strUpdateID_Param = gstrAppName Then
-                    fAppNameCaptured = True                 ' Application name found in update file
-                End If
-'MsgBox "5.5"
+19:                If strUpdateID_Param = gstrAppName Then
+20:                    fAppNameCaptured = True                 ' Application name found in update file
+21:                End If
                 'Debug.Print fAppNameCaptured
-                If fAppNameCaptured Then
-                    Select Case strUpdateID                 ' Data definition in Update.txt
-                        Case "APP_NAME"
-'MsgBox "5.6"
-                            mstrAppName = strUpdateID_Param
-                            Debug.Print "1> mstrAppName = " & strUpdateID_Param
-                        Case "APP_NEW_VERSION"
-'MsgBox "5.7.1"
-                            mstrAppNewVersion = strUpdateID_Param
-'MsgBox "5.7.2"
-                            Debug.Print "2> mstrAppNewVersion = " & strUpdateID_Param & vbCrLf & _
+22:                If fAppNameCaptured Then
+23:                    Select Case strUpdateID                 ' Data definition in Update.txt
+                           Case "APP_NAME"
+24:                            mstrAppName = strUpdateID_Param
+25:                            Debug.Print "1> mstrAppName = " & strUpdateID_Param
+                           Case "APP_NEW_VERSION"
+26:                            mstrAppNewVersion = strUpdateID_Param
+27:                            Debug.Print "2> mstrAppNewVersion = " & strUpdateID_Param & vbCrLf & _
                                         "   gstrAppCurrentVer = " & gstrAppCurrentVer
                             'IF NO CHANGE TO VERSION No. THEN DO NOT UPDATE
-'MsgBox "5.7.3"
-                            If (mstrAppNewVersion <= gstrAppCurrentVer) Then
-'MsgBox "5.7.4"
-                                If aeUpdateDebug Then
-'MsgBox "5.7.5"
+28:                            If (mstrAppNewVersion <= gstrAppCurrentVer) Then
+29:                                If aeUpdateDebug Then
 'MsgBox "gstrLocalPath = " & gstrLocalPath
 'MsgBox "gstrDebugFile = " & gstrDebugFile
 'MsgBox "gstrLocalPath & gstrDebugFile = " & gstrLocalPath & gstrDebugFile
 'MsgBox "gstrDbLibVersion = " & gstrDbLibVersion
-                                    aeDebugIt gstrLocalPath & gstrDebugFile, "gstrDbLibVersion = " & gstrDbLibVersion
-'MsgBox "5.7.5.1"
+30:                                   aeDebugIt gstrLocalPath & gstrDebugFile, "gstrDbLibVersion = " & gstrDbLibVersion
 'MsgBox "gstrAppCurrentVer = " & gstrAppCurrentVer
-                                    aeDebugIt gstrLocalPath & gstrDebugFile, "gstrAppCurrentVer = " & gstrAppCurrentVer
-'MsgBox "5.7.5.2"
-                                    aeDebugIt gstrLocalPath & gstrDebugFile, "NOT UPDATING: No change to version number"
-'MsgBox "5.7.5.3"
-                                    blnTheAppLoaderUpdateStatus = False
-'MsgBox "5.7.5.4"
-                                    GoTo Exit_blnTheAppLoaderUpdateStatus
-                                End If
-'MsgBox "5.7.6"
-                            End If
-                        Case "APP_UPDATE_USER"
-'MsgBox "5.8"
-                            mastrUpdateUsers = GetUserList(UCase(strUpdateID_Param))
-                            Debug.Print "3> mastrUpdateUsers = "
-                            Dim i As Integer
-                            For i = 0 To UBound(mastrUpdateUsers)
-                                Debug.Print mastrUpdateUsers(i)
-                            Next i
+31:                                    aeDebugIt gstrLocalPath & gstrDebugFile, "gstrAppCurrentVer = " & gstrAppCurrentVer
+32:                                    aeDebugIt gstrLocalPath & gstrDebugFile, "NOT UPDATING: No change to version number"
+33:                                    blnTheAppLoaderUpdateStatus = False
+34:                                    GoTo Exit_blnTheAppLoaderUpdateStatus
+341:                                Else
+342:                                    blnTheAppLoaderUpdateStatus = False
+343:                                    GoTo Exit_blnTheAppLoaderUpdateStatus
+35:                                End If
+36:                            End If
+                           Case "APP_NEW_FILE_VERSION"
+361:                            mstrAppNewVersion = strUpdateID_Param
+362:                            Debug.Print "2> mstrAppNewVersion = " & strUpdateID_Param & vbCrLf & _
+                                        "   gstrAppCurrentVer = " & gstrAppCurrentVer
+                            'IF NO CHANGE TO VERSION No. THEN DO NOT UPDATE
+363:                            If (mstrAppNewVersion <= gstrAppCurrentVer) Then
+364:                                If aeUpdateDebug Then
+365:                                   aeDebugIt gstrLocalPath & gstrDebugFile, "gstrDbLibVersion = " & gstrDbLibVersion
+366:                                    aeDebugIt gstrLocalPath & gstrDebugFile, "gstrAppCurrentVer = " & gstrAppCurrentVer
+367:                                    aeDebugIt gstrLocalPath & gstrDebugFile, "NOT UPDATING: No change to version number"
+368:                                    blnTheAppLoaderUpdateStatus = False
+369:                                    GoTo Exit_blnTheAppLoaderUpdateStatus
+370:                                Else
+371:                                    blnTheAppLoaderUpdateStatus = False
+372:                                    GoTo Exit_blnTheAppLoaderUpdateStatus
+373:                                End If
+374:                            End If
+                           Case "APP_UPDATE_USER"
+37:                            mastrUpdateUsers = GetUserList(UCase(strUpdateID_Param))
+38:                            Debug.Print "3> mastrUpdateUsers = "
+39:                            Dim i As Integer
+40:                            For i = 0 To UBound(mastrUpdateUsers)
+41:                                Debug.Print mastrUpdateUsers(i)
+42:                            Next i
                             'IF NO DEFINED UPDATE USER THEN DO NOT UPDATE
-                            If mastrUpdateUsers(0) = "NONE" Then
-                                blnTheAppLoaderUpdateStatus = False
-                                GoTo Exit_blnTheAppLoaderUpdateStatus
-                            End If
+43:                            If mastrUpdateUsers(0) = "NONE" Then
+44:                                blnTheAppLoaderUpdateStatus = False
+45:                                GoTo Exit_blnTheAppLoaderUpdateStatus
+46:                            End If
                             'IF NOT ALL THEN TEST FOR LEGITIMATE GROUP NAME THEN TEST FOR LEGITIMATE USER NAME
-                            If mastrUpdateUsers(0) <> "ALL" Then
-                                mstrTheCurrentUser = UCase(gstrTheCurrentUser)
-                                Debug.Print "4> mstrTheCurrentUser = " & mstrTheCurrentUser
+47:                            If mastrUpdateUsers(0) <> "ALL" Then
+48:                                mstrTheCurrentUser = UCase(gstrTheCurrentUser)
+49:                                Debug.Print "4> mstrTheCurrentUser = " & mstrTheCurrentUser
                                 ' CHECK ALL USERS
-                                Dim j As Integer
-                                For j = 0 To UBound(mastrUpdateUsers)
-                                    If fTestUserName(mastrUpdateUsers(j)) <> mstrTheCurrentUser Then
-                                        Debug.Print "fTestUserName(mastrUpdateUsers(j)) = " & fTestUserName(mastrUpdateUsers(j))
-                                        blnTheAppLoaderUpdateStatus = False
-                                    Else
-                                        If InStr(1, mastrUpdateUsers(j), ":", 1) = 0 Then
-                                            Debug.Print mastrUpdateUsers(j) & " WILL BE UPDATED."
-                                            blnTheAppLoaderUpdateStatus = True
-                                            Exit For
-                                        Else
+50:                                Dim j As Integer
+51:                                For j = 0 To UBound(mastrUpdateUsers)
+52:                                    If fTestUserName(mastrUpdateUsers(j)) <> mstrTheCurrentUser Then
+53:                                        Debug.Print "fTestUserName(mastrUpdateUsers(j)) = " & fTestUserName(mastrUpdateUsers(j))
+54:                                        blnTheAppLoaderUpdateStatus = False
+55:                                    Else
+56:                                        If InStr(1, mastrUpdateUsers(j), ":", 1) = 0 Then
+57:                                            Debug.Print mastrUpdateUsers(j) & " WILL BE UPDATED."
+58:                                            blnTheAppLoaderUpdateStatus = True
+59:                                            Exit For
+60:                                        Else
                                             ' Check for user at a particular machine
-                                            If fTestComputerName(mastrUpdateUsers(j)) = aedblib_GetComputerName() Then
-                                                Debug.Print mastrUpdateUsers(j) & " at computer " & _
+61:                                            If fTestComputerName(mastrUpdateUsers(j)) = aedblib_GetComputerName() Then
+62:                                                Debug.Print mastrUpdateUsers(j) & " at computer " & _
                                                     aedblib_GetComputerName() & " WILL BE UPDATED."
-                                                blnTheAppLoaderUpdateStatus = True
-                                                Exit For
-                                            Else
-                                                blnTheAppLoaderUpdateStatus = False
-                                            End If
-                                        End If
-                                    End If
-                               Next j
-                            End If
-                        Case "APP_UPDATE_END"
-'MsgBox "5.9"
-                            Debug.Print "5> " & "APP_UPDATE_END"
-                            fAppNameCaptured = False    ' Drop out of loop
-                        Case Else
-                    End Select
-                End If
-            End If
-'MsgBox "6"
-            If Not Comment(strFileData) And fAppNameCaptured Then        ' Create the update text string
-                mstrUpdateText = mstrUpdateText & strFileData & vbCrLf
-            End If
-        Loop
-'MsgBox "7"
-    End If
+63:                                                blnTheAppLoaderUpdateStatus = True
+64:                                                Exit For
+65:                                            Else
+66:                                                blnTheAppLoaderUpdateStatus = False
+67:                                            End If
+68:                                        End If
+69:                                    End If
+70:                               Next j
+71:                            End If
+                           Case "APP_UPDATE_END"
+72:                            Debug.Print "5> " & "APP_UPDATE_END"
+73:                            fAppNameCaptured = False    ' Drop out of loop
+74:                        Case Else
+75:                    End Select
+76:                End If
+77:            End If
+78:            If Not Comment(strFileData) And fAppNameCaptured Then        ' Create the update text string
+79:                mstrUpdateText = mstrUpdateText & strFileData & vbCrLf
+80:            End If
+81:        Loop
+82:    End If
     '
-    gstrUpdateText = mstrUpdateText             ' Store value in frmUpdateNotes
-    gstrAppNewVersion = mstrAppNewVersion
+83:    gstrUpdateText = mstrUpdateText             ' Store value in frmUpdateNotes
+84:    gstrAppNewVersion = mstrAppNewVersion
     '
-    If blnTheAppLoaderUpdateStatus Then
-        If aeUpdateDebug Then
-            aeOpenFrmUpdateNotes
-            aeDebugIt gstrLocalPath & gstrDebugFile, vbCrLf & _
+85:    Close #intFileNum                   ' Close data file.
+
+86:    If blnTheAppLoaderUpdateStatus Then
+87:        If aeUpdateDebug Then
+88:            aeDebugIt gstrLocalPath & gstrDebugFile, vbCrLf & _
+            "aeloader Version = " & gconTHIS_APP_VERSION & vbCrLf & _
             "gstrAppName = " & gstrAppName & vbCrLf & _
             "gstrServerPath = " & gstrServerPath & vbCrLf & _
             "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
@@ -317,18 +316,18 @@ On Error GoTo Err_blnTheAppLoaderUpdateStatus
             "mstrUpdateText:" & vbCrLf & _
             mstrUpdateText & vbCrLf & _
             "_______________________________________________"
-            Close #intFileNum                   ' Close data file.
-        Else
-            aeOpenFrmUpdateNotes
-        End If
-        DoCmd.Quit
-    End If
-    
+89:            aeOpenFrmLoaderUpdateNotes
+90:        Else
+91:            aeOpenFrmLoaderUpdateNotes
+92:        End If
+93:        DoCmd.Quit
+94:    End If
+
 Exit_blnTheAppLoaderUpdateStatus:
     Exit Function
 
 Err_blnTheAppLoaderUpdateStatus:
-    MsgBox "DbLib blnTheAppLoaderUpdateStatus Error # " & Err.Number & ": " & Err.Description
+    MsgBox "Erl=" & Erl & " " & Err.Description, vbCritical, "Err_blnTheAppLoaderUpdateStatus Err=" & Err
     MsgBox "gstrAppName = " & gstrAppName & vbCrLf & _
             "gstrServerPath = " & gstrServerPath & vbCrLf & _
             "gstrLocalPath = " & gstrLocalPath & vbCrLf & _

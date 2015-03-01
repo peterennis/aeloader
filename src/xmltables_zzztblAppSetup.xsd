@@ -3,106 +3,106 @@
   <xsd:element name="dataroot">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element ref="tblAppSetup" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+        <xsd:element ref="zzztblAppSetup" minOccurs="0" maxOccurs="unbounded"></xsd:element>
       </xsd:sequence>
       <xsd:attribute name="generated" type="xsd:dateTime"></xsd:attribute>
     </xsd:complexType>
   </xsd:element>
-  <xsd:element name="tblAppSetup">
+  <xsd:element name="zzztblAppSetup">
     <xsd:annotation>
       <xsd:appinfo>
-        <od:index index-name="AppID" index-key="AppID " primary="no" unique="no" clustered="no" order="asc"></od:index>
-        <od:index index-name="PrimaryKey" index-key="AppID " primary="yes" unique="yes" clustered="no" order="asc"></od:index>
+        <od:index index-name="AppID" index-key="zzzAppID " primary="no" unique="no" clustered="no" order="asc"></od:index>
+        <od:index index-name="PrimaryKey" index-key="zzzAppID " primary="yes" unique="yes" clustered="no" order="asc"></od:index>
       </xsd:appinfo>
     </xsd:annotation>
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element name="AppID" minOccurs="0" od:jetType="longinteger" od:sqlSType="int" type="xsd:int"></xsd:element>
-        <xsd:element name="gconPASS_THROUGH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzAppID" minOccurs="0" od:jetType="longinteger" od:sqlSType="int" type="xsd:int"></xsd:element>
+        <xsd:element name="zzzgconPASS_THROUGH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="50"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconAPP_CMD_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconAPP_CMD_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="50"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconLOCAL_PATH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconLOCAL_PATH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="50"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconAPP_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconAPP_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="80"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconAPP_EXTENSION" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconAPP_EXTENSION" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="12"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconAPP_SEPARATOR" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconAPP_SEPARATOR" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="1"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconUPDATE_APP_FILE" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconUPDATE_APP_FILE" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="80"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconSERVER_PATH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconSERVER_PATH" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="50"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconTHE_WORKGROUP" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconTHE_WORKGROUP" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="50"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconAPP_WINDOW_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconAPP_WINDOW_NAME" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="80"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconUPDATE_INFO_FILE" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconUPDATE_INFO_FILE" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="50"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconLOGON_MDB" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconLOGON_MDB" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="50"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
-        <xsd:element name="gconPASSWORD_MDB" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
+        <xsd:element name="zzzgconPASSWORD_MDB" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
               <xsd:maxLength value="50"></xsd:maxLength>

@@ -26,7 +26,7 @@ Begin Form
         0x0d58fcf28d0fe240
     End
     GUID = Begin
-        0xf4d7c4f183125d4183bc25bccef27a4a
+        0x2435885456517c49ab8c2d66667594aa
     End
     Caption ="adaept"
     OnOpen ="[Event Procedure]"
