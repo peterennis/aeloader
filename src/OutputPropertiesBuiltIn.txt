@@ -135,7 +135,7 @@ Inherited: False;
 ---
 Name: UseAppIconForFrmRpt
 Type: dbBoolean
-Value: False
+Value: True
 Inherited: False;
 ---
 Name: AllowDatasheetSchema
@@ -216,5 +216,15 @@ Inherited: False;
 Name: Perform Name AutoCorrect
 Type: dbLong
 Value: 0
+Inherited: False;
+---
+Name: AppTitle
+Type: dbText
+Value: aeloader-open
+Inherited: False;
+---
+Name: AppIcon
+Type: dbText
+Value: .\adaept64.ico
 Inherited: False;
 ---

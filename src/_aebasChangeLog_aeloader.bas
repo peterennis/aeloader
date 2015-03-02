@@ -7,11 +7,11 @@ Option Explicit
 ' For custom configuration of the output source folder in aegitClassTest use:
 ' oDbObjects.SourceFolder = THE_SOURCE_FOLDER
 ' oDbObjects.XMLfolder = THE_XML_FOLDER
-' Run in immediate window:                  ALTERNATIVE_EXPORT
-' Show debug output in immediate window:    ALTERNATIVE_EXPORT varDebug:="varDebug"
-'                                           ALTERNATIVE_EXPORT 1
+' Run in immediate window:                  aeloader_EXPORT
+' Show debug output in immediate window:    aeloader_EXPORT varDebug:="varDebug"
+'                                           aeloader_EXPORT 1
 '
-' Sample constants for settings of "TheProjectName"
+' Sample constants for settings of aeloader-open
 Public Const gstrDATE_aeloader As String = "March 1, 2015"
 Public Const gstrVERSION_aeloader As String = "0.0.4"
 Public Const gstrPROJECT_aeloader As String = "aeloader"
@@ -51,7 +51,7 @@ End Function
 ' %014 -
 ' %013 -
 ' %012 -
-' %011 -
+' %011 - Use adaept icon
 ' %010 - Use consistent error handler naming to match aegit
 ' Issues:
 ' #010 -
