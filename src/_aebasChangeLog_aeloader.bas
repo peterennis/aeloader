@@ -51,7 +51,6 @@ End Function
 ' %014 -
 ' %013 -
 ' %012 -
-' %011 - Use adaept icon
 ' %010 - Use consistent error handler naming to match aegit
 ' Issues:
 ' #010 -
@@ -67,6 +66,8 @@ End Function
 '=============================================================================================================================
 '
 '
+'20150301 v004 -
+    ' FIXED - %011 - Use adaept icon
 '20150228 v003 -
     ' FIXED - %009 - Import external data from "aeloader.mdb.v114" then export with aegit, delete from 2do folder
     ' Move notes from old history in basGlobal
