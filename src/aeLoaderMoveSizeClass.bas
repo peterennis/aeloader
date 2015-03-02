@@ -14,9 +14,9 @@ Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" _
 Private Declare Function apiIsIconic Lib "user32" Alias "IsIconic" (ByVal hWnd As Long) As Long
 Private Declare Function apiIsZoomed Lib "user32" Alias "IsZoomed" (ByVal hWnd As Long) As Long
 Private Declare Function apiMoveWindow Lib "user32" Alias "MoveWindow" _
-         (ByVal hWnd As Long, ByVal x As Long, ByVal y As Long, ByVal _
-         nWidth As Long, ByVal nHeight As Long, ByVal bRepaint As Long) _
-         As Long
+    (ByVal hWnd As Long, ByVal x As Long, ByVal y As Long, ByVal _
+    nWidth As Long, ByVal nHeight As Long, ByVal bRepaint As Long) _
+    As Long
 Private Declare Function WM_apiGetDeviceCaps Lib "gdi32" Alias "GetDeviceCaps" _
     (ByVal hdc As Long, ByVal nIndex As Long) As Long
 Private Declare Function WM_apiGetDesktopWindow Lib "user32" Alias "GetDesktopWindow" () As Long
@@ -69,8 +69,8 @@ Private Sub ScreenResolutionTest()
     lngScreenCenterHorizontalTwips = (aefPixelsToTwips(aefGetScreenResolution("H"), "H")) \ 2
     lngScreenCenterVerticalTwips = (aefPixelsToTwips(aefGetScreenResolution("V"), "V")) \ 2
 
-    Debug.Print "lngScreenCenterHorizontalTwips=" & lngScreenCenterHorizontalTwips
-    Debug.Print "lngScreenCenterVerticalTwips=" & lngScreenCenterVerticalTwips
+    'Debug.Print "lngScreenCenterHorizontalTwips=" & lngScreenCenterHorizontalTwips
+    'Debug.Print "lngScreenCenterVerticalTwips=" & lngScreenCenterVerticalTwips
 
 End Sub
 
@@ -121,16 +121,14 @@ Private Function IsAccessMinimized()
 End Function
 
 Private Function IsAccessRestored()
-    If IsAccessMaximized() = False And _
-         IsAccessMinimized() = False Then
+    If IsAccessMaximized() = False And IsAccessMinimized() = False Then
         IsAccessRestored = True
     Else
         IsAccessRestored = False
     End If
 End Function
 
-Private Sub AccessMoveSize(iX As Integer, iY As Integer, iWidth As _
-         Integer, iHeight As Integer)
+Private Sub AccessMoveSize(iX As Integer, iY As Integer, iWidth As Integer, iHeight As Integer)
     apiMoveWindow GetAccesshWnd(), iX, iY, iWidth, iHeight, True
 End Sub
 
@@ -177,8 +175,8 @@ Private Function aefTwipsToPixels(lngTwips As Long, strHorV As Variant) As Long
 '   Returns:
 '       the number of pixels corresponding to the given twips
 
-    On Error GoTo E_Handle
-    
+    On Error GoTo PROC_ERR
+
     Dim lngDeviceHandle As Long
     Dim lngPixelsPerInch As Long
     lngDeviceHandle = WM_apiGetDC(0)
@@ -193,12 +191,16 @@ Private Function aefTwipsToPixels(lngTwips As Long, strHorV As Variant) As Long
     End If
     lngDeviceHandle = WM_apiReleaseDC(0, lngDeviceHandle)
     aefTwipsToPixels = lngTwips / 1440 * lngPixelsPerInch
-fExit:
+
+PROC_EXIT:
     On Error Resume Next
     Exit Function
-E_Handle:
-    MsgBox Err.Description, vbOKOnly + vbCritical, "fTwipsToPixels Error: " & Err.Number
-    Resume fExit
+
+PROC_ERR:
+    MsgBox "Erl=" & Erl & " Error " & Err.Number & " (" & Err.Description & ") in procedure aefTwipsToPixels of Class aeLoaderMoveSizeClass", _
+                vbOKOnly + vbCritical, gconTHIS_APP_NAME
+    Resume PROC_EXIT
+
 End Function
 
 Private Function aefPixelsToTwips(lngPixels As Long, strHorV As Variant) As Long
@@ -209,7 +211,7 @@ Private Function aefPixelsToTwips(lngPixels As Long, strHorV As Variant) As Long
 '   Returns:
 '       the number of twips corresponding to the given pixels
 
-    On Error GoTo E_Handle
+    On Error GoTo PROC_ERR
     
     Dim lngDeviceHandle As Long
     Dim lngPixelsPerInch As Long
@@ -225,10 +227,14 @@ Private Function aefPixelsToTwips(lngPixels As Long, strHorV As Variant) As Long
     End If
     lngDeviceHandle = WM_apiReleaseDC(0, lngDeviceHandle)
     aefPixelsToTwips = lngPixels * 1440 / lngPixelsPerInch
-fExit:
+
+PROC_EXIT:
     On Error Resume Next
     Exit Function
-E_Handle:
-    MsgBox Err.Description, vbOKOnly + vbCritical, "fPixelsToTwips Error: " & Err.Number
-    Resume fExit
+
+PROC_ERR:
+    MsgBox "Erl=" & Erl & " Error " & Err.Number & " (" & Err.Description & ") in procedure aefPixelsToTwips of Class aeLoaderMoveSizeClass", _
+                vbOKOnly + vbCritical, gconTHIS_APP_NAME
+    Resume PROC_EXIT
+
 End Function

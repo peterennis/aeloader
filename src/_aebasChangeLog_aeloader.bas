@@ -12,8 +12,8 @@ Option Explicit
 '                                           ALTERNATIVE_EXPORT 1
 '
 ' Sample constants for settings of "TheProjectName"
-Public Const gstrDATE_aeloader As String = "February 28, 2015"
-Public Const gstrVERSION_aeloader As String = "0.0.3"
+Public Const gstrDATE_aeloader As String = "March 1, 2015"
+Public Const gstrVERSION_aeloader As String = "0.0.4"
 Public Const gstrPROJECT_aeloader As String = "aeloader"
 Public Const gblnTEST_aeloader As Boolean = False
 '
@@ -52,7 +52,7 @@ End Function
 ' %013 -
 ' %012 -
 ' %011 -
-' %010 -
+' %010 - Use consistent error handler naming to match aegit
 ' Issues:
 ' #010 -
 ' #009 -
