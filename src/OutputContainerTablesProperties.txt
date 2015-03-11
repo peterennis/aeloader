@@ -6,8 +6,22 @@
               AllPermissions               1048319 
               Container     Tables
               DateCreated   2/28/2015 11:38:28 PM 
-              LastUpdated   2/28/2015 11:38:28 PM 
+              LastUpdated   3/10/2015 9:44:39 PM 
               Orientation    0 
               OrderByOn     False
               NameMap       Track name AutoCorrect info is ON!
               DefaultView    2 
+              GUID          1B-B3-93-33-A5-FD-43-A6
+              DisplayViewsOnSharePointSite               1 
+              TotalsRow     False
+              FilterOnLoad  False
+              OrderByOnLoad True
+              HideNewField  False
+              BackTint       100 
+              BackShade      100 
+              ThemeFontIndex              -1 
+              AlternateBackThemeColorIndex              -1 
+              AlternateBackTint            100 
+              AlternateBackShade           100 
+              DatasheetGridlinesThemeColorIndex         -1 
+              DatasheetForeThemeColorIndex              -1 

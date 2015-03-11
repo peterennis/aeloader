@@ -1,6 +1,6 @@
 Name: Name
 Type: dbMemo
-Value: C:\ae\aeloader\aeloader_open.mdb
+Value: C:\ae\aeloader\aeloader-open.mdb
 Inherited: False;
 ---
 Name: Connect

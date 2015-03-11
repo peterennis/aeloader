@@ -17,10 +17,10 @@ Begin Form
     Width =0
     DatasheetFontHeight =10
     ItemSuffix =4
-    Left =570
-    Top =1935
-    Right =6300
-    Bottom =3975
+    Left =6165
+    Top =2415
+    Right =19695
+    Bottom =12315
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
         0x0d58fcf28d0fe240
@@ -31,7 +31,6 @@ Begin Form
     Caption ="adaept"
     OnOpen ="[Event Procedure]"
     OnClose ="[Event Procedure]"
-    MenuBar ="mbarFileExit"
     DatasheetFontName ="Arial"
     PrtMip = Begin
     End

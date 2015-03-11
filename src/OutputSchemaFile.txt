@@ -5,7 +5,7 @@ On Error GoTo ErrorTrap
 
 'Local Table
 
-strSQL="CREATE TABLE [aeLoaderParameters_Table] ([ParameterID] Counter,[gstrPassThrough] Text (21),[gstrAppName] Text (21),[gstrAppFileName] Text (72),[gstrAppWindowName] Text (128),[gstrAppExt] Text (3),[gstrAppSeparator] Text (1),[gstrServerPath] Text (72),[gstrLocalPath] Text (72),[gstrLocalLibPath] Text (72),[gstrUpdateInfoFile] Text (72),[gstrUpdateAppFile] Text (72),[gstrDbLibVersion] Text (10),[gstrDbLibName] Text (40),[gstrDebugFile] Text (40),[gstrAppNewVersion] Text (10),[gstrTheWorkgroupFile] Text (50),[gstrLogonMdb] Text (50),[gstrPasswordMdb] Text (50) )"
+strSQL="CREATE TABLE [aeLoaderParameters_Table] ([ParameterID] Long,[gstrPassThrough] Text (21),[gstrAppName] Text (21),[gstrAppFileName] Text (72),[gstrAppWindowName] Text (128),[gstrAppExt] Text (3),[gstrAppSeparator] Text (1),[gstrServerPath] Text (72),[gstrLocalPath] Text (72),[gstrLocalLibPath] Text (72),[gstrUpdateInfoFile] Text (72),[gstrUpdateAppFile] Text (72),[gstrDbLibVersion] Text (10),[gstrDbLibName] Text (40),[gstrDebugFile] Text (40),[gstrAppNewVersion] Text (10),[gstrTheWorkgroupFile] Text (50),[gstrLogonMdb] Text (50),[gstrPasswordMdb] Text (50) )"
 Currentdb.Execute strSQL
 
 strSQL="CREATE UNIQUE INDEX [PrimaryKey] ON [aeLoaderParameters_Table] ([gstrPasswordMdb])  WITH PRIMARY DISALLOW NULL "
