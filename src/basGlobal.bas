@@ -2,8 +2,8 @@ Option Compare Database
 Option Explicit
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.1.7"
-Public Const gconTHIS_APP_VERSION_DATE = "06/07/2007"
+Public Const gconTHIS_APP_VERSION As String = "1.1.8"
+Public Const gconTHIS_APP_VERSION_DATE = "03/10/2015"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 Public gblnAbortUpdate As Boolean
 Public gblnSPAWN_DEBUG As Boolean
@@ -588,22 +588,26 @@ Function GetAccessVersion() As String
 ' 8.0 = Access 97
 ' 9.0 = Access 2000
 ' 10.0 = Access 2002(XP)
-' 11.0= Access 2003
+' 11.0 = Access 2003
+' Ref: http://en.wikipedia.org/wiki/Microsoft_Access
+' 12.0 = Access 2007
+' 14.0 = Access 2010
+' 15.0 = Access 2013
 
     GetAccessVersion = SysCmd(acSysCmdAccessVer)
     
 End Function
 
 Public Function aeGetTheAppID() As Integer
-' Ref: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnacc2k/html/acglobaloptions.asp
+' Ref: http://www.microsoft.com/en-us/download/details.aspx?id=19494
 
     Dim intAppID As Integer
 
-    'MsgBox "Command = " & Command
+    MsgBox "Command = " & Command
     gstrAppCmdName = Command
     intAppID = DLookup("[ParameterID]", "[aeLoaderParameters_Table]", _
                         "[gstrAppName] = '" & gstrAppCmdName & "'")
-    'MsgBox "intAppID = " & intAppID
+    MsgBox "intAppID = " & intAppID
 
     If intAppID = 0 Then
         MsgBox "Invalid Access Command Line Parameter!" & vbCrLf & vbCrLf & _

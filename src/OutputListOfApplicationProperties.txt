@@ -44,3 +44,4 @@ ProjVer: 119, 3, False;
 Perform Name AutoCorrect: 0, 4, False;
 AppTitle: aeloader-open, 10, False;
 AppIcon: .\adaept64.ico, 10, False;
+StartUpForm: frmStartup, 10, False;
