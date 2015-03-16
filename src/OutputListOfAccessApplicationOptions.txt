@@ -32,7 +32,7 @@
               XP, 2003      Perform Name AutoCorrect                   0 
               XP, 2003      Log Name AutoCorrect Changes               0 
               XP, 2003      Enable MRU File List                      -1 
-              XP, 2003      Size of MRU File List                      2 
+              XP, 2003      Size of MRU File List                      1 
               XP, 2003      Provide Feedback with Sound                0 
               XP, 2003      Auto Compact                               0 
               XP, 2003      New Database Sort Order                    1033 
@@ -98,7 +98,7 @@
               XP, 2003      Default File Format                        10 
               XP            Row Limit                                  10000 
               XP, 2003      Default Open Mode for Databases            0 
-              XP, 2003      Command-Line Arguments                    
+              XP, 2003      Command-Line Arguments                    adaept db loader
               XP, 2003      OLE/DDE Timeout (sec)                      30 
               XP, 2003      Default Record Locking                     0 
               XP, 2003      Refresh Interval (sec)                     60 
@@ -233,7 +233,7 @@
               2007, 2010, 2013            Datasheet Ime Control                      0 
               2007, 2010, 2013            Use Hijri Calendar                         0 
    >>>Display section
-              2007, 2010, 2013            Size of MRU File List                      2 
+              2007, 2010, 2013            Size of MRU File List                      1 
               2007, 2010, 2013            Show Status Bar                           -1 
               2007, 2010, 2013            Show Animations                           -1 
               2007, 2010, 2013            Show Smart Tags on Datasheets             -1 
@@ -261,4 +261,4 @@
               2007, 2010, 2013            Update Retry Interval (msec)                             250 
               2007, 2010, 2013            Ignore DDE Requests                                      0 
               2007, 2010, 2013            Enable DDE Refresh                                      -1 
-              2007, 2010, 2013            Command-Line Arguments                                  
+              2007, 2010, 2013            Command-Line Arguments                                  adaept db loader

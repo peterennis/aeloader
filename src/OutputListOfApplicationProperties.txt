@@ -16,7 +16,7 @@ NavPane Category: 0, 4, False;
 Show Navigation Pane Search Bar: 1, 4, False;
 UseMDIMode: 0, 2, False;
 ShowDocumentTabs: True, 1, False;
-Build: 1104, 4, False;
+Build: 1145, 4, False;
 CheckTruncatedNumFields: 1, 4, False;
 StartUpShowDBWindow: True, 1, False;
 StartUpShowStatusBar: True, 1, False;

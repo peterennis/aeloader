@@ -1,9 +1,27 @@
 Option Compare Database
 Option Explicit
 
+
+'------------------- Declarations for getting the list of open windows
+' Ref: http://support.microsoft.com/default.aspx?scid=kb;EN-US;168829
+Public Const GW_CHILD = 5
+Public Const GW_HWNDNEXT = 2
+
+Declare Function GetWindow Lib "user32" (ByVal hWnd As Long, _
+              ByVal wCmd As Long) As Long
+Declare Function GetWindowText Lib "user32" Alias "GetWindowTextA" _
+              (ByVal hWnd As Long, ByVal lpString As String, _
+              ByVal cch As Long) As Long
+Declare Function GetTopWindow Lib "user32" _
+              (ByVal hWnd As Long) As Long
+Declare Function GetClassName Lib "user32" Alias "GetClassNameA" _
+              (ByVal hWnd As Long, ByVal lpClassName As String, _
+              ByVal nMaxCount As Long) As Long
+'-------------------
+
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.1.8"
-Public Const gconTHIS_APP_VERSION_DATE = "03/10/2015"
+Public Const gconTHIS_APP_VERSION As String = "1.1.9"
+Public Const gconTHIS_APP_VERSION_DATE = "03/15/2015"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 Public gblnAbortUpdate As Boolean
 Public gblnSPAWN_DEBUG As Boolean

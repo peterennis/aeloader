@@ -12,10 +12,10 @@ Option Explicit
 '                                           aeloader_EXPORT 1
 '
 ' Sample constants for settings of aeloader-open
-Public Const gstrDATE_aeloader As String = "March 1, 2015"
-Public Const gstrVERSION_aeloader As String = "0.0.4"
-Public Const gstrPROJECT_aeloader As String = "aeloader"
-Public Const gblnTEST_aeloader As Boolean = False
+'''xPublic Const gstrDATE_aeloader As String = "March 1, 2015"
+'''xPublic Const gstrVERSION_aeloader As String = "0.0.4"
+'''xPublic Const gstrPROJECT_aeloader As String = "aeloader"
+'''xPublic Const gblnTEST_aeloader As Boolean = False
 '
 
 Public Function aeloader_EXPORT(Optional ByVal varDebug As Variant) As Boolean
