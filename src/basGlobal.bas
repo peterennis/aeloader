@@ -623,8 +623,8 @@ Public Function aeGetTheAppID() As Integer
 
     MsgBox "Command = " & Command
     gstrAppCmdName = Command
-    intAppID = DLookup("[ParameterID]", "[aeLoaderParameters_Table]", _
-                        "[gstrAppName] = '" & gstrAppCmdName & "'")
+    intAppID = Nz(DLookup("[ParameterID]", "[aeLoaderParameters_Table]", _
+                        "[gstrAppName] = '" & gstrAppCmdName & "'"))
     MsgBox "intAppID = " & intAppID
 
     If intAppID = 0 Then
