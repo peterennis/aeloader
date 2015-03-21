@@ -621,12 +621,12 @@ Public Function aeGetTheAppID() As Integer
     intAppID = Nz(DLookup("[ParameterID]", "[aeLoaderParameters_Table]", _
                         "[gstrAppName] = '" & gstrAppCmdName & "'"))
     MsgBox "intAppID = " & intAppID & vbCrLf & _
-                "gstrAppName = " & gstrAppName & _
+                "gstrAppName = " & gstrAppName & vbCrLf & _
                 "gstrAppCmdName = " & gstrAppCmdName, vbInformation, gconTHIS_APP_NAME
 
     If intAppID = 0 Then
         MsgBox "Invalid Access Command Line Parameter!" & vbCrLf & vbCrLf & _
-                Command, vbCritical, gconTHIS_APP_NAME
+                "Command = " & "'" & Command & "'", vbCritical, gconTHIS_APP_NAME
         DoCmd.Restore
         DoCmd.Quit acQuitSaveNone
         Exit Function
