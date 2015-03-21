@@ -8,7 +8,7 @@ gstrPassThrough         Text            21
 gstrAppName             Text            21                 
 gstrAppFileName         Text            72                 
 gstrAppWindowName       Text            128                
-gstrAppExt              Text            3                  
+gstrAppExt              Text            5                  
 gstrAppSeparator        Text            1                  
 gstrServerPath          Text            72                 
 gstrLocalPath           Text            72                 

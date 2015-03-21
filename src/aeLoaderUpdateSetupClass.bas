@@ -71,19 +71,19 @@ Public Function aeUpdateSetup(ByVal strAppName As String, _
 
 On Error GoTo Err_aeUpdateSetup
 
-1:    gstrDbLibVersion = aeGetParameter(strAppName, "gstrDbLibVersion")
+    gstrDbLibVersion = aeGetParameter(strAppName, "gstrDbLibVersion")
 '    MsgBox "1: " & "strAppName=" & strAppName & gstrDbLibVersion
-2:    gstrDbLibName = aeGetParameter(strAppName, "gstrDbLibName")
+    gstrDbLibName = aeGetParameter(strAppName, "gstrDbLibName")
 '    MsgBox "2: " & "strAppName=" & strAppName & gstrDbLibName
-3:    gstrTheCurrentUser = GetTheCurrentUser(intLoginType)
+    gstrTheCurrentUser = GetTheCurrentUser(intLoginType)
 '    MsgBox "3: " & "gstrTheCurrentUser=" & gstrTheCurrentUser
-4:    gstrComputerName = aedblib_GetComputerName()
+    gstrComputerName = aedblib_GetComputerName()
 '    MsgBox "4: " & "gstrComputerName=" & gstrComputerName
-5:    gfUpdateDebug = aeUpdateDebug
+    gfUpdateDebug = aeUpdateDebug
 '    MsgBox "5: " & "gfUpdateDebug=" & gfUpdateDebug
-6:    gstrAppCurrentVer = strAppCurrentVer
+    gstrAppCurrentVer = strAppCurrentVer
 '    MsgBox "6: " & "gstrAppCurrentVer=" & gstrAppCurrentVer
-7:    gstrAppName = strAppName
+    gstrAppName = strAppName
 '    MsgBox "7: " & "gstrAppName=" & gstrAppName
 
 '    gstrAppName As String        ' String stores the application name.
@@ -96,21 +96,21 @@ On Error GoTo Err_aeUpdateSetup
 '    gstrDebugFile As String      ' String stores the name of the debug file.
 '    gfUpdateDebug As Boolean     ' Boolean to turn on debug output.
 
-8:    gstrServerPath = aeGetParameter(strAppName, "gstrServerPath")
+    gstrServerPath = aeGetParameter(strAppName, "gstrServerPath")
 '    MsgBox "8: " & "gstrServerPath=" & gstrServerPath
-9:    gstrLocalPath = aeGetParameter(strAppName, "gstrLocalPath")
+    gstrLocalPath = aeGetParameter(strAppName, "gstrLocalPath")
 '    MsgBox "9: " & "gstrLocalPath=" & gstrLocalPath
-10:    gstrLocalLibPath = aeGetParameter(strAppName, "gstrLocalLibPath")
+    gstrLocalLibPath = aeGetParameter(strAppName, "gstrLocalLibPath")
 '    MsgBox "10: " & "gstrLocalLibPath=" & gstrLocalLibPath
-11:    gstrUpdateInfoFile = aeGetParameter(strAppName, "gstrUpdateInfoFile")
+    gstrUpdateInfoFile = aeGetParameter(strAppName, "gstrUpdateInfoFile")
 '    MsgBox "11: " & "gstrUpdateInfoFile=" & gstrUpdateInfoFile
-12:    gstrUpdateAppFile = aeGetParameter(strAppName, "gstrUpdateAppFile")
+    gstrUpdateAppFile = aeGetParameter(strAppName, "gstrUpdateAppFile")
 '    MsgBox "12: " & "gstrUpdateAppFile=" & gstrUpdateAppFile
-13:    gstrDebugFile = aeGetParameter(strAppName, "gstrDebugFile")
+    gstrDebugFile = aeGetParameter(strAppName, "gstrDebugFile")
 '    MsgBox "13: " & "gstrDebugFile=" & gstrDebugFile
-14:    gstrUpdateMdb = gstrServerPath & "aeUpdates.mdb"
+    gstrUpdateMdb = gstrServerPath & "aeUpdates.mdb"
 '    MsgBox "14: " & "gstrUpdateMdb=" & gstrUpdateMdb
-15:    aeUpdateSetup = True
+    aeUpdateSetup = True
 
 Exit_aeUpdateSetup:
     Exit Function

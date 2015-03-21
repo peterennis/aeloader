@@ -49,7 +49,7 @@
         <xsd:element name="gstrAppExt" minOccurs="0" od:jetType="text" od:sqlSType="nvarchar">
           <xsd:simpleType>
             <xsd:restriction base="xsd:string">
-              <xsd:maxLength value="3"></xsd:maxLength>
+              <xsd:maxLength value="5"></xsd:maxLength>
             </xsd:restriction>
           </xsd:simpleType>
         </xsd:element>
