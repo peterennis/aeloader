@@ -6,23 +6,15 @@ Option Explicit
 ' Ref: http://support.microsoft.com/default.aspx?scid=kb;EN-US;168829
 Public Const GW_CHILD = 5
 Public Const GW_HWNDNEXT = 2
-
-Declare Function GetWindow Lib "user32" (ByVal hWnd As Long, _
-              ByVal wCmd As Long) As Long
-Declare Function GetWindowText Lib "user32" Alias "GetWindowTextA" _
-              (ByVal hWnd As Long, ByVal lpString As String, _
-              ByVal cch As Long) As Long
-Declare Function GetTopWindow Lib "user32" _
-              (ByVal hWnd As Long) As Long
-Declare Function GetClassName Lib "user32" Alias "GetClassNameA" _
-              (ByVal hWnd As Long, ByVal lpClassName As String, _
-              ByVal nMaxCount As Long) As Long
+'
+Public Declare PtrSafe Function ShowWindow Lib "user32" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
+Public Declare PtrSafe Function GetWindow Lib "user32" (ByVal hWnd As Long, ByVal wCmd As Long) As Long
+Public Declare PtrSafe Function GetWindowText Lib "user32" Alias "GetWindowTextA" (ByVal hWnd As Long, ByVal lpString As String, ByVal cch As Long) As Long
+Public Declare PtrSafe Function GetTopWindow Lib "user32" (ByVal hWnd As Long) As Long
+Public Declare PtrSafe Function GetClassName Lib "user32" Alias "GetClassNameA" (ByVal hWnd As Long, ByVal lpClassName As String, ByVal nMaxCount As Long) As Long
 '-------------------
 
 ' GLOBAL CONSTANTS
-Public Const gconTHIS_APP_VERSION As String = "1.1.9"
-Public Const gconTHIS_APP_VERSION_DATE = "03/15/2015"
-Public Const gconTHIS_APP_NAME = "adaept db loader"
 Public gblnAbortUpdate As Boolean
 Public gblnSPAWN_DEBUG As Boolean
 Public gintApp As Integer
@@ -65,25 +57,28 @@ Public gstrAppCurrentFileVer As String
 Public gstrUpdateText As String
 Public gstrAppNewFileVersion As String
 '
-Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
-Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Public Declare PtrSafe Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
+Public Declare PtrSafe Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+
 Private Const WM_CLOSE = &H10
-Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
-Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, _
+
+Private Declare PtrSafe Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
+Private Declare PtrSafe Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, _
         ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
 '
 Global Const SW_HIDE = 0
 Global Const SW_SHOWNORMAL = 1
 Global Const SW_SHOWMINIMIZED = 2
 Global Const SW_SHOWMAXIMIZED = 3
-Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
+
+Private Declare PtrSafe Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
 '
 
 Public Function StartApp() As Boolean
 
     Dim strTheFile As String
 
-On Error GoTo Err_StartApp
+    On Error GoTo PROC_ERR
 
     gstrPassThrough = Nz(DLookup("gstrPassThrough", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp))
@@ -177,10 +172,10 @@ On Error GoTo Err_StartApp
     DoCmd.Restore
     DoCmd.Quit
 
-Exit_StartApp:
+PROC_EXIT:
     Exit Function
 
-Err_StartApp:
+PROC_ERR:
     Select Case Err
 '          Case 58
 '            ' OLD app file exists
@@ -192,9 +187,9 @@ Err_StartApp:
             Delay 1
             Resume
         Case Else
-            MsgBox "Erl=" & Erl & " Err=" & Err & " " & Err.Description, vbCritical, "Err_StartApp: " & gconTHIS_APP_NAME
+            MsgBox "Erl=" & Erl & " Err=" & Err & " " & Err.Description, vbCritical, "StartApp: " & gconTHIS_APP_NAME
     End Select
-    Resume Exit_StartApp
+    Resume PROC_EXIT
 
 End Function
 
@@ -625,7 +620,9 @@ Public Function aeGetTheAppID() As Integer
     gstrAppCmdName = Command
     intAppID = Nz(DLookup("[ParameterID]", "[aeLoaderParameters_Table]", _
                         "[gstrAppName] = '" & gstrAppCmdName & "'"))
-    MsgBox "intAppID = " & intAppID
+    MsgBox "intAppID = " & intAppID & vbCrLf & _
+                "gstrAppName = " & gstrAppName & _
+                "gstrAppCmdName = " & gstrAppCmdName, vbInformation, gconTHIS_APP_NAME
 
     If intAppID = 0 Then
         MsgBox "Invalid Access Command Line Parameter!" & vbCrLf & vbCrLf & _
@@ -637,16 +634,6 @@ Public Function aeGetTheAppID() As Integer
 
     aeGetTheAppID = intAppID
     
-'    If Command = "DSFRC Intake" Then
-'        aeGetTheAppID = 1
-'        Exit Function
-'    End If
-'
-'    If Command = "DSFRC Medical" Then
-'        aeGetTheAppID = 2
-'        Exit Function
-'    End If
-
 End Function
 
 Public Function Comment(strComment As String) As Boolean

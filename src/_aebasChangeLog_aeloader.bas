@@ -17,6 +17,9 @@ Option Explicit
 '''xPublic Const gstrPROJECT_aeloader As String = "aeloader"
 '''xPublic Const gblnTEST_aeloader As Boolean = False
 '
+Public Const gconTHIS_APP_VERSION As String = "1.2.0"
+Public Const gconTHIS_APP_VERSION_DATE = "March 20, 2015"
+Public Const gconTHIS_APP_NAME = "adaept db loader"
 
 Public Function aeloader_EXPORT(Optional ByVal varDebug As Variant) As Boolean
 
@@ -50,7 +53,7 @@ End Function
 ' %015 -
 ' %014 -
 ' %013 -
-' %012 -
+' %012 - Use PtrSafe for all Declares and test with x64, VBA7 or greater only will be supported
 ' %010 - Use consistent error handler naming to match aegit
 ' Issues:
 ' #010 -
@@ -66,6 +69,14 @@ End Function
 '=============================================================================================================================
 '
 '
+'20150320 v120 -
+    ' Start updates to PROC_ERR and PROC_EXIT as standard format
+    ' Back to regular version numbering
+    ' Move old comments below to this log:
+    ' 09/12/2004 Reference to class created in library
+    ' 09/01/2005 Import from adaeptdblib.mda and modify with SetupClass to use
+    '               PASS_THROUGH for updating based on APP_NEW_FILE_VERSION change
+    ' 05/09/2007 Allow check for user at a machine = APP_UPDATE_USER: pfe, dbuser:Station-131
 '20150301 v004 -
     ' FIXED - %011 - Use adaept icon
 '20150228 v003 -

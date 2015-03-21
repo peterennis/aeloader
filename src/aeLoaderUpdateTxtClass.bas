@@ -8,21 +8,14 @@ Option Explicit
 ' Ref: Modules: Creating a reference to a Class in a Library database
 ' http://www.mvps.org/access/modules/mdl0034.htm
 
-' 09/12/2004 Reference to class created in library
-' 09/01/2005 Import from adaeptdblib.mda and modify with SetupClass to use
-'               PASS_THROUGH for updating based on APP_NEW_FILE_VERSION change
-' 05/09/2007 Allow check for user at a machine = APP_UPDATE_USER: pfe, dbuser:Station-131
-'
-
 '********************************************************************************
 ' What:         A class to determine the update status of an Access
 '               application database. Provides capabilities to work with
 '               Access login, Windows network login or SQL Server login.
-' Author:       (c) 1999 - 2007 Peter F. Ennis
+' Author:       (c) 1999 - 2015 Peter F. Ennis
 '********************************************************************************
 
-Private Declare Function GetComputerName Lib "kernel32.dll" Alias "GetComputerNameA" _
-    (ByVal lpBuffer As String, nSize As Long) As Long
+Private Declare PtrSafe Function GetComputerName Lib "kernel32.dll" Alias "GetComputerNameA" (ByVal lpBuffer As String, nSize As Long) As Long
 
 ' APPLICATION UPDATE GLOBAL VARIABLES
 Private mstrAppName As String

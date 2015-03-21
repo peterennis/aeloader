@@ -7,25 +7,17 @@ Option Explicit
 
 ' Ref: http://support.microsoft.com/?kbid=210118
 
-Private Declare Function apiGetActiveWindow Lib "user32" Alias "GetActiveWindow" () As Long
-Private Declare Function apiGetParent Lib "user32" Alias "GetParent" (ByVal hWnd As Long) As Long
-Private Declare Function apiShowWindow Lib "user32" Alias "ShowWindow" _
-    (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
-Private Declare Function apiIsIconic Lib "user32" Alias "IsIconic" (ByVal hWnd As Long) As Long
-Private Declare Function apiIsZoomed Lib "user32" Alias "IsZoomed" (ByVal hWnd As Long) As Long
-Private Declare Function apiMoveWindow Lib "user32" Alias "MoveWindow" _
-    (ByVal hWnd As Long, ByVal x As Long, ByVal y As Long, ByVal _
-    nWidth As Long, ByVal nHeight As Long, ByVal bRepaint As Long) _
-    As Long
-Private Declare Function WM_apiGetDeviceCaps Lib "gdi32" Alias "GetDeviceCaps" _
-    (ByVal hdc As Long, ByVal nIndex As Long) As Long
-Private Declare Function WM_apiGetDesktopWindow Lib "user32" Alias "GetDesktopWindow" () As Long
-Private Declare Function WM_apiGetDC Lib "user32" Alias "GetDC" _
-    (ByVal hWnd As Long) As Long
-Private Declare Function WM_apiReleaseDC Lib "user32" Alias "ReleaseDC" _
-    (ByVal hWnd As Long, ByVal hdc As Long) As Long
-Private Declare Function WM_apiGetSystemMetrics Lib "user32" Alias "GetSystemMetrics" _
-    (ByVal nIndex As Long) As Long
+Private Declare PtrSafe Function apiGetActiveWindow Lib "user32" Alias "GetActiveWindow" () As Long
+Private Declare PtrSafe Function apiGetParent Lib "user32" Alias "GetParent" (ByVal hWnd As Long) As Long
+Private Declare PtrSafe Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
+Private Declare PtrSafe Function apiIsIconic Lib "user32" Alias "IsIconic" (ByVal hWnd As Long) As Long
+Private Declare PtrSafe Function apiIsZoomed Lib "user32" Alias "IsZoomed" (ByVal hWnd As Long) As Long
+Private Declare PtrSafe Function apiMoveWindow Lib "user32" Alias "MoveWindow" (ByVal hWnd As Long, ByVal x As Long, ByVal y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal bRepaint As Long) As Long
+Private Declare PtrSafe Function WM_apiGetDeviceCaps Lib "gdi32" Alias "GetDeviceCaps" (ByVal hdc As Long, ByVal nIndex As Long) As Long
+Private Declare PtrSafe Function WM_apiGetDesktopWindow Lib "user32" Alias "GetDesktopWindow" () As Long
+Private Declare PtrSafe Function WM_apiGetDC Lib "user32" Alias "GetDC" (ByVal hWnd As Long) As Long
+Private Declare PtrSafe Function WM_apiReleaseDC Lib "user32" Alias "ReleaseDC" (ByVal hWnd As Long, ByVal hdc As Long) As Long
+Private Declare PtrSafe Function WM_apiGetSystemMetrics Lib "user32" Alias "GetSystemMetrics" (ByVal nIndex As Long) As Long
 
 Private Const SW_SHOWNORMAL = 1
 Private Const SW_SHOWMINIMIZED = 2

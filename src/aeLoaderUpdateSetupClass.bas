@@ -9,11 +9,8 @@ Option Explicit
 ' 05/18/2007 - v4.2.4 - Introduce gstrLocalLibPath
 '
 
-Private Declare Function GetUserName Lib "advapi32.dll" Alias "GetUserNameA" _
-    (ByVal lpBuffer As String, nSize As Long) As Long
-
-Private Declare Function GetComputerName Lib "kernel32.dll" Alias "GetComputerNameA" _
-    (ByVal lpBuffer As String, nSize As Long) As Long
+Private Declare PtrSafe Function GetUserName Lib "advapi32.dll" Alias "GetUserNameA" (ByVal lpBuffer As String, nSize As Long) As Long
+Private Declare PtrSafe Function GetComputerName Lib "kernel32.dll" Alias "GetComputerNameA" (ByVal lpBuffer As String, nSize As Long) As Long
 
 Public Enum aeConnectType
     aeWindowsNetworkLogin = 1
@@ -34,37 +31,37 @@ Private Function aeGetParameter(ByVal TheApp As String, _
             ByVal TheVarName As String) As String
 ' Ref: http://support.microsoft.com/default.aspx?scid=kb;en-us;Q149254
 
-On Error GoTo Err_aeGetParameter
+    On Error GoTo PROC_ERR
 
     Dim dbs As DAO.Database
     Dim rst As DAO.Recordset
     Dim sql As String
 
-1:    sql = "SELECT aeLoaderParameters_Table." & TheVarName & " " & _
+    sql = "SELECT aeLoaderParameters_Table." & TheVarName & " " & _
             "FROM aeLoaderParameters_Table " & _
             "WHERE aeLoaderParameters_Table.gstrAppName='" & TheApp & "' " & _
             "WITH OWNERACCESS OPTION;"
-2:    'MsgBox sql & vbCrLf & _
+    'MsgBox sql & vbCrLf & _
             "TheVarName=" & TheVarName & vbCrLf & _
             "TheApp=" & TheApp, vbInformation, "Here"
     'Debug.Print sql
 
-3:    Set dbs = CodeDb()
+    Set dbs = CodeDb()
       'Retrieve the data from the database.
-4:    Set rst = dbs.OpenRecordset(sql)
+    Set rst = dbs.OpenRecordset(sql)
 
     'Debug.Print rst.Fields(0)
-5:    aeGetParameter = rst.Fields(0)
-6:    Set dbs = Nothing
-7:    Set rst = Nothing
+    aeGetParameter = rst.Fields(0)
+    Set dbs = Nothing
+    Set rst = Nothing
 
-Exit_aeGetParameter:
+PROC_EXIT:
     Exit Function
 
-Err_aeGetParameter:
+PROC_ERR:
     MsgBox "Erl=" & Erl & " " & Err.Description, vbCritical, _
             "aeLoaderUpdateSetupClass aeGetParameter Err=" & Err
-    Resume Exit_aeGetParameter
+    Resume PROC_EXIT
     
 End Function
 

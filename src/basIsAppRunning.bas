@@ -35,24 +35,14 @@ Private Const SW_RESTORE = 9
 Private Const SW_SHOWDEFAULT = 10
 Private Const SW_MAX = 10
 
-Private Declare Function apiFindWindow Lib "user32" Alias _
-    "FindWindowA" (ByVal strClass As String, _
-    ByVal lpWindow As String) As Long
+Private Declare PtrSafe Function apiFindWindow Lib "user32" Alias "FindWindowA" (ByVal strClass As String, ByVal lpWindow As String) As Long
+Private Declare PtrSafe Function apiSendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal Msg As Long, ByVal wParam As Long, lParam As Long) As Long
+Private Declare PtrSafe Function apiSetForegroundWindow Lib "user32" Alias "SetForegroundWindow" (ByVal hWnd As Long) As Long
+Private Declare PtrSafe Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
+Private Declare PtrSafe Function apiIsIconic Lib "user32" Alias "IsIconic" (ByVal hWnd As Long) As Long
+'
 
-Private Declare Function apiSendMessage Lib "user32" Alias _
-    "SendMessageA" (ByVal hWnd As Long, ByVal Msg As Long, ByVal _
-    wParam As Long, lParam As Long) As Long
-    
-Private Declare Function apiSetForegroundWindow Lib "user32" Alias _
-    "SetForegroundWindow" (ByVal hWnd As Long) As Long
-    
-Private Declare Function apiShowWindow Lib "user32" Alias _
-    "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
-    
-Private Declare Function apiIsIconic Lib "user32" Alias _
-    "IsIconic" (ByVal hWnd As Long) As Long
-    
-Function fIsAppRunning(ByVal strAppName As String, _
+Public Function fIsAppRunning(ByVal strAppName As String, _
         Optional fActivate As Boolean) As Boolean
     
     Dim strClassName As String
