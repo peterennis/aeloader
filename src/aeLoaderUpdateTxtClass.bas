@@ -58,7 +58,7 @@ Private Function GetUserList(strToParse As String) As String()
 ' In:       A comma separated list of user names
 ' Out:      An array of user names
 
-On Error GoTo Err_GetUserList
+    On Error GoTo PROC_ERR
 
     Dim strToParseOriginal
     Dim astrUsers() As String
@@ -105,14 +105,14 @@ On Error GoTo Err_GetUserList
         j = j + 1
     Next i
     
-Exit_GetUserList:
+PROC_EXIT:
     Exit Function
 
-Err_GetUserList:
+PROC_ERR:
     MsgBox Err.Description & vbCrLf & vbCrLf & _
         "Probable format error in user update list.", _
-        vbCritical, "DbLib: GetUserList " & Err
-    Resume Exit_GetUserList
+        vbCritical, "aeLoaderUpdateTxtClass GetUserList"
+    Resume PROC_EXIT
 
 End Function
 
@@ -135,7 +135,7 @@ Public Function blnTheAppLoaderUpdateStatus() As Boolean
 '                           Correct fix - app should write to log files with admin permissions
 '                           regardless of who the user is.
 
-On Error GoTo Err_blnTheAppLoaderUpdateStatus
+    On Error GoTo PROC_ERR
 
     Dim strFileData As String
     Dim strAbsoluteFileName As String
@@ -210,10 +210,10 @@ On Error GoTo Err_blnTheAppLoaderUpdateStatus
                                     aeDebugIt gstrLocalPath & gstrDebugFile, "gstrAppCurrentVer = " & gstrAppCurrentVer
                                     aeDebugIt gstrLocalPath & gstrDebugFile, "NOT UPDATING: No change to version number"
                                     blnTheAppLoaderUpdateStatus = False
-                                    GoTo Exit_blnTheAppLoaderUpdateStatus
+                                    Exit Function
                                 Else
                                     blnTheAppLoaderUpdateStatus = False
-                                    GoTo Exit_blnTheAppLoaderUpdateStatus
+                                    Exit Function
                                 End If
                             End If
                            Case "APP_NEW_FILE_VERSION"
@@ -227,10 +227,10 @@ On Error GoTo Err_blnTheAppLoaderUpdateStatus
                                     aeDebugIt gstrLocalPath & gstrDebugFile, "gstrAppCurrentVer = " & gstrAppCurrentVer
                                     aeDebugIt gstrLocalPath & gstrDebugFile, "NOT UPDATING: No change to version number"
                                     blnTheAppLoaderUpdateStatus = False
-                                    GoTo Exit_blnTheAppLoaderUpdateStatus
+                                    Exit Function
                                 Else
                                     blnTheAppLoaderUpdateStatus = False
-                                    GoTo Exit_blnTheAppLoaderUpdateStatus
+                                    Exit Function
                                 End If
                             End If
                            Case "APP_UPDATE_USER"
@@ -243,7 +243,7 @@ On Error GoTo Err_blnTheAppLoaderUpdateStatus
                             'IF NO DEFINED UPDATE USER THEN DO NOT UPDATE
                             If mastrUpdateUsers(0) = "NONE" Then
                                 blnTheAppLoaderUpdateStatus = False
-                                GoTo Exit_blnTheAppLoaderUpdateStatus
+                                Exit Function
                             End If
                             'IF NOT ALL THEN TEST FOR LEGITIMATE GROUP NAME THEN TEST FOR LEGITIMATE USER NAME
                             If mastrUpdateUsers(0) <> "ALL" Then
@@ -316,10 +316,10 @@ On Error GoTo Err_blnTheAppLoaderUpdateStatus
         DoCmd.Quit
     End If
 
-Exit_blnTheAppLoaderUpdateStatus:
+PROC_EXIT:
     Exit Function
 
-Err_blnTheAppLoaderUpdateStatus:
+PROC_ERR:
     MsgBox "Erl=" & Erl & " " & Err.Description, vbCritical, "Err_blnTheAppLoaderUpdateStatus Err=" & Err
     MsgBox "gstrAppName = " & gstrAppName & vbCrLf & _
             "gstrServerPath = " & gstrServerPath & vbCrLf & _
@@ -330,19 +330,19 @@ Err_blnTheAppLoaderUpdateStatus:
             "gstrUpdateAppFile = " & gstrUpdateAppFile & vbCrLf & _
             "gstrDebugFile = " & gstrDebugFile & vbCrLf & _
             "gfUpdateDebug = " & gfUpdateDebug & vbCrLf
-    Resume Exit_blnTheAppLoaderUpdateStatus
+    Resume PROC_EXIT
 
 End Function
 
 Private Function fTestUserName(strUserName As String) As String
 
     Dim intSeparatorPos As Integer
-    
+
 '    strUser1 = "dbuser:Station-131"
 '    intSeparatorPos1 = InStr(1, strUser1, ":", 1)
 '    strUser2 = "dbuser"
 '    intSeparatorPos2 = InStr(1, strUser2, ":", 1)
-    
+
     intSeparatorPos = InStr(1, strUserName, ":", 1)
     If intSeparatorPos > 0 Then
         'Debug.Print "A: " & Mid(strUser1, 1, intSeparatorPos1 - 1)
@@ -357,7 +357,7 @@ End Function
 Private Function fTestComputerName(strUserName As String) As String
 
     Dim intSeparatorPos As Integer
-    
+
     intSeparatorPos = InStr(1, strUserName, ":", 1)
     Debug.Print intSeparatorPos
     If intSeparatorPos > 0 Then
@@ -374,7 +374,7 @@ Private Function aedblib_GetComputerName() As Variant
     Dim strComputerName As String
     Dim lngLength As Long
     Dim lngResult As Long
-    
+
     ' Set up the buffer
     strComputerName = String$(255, 0)
     lngLength = 255
@@ -383,5 +383,5 @@ Private Function aedblib_GetComputerName() As Variant
     ' Clean up and assign the value
     aedblib_GetComputerName = Left(strComputerName, InStr(1, strComputerName, _
                                 Chr(0)) - 1)
-    
+
 End Function

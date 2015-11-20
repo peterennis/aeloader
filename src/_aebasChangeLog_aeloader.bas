@@ -17,8 +17,8 @@ Option Explicit
 '''xPublic Const gstrPROJECT_aeloader As String = "aeloader"
 '''xPublic Const gblnTEST_aeloader As Boolean = False
 '
-Public Const gconTHIS_APP_VERSION As String = "1.2.2"
-Public Const gconTHIS_APP_VERSION_DATE = "November 19, 2015"
+Public Const gconTHIS_APP_VERSION As String = "1.2.3"
+Public Const gconTHIS_APP_VERSION_DATE = "November 20, 2015"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 
 Public Function aeloader_EXPORT(Optional ByVal varDebug As Variant) As Boolean
@@ -54,13 +54,7 @@ End Function
 ' %014 -
 ' %013 -
 ' %012 - Use PtrSafe for all Declares and test with x64, VBA7 or greater only will be supported
-' %010 - Use consistent error handler naming to match aegit
 ' Issues:
-' #010 -
-' #009 -
-' #008 -
-' #007 -
-' #006 -
 ' #005 -
 ' #004 -
 ' #003 -
@@ -69,6 +63,8 @@ End Function
 '=============================================================================================================================
 '
 '
+'20151120 v123 -
+    ' FIXED - %010 - Use consistent error handler naming to match aegit
 '20150320 v120 -
     ' Start updates to PROC_ERR and PROC_EXIT as standard format
     ' Back to regular version numbering

@@ -42,16 +42,20 @@ Private Declare PtrSafe Function apiShowWindow Lib "user32" Alias "ShowWindow" (
 Private Declare PtrSafe Function apiIsIconic Lib "user32" Alias "IsIconic" (ByVal hWnd As Long) As Long
 '
 
-Public Function fIsAppRunning(ByVal strAppName As String, _
+Public Function IsRunning(ByVal strAppName As String, _
         Optional fActivate As Boolean) As Boolean
     
+    On Local Error GoTo PROC_ERR
+
+    Debug.Print "IsRunning"
     Dim strClassName As String
     Dim lngX As Long
     Dim lngTmp As Long
     
     Const WM_USER = 1024
-    On Local Error GoTo fIsAppRunning_Err
-    fIsAppRunning = False
+
+    IsRunning = False
+
     Select Case LCase$(strAppName)
         Case "access":      strClassName = "OMain"
         Case "excel":       strClassName = "XLMain"
@@ -65,18 +69,18 @@ Public Function fIsAppRunning(ByVal strAppName As String, _
         Case Else:          strClassName = vbNullString
     End Select
     
-    'Debug.Print "strClassName = " & strClassName
+    Debug.Print , "strClassName = " & strClassName
     If strClassName = "" Then
         mlngH = apiFindWindow(vbNullString, strAppName)
     Else
         mlngH = apiFindWindow(strClassName, vbNullString)
     End If
-        '
-        If strClassName = "OMain" Then
-            Debug.Print "mlngH = " & mlngH
-                malngAccessHandles(GetBounds()) = mlngH
-        End If
-        '
+
+    If strClassName = "OMain" Then
+        Debug.Print , "mlngH = " & mlngH
+        malngAccessHandles(GetBounds()) = mlngH
+    End If
+
     If mlngH <> 0 Then
 ''        apiSendMessage mlngH, WM_USER + 18, 0, 0
 ''        lngX = apiIsIconic(mlngH)
@@ -87,48 +91,52 @@ Public Function fIsAppRunning(ByVal strAppName As String, _
 '        If fActivate Then
 ''            lngTmp = apiSetForegroundWindow(mlngH)
 '        End If
-        fIsAppRunning = True
+        IsRunning = True
     End If
-fIsAppRunning_Exit:
+
+PROC_EXIT:
     Exit Function
-fIsAppRunning_Err:
-    fIsAppRunning = False
-    Resume fIsAppRunning_Exit
+
+PROC_ERR:
+    IsRunning = False
+    Resume PROC_EXIT
 
 End Function
 
 Public Function GetBounds() As Integer
-' What: Create an array on demand that stores the
-'       handles of the open application windows
-' Who:  (c) adaept 2005
+' What: Create an array on demand that stores the handles of the open application windows
+'  Who: (c) adaept 2005
 
-On Error GoTo Err_GetBounds
+    On Error GoTo PROC_ERR
 
     Dim i As Integer
         
     i = UBound(malngAccessHandles)
-    Debug.Print "i = " & i
+    Debug.Print "GetBounds"
+    Debug.Print , "i = " & i
 
     ReDim Preserve malngAccessHandles(i + 1)
     GetBounds = i + 1
     
     If GetBounds = 3 Then
-        MsgBox "3 Apps Opened! - Halt"
+        'MsgBox "3 Apps Opened! - Halt"
+        Debug.Print , "3 Apps Opened! - Halt"
         gblnSPAWN_DEBUG = True
+        Stop
     End If
     
-Exit_GetBounds:
+PROC_EXIT:
     Exit Function
 
-Err_GetBounds:
+PROC_ERR:
     If Err = 9 Then     ' Subscript out of range
         ReDim Preserve malngAccessHandles(1)
         malngAccessHandles(1) = mlngH
-        Debug.Print "malngAccessHandles(1) = " & malngAccessHandles(1)
+        Debug.Print , "malngAccessHandles(1) = " & malngAccessHandles(1)
         GetBounds = 1
     Else
-        MsgBox Err & " " & Err.Description, vbCritical, "Error"
-        Resume Exit_GetBounds
+        MsgBox "Erl=" & Erl & " Err=" & Err & " " & Err.Description, vbCritical, "GetBounds: Error"
+        Resume PROC_EXIT
     End If
 
 End Function

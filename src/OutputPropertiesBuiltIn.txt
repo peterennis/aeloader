@@ -90,7 +90,7 @@ Inherited: False;
 ---
 Name: Build
 Type: dbLong
-Value: 1162
+Value: 666
 Inherited: False;
 ---
 Name: CheckTruncatedNumFields
@@ -210,7 +210,7 @@ Inherited: False;
 ---
 Name: ProjVer
 Type: dbInteger
-Value: 119
+Value: 140
 Inherited: False;
 ---
 Name: Perform Name AutoCorrect

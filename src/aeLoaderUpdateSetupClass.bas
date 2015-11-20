@@ -59,8 +59,8 @@ PROC_EXIT:
     Exit Function
 
 PROC_ERR:
-    MsgBox "Erl=" & Erl & " " & Err.Description, vbCritical, _
-            "aeLoaderUpdateSetupClass aeGetParameter Err=" & Err
+    MsgBox "Erl=" & Erl & " Err=" & Err & " " & Err.Description, vbCritical, _
+            "aeLoaderUpdateSetupClass aeGetParameter"
     Resume PROC_EXIT
     
 End Function
@@ -69,7 +69,7 @@ Public Function aeUpdateSetup(ByVal strAppName As String, _
                 ByVal strAppCurrentVer As String, _
                 ByVal intLoginType As aeConnectType) As Boolean
 
-On Error GoTo Err_aeUpdateSetup
+    On Error GoTo PROC_ERR
 
     gstrDbLibVersion = aeGetParameter(strAppName, "gstrDbLibVersion")
 '    MsgBox "1: " & "strAppName=" & strAppName & gstrDbLibVersion
@@ -112,12 +112,12 @@ On Error GoTo Err_aeUpdateSetup
 '    MsgBox "14: " & "gstrUpdateMdb=" & gstrUpdateMdb
     aeUpdateSetup = True
 
-Exit_aeUpdateSetup:
+PROC_EXIT:
     Exit Function
 
-Err_aeUpdateSetup:
-    MsgBox "Erl=" & Erl & " " & Err.Description, vbCritical, "Err_aeUpdateSetup Err=" & Err
-    Resume Exit_aeUpdateSetup
+PROC_ERR:
+    MsgBox "Erl=" & Erl & " Err=" & Err & " " & Err.Description, vbCritical, "aeLoaderUpdateSetupClass aeUpdateSetup"
+    Resume PROC_EXIT
     
 End Function
 

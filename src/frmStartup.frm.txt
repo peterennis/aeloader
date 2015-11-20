@@ -18,9 +18,9 @@ Begin Form
     DatasheetFontHeight =10
     ItemSuffix =4
     Left =6165
-    Top =2430
-    Right =28545
-    Bottom =15015
+    Top =2610
+    Right =23745
+    Bottom =12315
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
         0x0d58fcf28d0fe240
@@ -89,7 +89,7 @@ Private Sub Form_Open(Cancel As Integer)
 
     gblnSPAWN_DEBUG = False
     gintApp = aeGetTheAppID
-    MsgBox "frmStartup Form_Open: gintApp = " & gintApp, vbInformation, gconTHIS_APP_NAME
+    'MsgBox "frmStartup Form_Open: gintApp = " & gintApp, vbInformation, gconTHIS_APP_NAME
     bln = StartApp()
 
 PROC_EXIT:
