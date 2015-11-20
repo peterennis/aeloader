@@ -1,7 +1,6 @@
 Option Compare Database
 Option Explicit
 
-
 '------------------- Declarations for getting the list of open windows
 ' Ref: http://support.microsoft.com/default.aspx?scid=kb;EN-US;168829
 Public Const GW_CHILD = 5
@@ -76,120 +75,120 @@ Private Declare PtrSafe Function apiShowWindow Lib "user32" Alias "ShowWindow" (
 
 Public Function StartApp() As Boolean
 
-          Dim strTheFile As String
+    Dim strTheFile As String
 
-10        On Error GoTo PROC_ERR
+    On Error GoTo PROC_ERR
 
-20        gstrPassThrough = Nz(DLookup("gstrPassThrough", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp))
-          'MsgBox "gintApp = " & gintApp
-          'MsgBox "gstrPassThrough = " & gstrPassThrough
-30        If gstrPassThrough = "PassThrough" Then
-              ' Call aeLoaderUpdateSetupClass
-              '
-              Dim blnUpdate As Boolean
-              Dim cls1 As aeLoaderUpdateSetupClass
-              
-40            Set cls1 = New aeLoaderUpdateSetupClass
-              
-              ' Setup parameters
-50            cls1.aeUpdateDebug = True
-              
-              Dim strThePassThroughAppName As String
-              Dim strThePassThroughAppVersion As String
-60            strThePassThroughAppName = gstrLocalPath & DLookup("gstrAppName", _
-                                  "aeLoaderParameters_Table", "ParameterID=" & gintApp)
-70            strThePassThroughAppVersion = gstrLocalPath & DLookup("gstrAppFileName", _
-                                  "aeLoaderParameters_Table", "ParameterID=" & gintApp)
-80            blnUpdate = cls1.aeUpdateSetup(strThePassThroughAppName, _
-                                  strThePassThroughAppVersion, aeWindowsNetworkLogin)
-          
-              Dim cls2 As aeLoaderUpdateTxtClass
-90            Set cls2 = New aeLoaderUpdateTxtClass
-              
-100           cls2.aeUpdateDebug = True
-110           blnUpdate = cls2.blnTheAppLoaderUpdateStatus()
-120           Debug.Print "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
-130           MsgBox "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
-              '
-              ' Shutdown the app if it is already open
-              'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName, vbInformation, gconTHIS_APP_NAME & ": StartApp"
-140           ShutDownApplication (gstrTheAppWindowName)
-              '
-150           StartApp = aeLoaderPassThroughApp(gstrLocalPath, gstrLoaderUpdateAppFile)
-160           DoCmd.Quit
-170           Exit Function
-180       End If
-              
-          ' Minimize the Access window
-190       ShowWindow Application.hWndAccessApp, 2
-          
-          ' Shutdown the app if it is already open
-200       gstrTheAppWindowName = DLookup("gstrAppWindowName", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp)
-210       gstrLocalPath = DLookup("gstrLocalPath", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp)
-220       gstrUpdateAppFile = DLookup("gstrUpdateAppFile", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp)
-230       gstrTheAppExtension = DLookup("gstrAppExt", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp)
-240       gstrTheWorkgroup = DLookup("gstrServerPath", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp) & _
-                                  DLookup("gstrTheWorkgroupFile", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp)
-250       gstrTheApp = gstrLocalPath & DLookup("gstrAppFileName", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp) & _
-                                  "." & gstrTheAppExtension
-260       gstrLogonMdb = DLookup("gstrLogonMdb", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp)
-270       gstrPasswordMdb = DLookup("gstrPasswordMdb", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp)
-          'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
-                  "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
-                  "gstrUpdateAppFile = " & gstrUpdateAppFile & vbCrLf & _
-                  "gstrTheAppExtension = " & gstrTheAppExtension & vbCrLf & _
-                  "gstrTheWorkgroup = " & gstrTheWorkgroup & vbCrLf & _
-                  "gstrTheApp = " & gstrTheApp & vbCrLf & _
-                  "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
-                  "gstrPasswordMdb = " & gstrPasswordMdb
-280       ShutDownApplication (gstrTheAppWindowName)
-          '
-          ' Updates will occur in the application based on the version.
-          ' A corresponding library can be called e.g. adaeptdblib.mda.v425
-          ' copied across and renamed to adaeptdblib.mda.upd locally.
-          '
-290       gstrLocalLibPath = DLookup("gstrLocalLibPath", "aeLoaderParameters_Table", _
-                                  "ParameterID=" & gintApp)
-          'MsgBox "gstrLocalLibPath=" & gstrLocalLibPath
-              
-          ' Update to new library
-300       InstallNewLibrary
-          
-310       strTheFile = gstrLocalPath & gstrUpdateAppFile
-          'MsgBox "StartApp: strTheFile = " & strTheFile
-320       StartApp = aeLoaderApp(strTheFile)
+    gstrPassThrough = Nz(DLookup("gstrPassThrough", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp))
+    'MsgBox "gintApp = " & gintApp
+    'MsgBox "gstrPassThrough = " & gstrPassThrough
+    If gstrPassThrough = "PassThrough" Then
+        ' Call aeLoaderUpdateSetupClass
+        '
+        Dim blnUpdate As Boolean
+        Dim cls1 As aeLoaderUpdateSetupClass
+        
+        Set cls1 = New aeLoaderUpdateSetupClass
+        
+        ' Setup parameters
+        cls1.aeUpdateDebug = True
+        
+        Dim strThePassThroughAppName As String
+        Dim strThePassThroughAppVersion As String
+        strThePassThroughAppName = gstrLocalPath & DLookup("gstrAppName", _
+                            "aeLoaderParameters_Table", "ParameterID=" & gintApp)
+        strThePassThroughAppVersion = gstrLocalPath & DLookup("gstrAppFileName", _
+                            "aeLoaderParameters_Table", "ParameterID=" & gintApp)
+        blnUpdate = cls1.aeUpdateSetup(strThePassThroughAppName, _
+                            strThePassThroughAppVersion, aeWindowsNetworkLogin)
+    
+        Dim cls2 As aeLoaderUpdateTxtClass
+        Set cls2 = New aeLoaderUpdateTxtClass
+        
+        cls2.aeUpdateDebug = True
+        blnUpdate = cls2.blnTheAppLoaderUpdateStatus()
+        Debug.Print "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
+        MsgBox "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
+        '
+        ' Shutdown the app if it is already open
+        'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName, vbInformation, gconTHIS_APP_NAME & ": StartApp"
+        ShutDownApplication (gstrTheAppWindowName)
+        '
+        StartApp = aeLoaderPassThroughApp(gstrLocalPath, gstrLoaderUpdateAppFile)
+        DoCmd.Quit
+        Exit Function
+    End If
+        
+    ' Minimize the Access window
+    ShowWindow Application.hWndAccessApp, 2
+    
+    ' Shutdown the app if it is already open
+    gstrTheAppWindowName = DLookup("gstrAppWindowName", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrLocalPath = DLookup("gstrLocalPath", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrUpdateAppFile = DLookup("gstrUpdateAppFile", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrTheAppExtension = DLookup("gstrAppExt", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrTheWorkgroup = DLookup("gstrServerPath", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp) & _
+                            DLookup("gstrTheWorkgroupFile", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrTheApp = gstrLocalPath & DLookup("gstrAppFileName", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp) & _
+                            "." & gstrTheAppExtension
+    gstrLogonMdb = DLookup("gstrLogonMdb", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrPasswordMdb = DLookup("gstrPasswordMdb", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
+            "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
+            "gstrUpdateAppFile = " & gstrUpdateAppFile & vbCrLf & _
+            "gstrTheAppExtension = " & gstrTheAppExtension & vbCrLf & _
+            "gstrTheWorkgroup = " & gstrTheWorkgroup & vbCrLf & _
+            "gstrTheApp = " & gstrTheApp & vbCrLf & _
+            "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
+            "gstrPasswordMdb = " & gstrPasswordMdb
+    ShutDownApplication (gstrTheAppWindowName)
+    '
+    ' Updates will occur in the application based on the version.
+    ' A corresponding library can be called e.g. adaeptdblib.mda.v425
+    ' copied across and renamed to adaeptdblib.mda.upd locally.
+    '
+    gstrLocalLibPath = DLookup("gstrLocalLibPath", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    'MsgBox "gstrLocalLibPath=" & gstrLocalLibPath
+        
+    ' Update to new library
+    InstallNewLibrary
+    
+    strTheFile = gstrLocalPath & gstrUpdateAppFile
+    'MsgBox "StartApp: strTheFile = " & strTheFile
+    StartApp = aeLoaderApp(strTheFile)
 
-330       DoCmd.Restore
-340       DoCmd.Quit
+    DoCmd.Restore
+    DoCmd.Quit
 
 PROC_EXIT:
-350       Exit Function
+    Exit Function
 
 PROC_ERR:
-360       Select Case Err
-      '          Case 58
-      '            ' OLD app file exists
-      '            Kill Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
-      '            Resume
-                Case 75
-                ' Path/File access error: If app is open it takes time to be
-                  ' shut down so try again
-370               Delay 1
-380               Resume
-390           Case Else
-400               MsgBox "Erl=" & Erl & " Err=" & Err & " " & Err.Description, vbCritical, "StartApp: " & gconTHIS_APP_NAME
-410       End Select
-420       Resume PROC_EXIT
+    Select Case Err
+'          Case 58
+'            ' OLD app file exists
+'            Kill Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & "OLD"
+'            Resume
+          Case 75
+          ' Path/File access error: If app is open it takes time to be
+            ' shut down so try again
+            Delay 1
+            Resume
+        Case Else
+            MsgBox "Erl=" & Erl & " Err=" & Err & " " & Err.Description, vbCritical, "StartApp: " & gconTHIS_APP_NAME
+    End Select
+    Resume PROC_EXIT
 
 End Function
 
@@ -535,7 +534,7 @@ Private Sub OpenNotSecured(strTheApp As String)
 
 End Sub
 
-Sub Delay(pdblSeconds As Double)
+Public Sub Delay(pdblSeconds As Double)
 ' Delay for x seconds
 ' This sub uses very little CPU resouces
 ' Ref: http://www.experts-exchange.com/Programming/Programming_Languages/Visual_Basic/Q_20843293.html
@@ -551,7 +550,7 @@ Sub Delay(pdblSeconds As Double)
 
 End Sub
 
-Function DoAccessWindow(nCmdShow As Long)
+Private Function DoAccessWindow(nCmdShow As Long)
 ' Ref: http://members.shaw.ca/glenk/access97.html
 ' Ref: http://www.mvps.org/access/api/api0019.htm
 '
@@ -595,7 +594,7 @@ Function DoAccessWindow(nCmdShow As Long)
 
 End Function
 
-Function GetAccessVersion() As String
+Private Function GetAccessVersion() As String
 ' Ref: http://www.blueclaw-db.com/get_access_version_number.htm
 ' To determine the version of Microsoft Access used to open this application.
 ' 8.0 = Access 97
@@ -606,9 +605,10 @@ Function GetAccessVersion() As String
 ' 12.0 = Access 2007
 ' 14.0 = Access 2010
 ' 15.0 = Access 2013
+' 16.0 = Access 2016
 
     GetAccessVersion = SysCmd(acSysCmdAccessVer)
-    
+
 End Function
 
 Public Function aeGetTheAppID() As Integer
@@ -616,7 +616,7 @@ Public Function aeGetTheAppID() As Integer
 
     Dim intAppID As Integer
 
-    MsgBox "Command = " & Command
+    MsgBox "aeGetTheAppID: Command = " & Command, vbInformation, gconTHIS_APP_NAME
     gstrAppCmdName = Command
     intAppID = Nz(DLookup("[ParameterID]", "[aeLoaderParameters_Table]", _
                         "[gstrAppName] = '" & gstrAppCmdName & "'"))

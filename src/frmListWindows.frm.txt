@@ -11,10 +11,8 @@ Begin Form
     Width =8520
     DatasheetFontHeight =10
     ItemSuffix =3
-    Left =540
-    Top =12
-    Right =9180
-    Bottom =4332
+    Right =22380
+    Bottom =12585
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
         0x18d05a3b8cc3e240
@@ -23,8 +21,18 @@ Begin Form
         0x5301b322aa3f3b4e81a85bfa5be9a854
     End
     DatasheetFontName ="Arial"
+    PrtMip = Begin
+    End
+    PrtDevMode = Begin
+    End
+    PrtDevNames = Begin
+    End
     FilterOnLoad =0
     DatasheetGridlinesColor12 =12632256
+    PrtDevModeW = Begin
+    End
+    PrtDevNamesW = Begin
+    End
     NoSaveCTIWhenDisabled =1
     Begin
         Begin Label
@@ -99,6 +107,7 @@ Begin Form
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
+                    Overlaps =1
                 End
             End
         End
@@ -112,40 +121,49 @@ Attribute VB_Exposed = False
 Option Compare Database
 Option Explicit
 
-Sub AddChildWindows(ByVal hwndParent As Long, ByVal Level As Long)
+Private Sub AddChildWindows(ByVal hwndParent As Long, ByVal Level As Long)
+
+    On Error GoTo PROC_ERR
+
+    Dim WT As String
+    Dim CN As String
+    Dim Length As Long
+    Dim hWnd As Long
       
-      Dim WT As String
-      Dim CN As String
-      Dim Length As Long
-      Dim hWnd As Long
-      
-        If Level = 0 Then
-          hWnd = hwndParent
-        Else
-          hWnd = GetWindow(hwndParent, GW_CHILD)
-        End If
-        Do While hWnd <> 0
-          WT = Space(256)
-          Length = GetWindowText(hWnd, WT, 255)
-          WT = Left$(WT, Length)
-          CN = Space(256)
-          Length = GetClassName(hWnd, CN, 255)
-          CN = Left$(CN, Length)
-          Me!Text1 = Me!Text1 & vbCrLf & String(2 * Level, ".") _
-                   & WT & " (" & CN & ")"
-          AddChildWindows hWnd, Level + 1
-          hWnd = GetWindow(hWnd, GW_HWNDNEXT)
-        Loop
+    If Level = 0 Then
+        hWnd = hwndParent
+    Else
+        hWnd = GetWindow(hwndParent, GW_CHILD)
+    End If
+
+    Do While hWnd <> 0
+        WT = Space(256)
+        Length = GetWindowText(hWnd, WT, 255)
+        WT = Left$(WT, Length)
+        CN = Space(256)
+        Length = GetClassName(hWnd, CN, 255)
+        CN = Left$(CN, Length)
+        Me!Text1 = Me!Text1 & vbCrLf & String(2 * Level, ".") _
+                        & WT & " (" & CN & ")"
+        AddChildWindows hWnd, Level + 1
+        hWnd = GetWindow(hWnd, GW_HWNDNEXT)
+    Loop
+
+PROC_EXIT:
+    Exit Sub
+
+PROC_ERR:
+    MsgBox "Erl=" & Erl & " Error " & Err.Number & " (" & Err.Description & ") in procedure AddChildWindows of frmListWindows"
+    Resume PROC_EXIT
 
 End Sub
 
 Private Sub Command1_Click()
      
-     Dim hWnd As Long
-        
-        hWnd = GetTopWindow(0)
-        If hWnd <> 0 Then
-          AddChildWindows hWnd, 0
-        End If
+    Dim hWnd As Long
+    hWnd = GetTopWindow(0)
+    If hWnd <> 0 Then
+        AddChildWindows hWnd, 0
+    End If
 
 End Sub

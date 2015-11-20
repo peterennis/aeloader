@@ -11,6 +11,8 @@ End Function
 
 Public Sub TEST_aeLoaderUpdate()
 
+    On Error GoTo PROC_ERR
+
     Dim bln As Boolean
 
     gintApp = 6
@@ -36,5 +38,12 @@ Public Sub TEST_aeLoaderUpdate()
     ShutDownApplication (gstrTheAppWindowName)
 
     bln = aeLoaderPassThroughApp(gstrLocalPath, gstrLoaderUpdateAppFile)
+
+PROC_EXIT:
+    Exit Sub
+
+PROC_ERR:
+    MsgBox "Erl=" & Erl & " Error " & Err.Number & " (" & Err.Description & ") in procedure TEST_aeLoaderUpdate"
+    Resume PROC_EXIT
 
 End Sub

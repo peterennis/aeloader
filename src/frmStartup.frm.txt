@@ -83,13 +83,20 @@ End Sub
 
 Private Sub Form_Open(Cancel As Integer)
 
-    On Error GoTo 0
+    On Error GoTo PROC_ERR
 
     Dim bln As Boolean
-    
+
     gblnSPAWN_DEBUG = False
     gintApp = aeGetTheAppID
     MsgBox "frmStartup Form_Open: gintApp = " & gintApp, vbInformation, gconTHIS_APP_NAME
     bln = StartApp()
+
+PROC_EXIT:
+    Exit Sub
+
+PROC_ERR:
+    MsgBox "Erl=" & Erl & " Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Open of frmStartup"
+    Resume PROC_EXIT
 
 End Sub

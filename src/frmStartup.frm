@@ -1,6 +1,6 @@
 Version =20
 VersionRequired =20
-Checksum =135764133
+Checksum =919972793
 Begin Form
     PopUp = NotDefault
     RecordSelectors = NotDefault
@@ -38,10 +38,10 @@ Begin Form
         0x010000006801000000000000a10700000100000001000000
     End
     PrtDevMode = Begin
-        0x0000000000000000000000000000000000000000000000000000000000000000 ,
+        0x001c2803e44cb200bd8a952fe01c2803c48a952fe660d2c8c81c2803e84eb200 ,
         0x010400209c000c12032f000001000100ea0a6f086400010001002c0102000100 ,
-        0x2c01020000000000000000000000000000000000000000000000000000000000 ,
-        0x0000000000000000000000000000000000000000000000000000000001000000 ,
+        0x2c0102000000000004000000384db200755b7c3804000000000000007a5b7c38 ,
+        0x1eb9d5c804000000000000000000000000000000000000000000000001000000 ,
         0x0200000001000000010000000000000000000000000000000000000000000000 ,
         0x70701a05bf58ef3c000000003b060000789c8d54c972db300cfd179d73883a4d ,
         0xdae46734100949ac2982c3c58ed2e9bf175cb4d871d25e2c13787858f8c0df8d ,
@@ -397,13 +397,20 @@ End Sub
 
 Private Sub Form_Open(Cancel As Integer)
 
-    On Error GoTo 0
+    On Error GoTo PROC_ERR
 
     Dim bln As Boolean
-    
+
     gblnSPAWN_DEBUG = False
     gintApp = aeGetTheAppID
     MsgBox "frmStartup Form_Open: gintApp = " & gintApp, vbInformation, gconTHIS_APP_NAME
     bln = StartApp()
+
+PROC_EXIT:
+    Exit Sub
+
+PROC_ERR:
+    MsgBox "Erl=" & Erl & " Error " & Err.Number & " (" & Err.Description & ") in procedure Form_Open of frmStartup"
+    Resume PROC_EXIT
 
 End Sub
