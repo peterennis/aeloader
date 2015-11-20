@@ -296,7 +296,7 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
 ' Last Mod:     09/06/2005 Use line numbers and Erl to help debugging
 
 On Error GoTo Err_aeLoaderApp        ' Set up error handler.
-     
+
     If FileExists(strAbsAppName) Then
         ' Rename the old app file
         Name Mid(strAbsAppName, 1, Len(strAbsAppName) - 3) & gstrTheAppExtension _
@@ -317,14 +317,14 @@ On Error GoTo Err_aeLoaderApp        ' Set up error handler.
             Else
             End If
         End If
-        
+
         DoEvents
     Loop Until WindowIsOpen(gstrTheAppWindowName)
-    'MsgBox WindowIsOpen("Davis Street Family Resource Center")
-    'MaximizeTheWindow WindowIsOpen("Davis Street Family Resource Center"), "Davis Street Family Resource Center"
+    'MsgBox WindowIsOpen("The Window Title")
+    'MaximizeTheWindow WindowIsOpen("The Window Title"), "The Window Title"
 
     aeLoaderApp = True
-    
+
 Exit_aeLoaderApp:
     Exit Function
 
@@ -616,15 +616,22 @@ Public Function aeGetTheAppID() As Integer
 
     Dim intAppID As Integer
 
-    MsgBox "aeGetTheAppID: Command = " & Command, vbInformation, gconTHIS_APP_NAME
+    'MsgBox "aeGetTheAppID: Command = " & Command, vbInformation, gconTHIS_APP_NAME
     gstrAppCmdName = Command
+    If IsNull(gstrAppCmdName) Or gstrAppCmdName = vbNullString Then
+        MsgBox "No Command parameter found." & vbCrLf & _
+                "Did you start the loader from a shortcut?", vbCritical, gconTHIS_APP_NAME
+        DoCmd.Quit
+        Exit Function
+    End If
+
     intAppID = Nz(DLookup("[ParameterID]", "[aeLoaderParameters_Table]", _
                         "[gstrAppName] = '" & gstrAppCmdName & "'"))
-    MsgBox "intAppID = " & intAppID & vbCrLf & _
+    MsgBox "aeGetTheAppID: intAppID = " & intAppID & vbCrLf & _
                 "gstrAppCmdName = " & gstrAppCmdName, vbInformation, gconTHIS_APP_NAME
 
     If intAppID = 0 Then
-        MsgBox "Invalid Access Command Line Parameter!" & vbCrLf & vbCrLf & _
+        MsgBox "aeGetTheAppID: Invalid Access Command Line Parameter!" & vbCrLf & vbCrLf & _
                 "Command = " & "'" & Command & "'", vbCritical, gconTHIS_APP_NAME
         DoCmd.Restore
         DoCmd.Quit acQuitSaveNone
