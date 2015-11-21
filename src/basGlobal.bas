@@ -303,7 +303,7 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
 ' Last Mod:     09/06/2005 Use line numbers and Erl to help debugging
 
     Debug.Print "aeLoaderApp"
-    Debug.Print "strAbsAppName = " & strAbsAppName
+    Debug.Print , "strAbsAppName = " & strAbsAppName
 
     On Error GoTo PROC_ERR
 
@@ -371,6 +371,7 @@ Public Function FileExists(strAbsFileName As String) As Boolean
 '               08/27/2004 use gconTHIS_APP_NAME in messages
 
     Debug.Print "FileExists"
+    Debug.Print , "strAbsFileName = " & strAbsFileName
 
     On Error GoTo PROC_ERR
 
@@ -379,6 +380,7 @@ Public Function FileExists(strAbsFileName As String) As Boolean
     Dim strMessage As String
 
     FileExists = (Dir(strAbsFileName) <> "")
+    Debug.Print , FileExists
 
 PROC_EXIT:
     Exit Function

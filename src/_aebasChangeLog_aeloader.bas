@@ -43,17 +43,21 @@ PROC_EXIT:
      Exit Function
  
 PROC_ERR:
-     MsgBox "Erl=" & Erl & " Error " & Err.Number & " (" & Err.Description & ") in procedure aeloader_EXPORT"
+     MsgBox "Erl=" & Erl & " Err=" & Err & " (" & Err.Description & ") in procedure aeloader_EXPORT"
      Resume Next
 
 End Function
 
 '=============================================================================================================================
 ' Tasks:
+' %020 -
+' %019 -
+' %018 -
+' %017 -
+' %016 -
 ' %015 -
 ' %014 -
-' %013 -
-' %012 - Use PtrSafe for all Declares and test with x64, VBA7 or greater only will be supported
+' %013 - Fix references to OpenSecured to use OpenNotSecured as workgroup is now obsolete
 ' Issues:
 ' #005 -
 ' #004 -
@@ -64,6 +68,7 @@ End Function
 '
 '
 '20151120 v123 -
+    ' FIXED - %012 - Use PtrSafe for all Declares and test with x64, VBA7 or greater only will be supported
     ' FIXED - %010 - Use consistent error handler naming to match aegit
 '20150320 v120 -
     ' Start updates to PROC_ERR and PROC_EXIT as standard format
