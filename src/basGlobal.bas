@@ -126,24 +126,26 @@ Public Function StartApp() As Boolean
     ShowWindow Application.hWndAccessApp, 2
     
     ' Shutdown the app if it is already open
+    gstrTheAppExtension = DLookup("gstrAppExt", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrTheApp = gstrLocalPath & DLookup("gstrAppFileName", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp) & _
+                            "." & gstrTheAppExtension
     gstrTheAppWindowName = DLookup("gstrAppWindowName", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
     gstrLocalPath = DLookup("gstrLocalPath", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
     gstrUpdateAppFile = DLookup("gstrUpdateAppFile", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-    gstrTheAppExtension = DLookup("gstrAppExt", "aeLoaderParameters_Table", _
-                            "ParameterID=" & gintApp)
     gstrTheWorkgroup = DLookup("gstrServerPath", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp) & _
                             DLookup("gstrTheWorkgroupFile", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-    gstrTheApp = gstrLocalPath & DLookup("gstrAppFileName", "aeLoaderParameters_Table", _
-                            "ParameterID=" & gintApp) & _
-                            "." & gstrTheAppExtension
     gstrLogonMdb = DLookup("gstrLogonMdb", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
     gstrPasswordMdb = DLookup("gstrPasswordMdb", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrDbLibName = DLookup("gstrDbLibName", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
     ' Updates will occur in the application based on the version.
     ' A corresponding library can be called e.g. adaeptdblib.mda.v425
@@ -154,15 +156,16 @@ Public Function StartApp() As Boolean
             "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
             "gstrUpdateAppFile = " & gstrUpdateAppFile & vbCrLf & _
             "gstrTheAppExtension = " & gstrTheAppExtension & vbCrLf & _
-            "gstrTheWorkgroup = " & gstrTheWorkgroup & vbCrLf & _
             "gstrTheApp = " & gstrTheApp & vbCrLf & _
             "gstrLogonMdb = " & gstrLogonMdb & vbCrLf & _
             "gstrPasswordMdb = " & gstrPasswordMdb & vbCrLf & _
-            "gstrLocalLibPath = " & gstrLocalLibPath
+            "gstrLocalLibPath = " & gstrLocalLibPath & vbCrLf & _
+            "gstrDbLibName = " & gstrDbLibName & vbCrLf & _
+            "gstrTheWorkgroup = " & gstrTheWorkgroup
     ShutDownApplication (gstrTheAppWindowName)
         
     ' Update to new library
-    InstallNewLibrary
+    If gstrDbLibName <> "NONE" Then InstallNewLibrary
     
     strTheFile = gstrLocalPath & gstrUpdateAppFile
     'MsgBox "StartApp: strTheFile = " & strTheFile
@@ -202,7 +205,7 @@ Public Function aeLoaderPassThroughApp(strPath As String, strFileName As String)
 
     Debug.Print "aeLoaderPassThroughApp"
     
-    On Error GoTo PROC_ERR        ' Set up error handler.
+    On Error GoTo PROC_ERR
 
     If FileExists(strPath & strFileName) Then
         'MsgBox strPath & strFileName & " FOUND." & vbCrLf & _
@@ -253,25 +256,25 @@ End Function
 Public Sub KillOldApps(strPath As String, strFileName As String)
 
     Debug.Print "KillOldApps"
+    Debug.Print , "strPath = " & strPath
+    Debug.Print , "strFileName = " & strFileName
 
     On Error GoTo PROC_ERR
 
     Dim strFName As String
     Dim strFilePattern As String
     
-    Debug.Print "strPath = " & strPath
-    Debug.Print "strFileName = " & strFileName
     strFilePattern = Left(strFileName, InStr(strFileName, gstrTheAppSeparatorChar))
-    Debug.Print "strFilePattern = " & strFilePattern
+    Debug.Print , "strFilePattern = " & strFilePattern
     
     ' Display the names in strPath that represent the application to be started
     strFName = Dir(strPath & strFilePattern & "*")    ' Retrieve the first entry.
     Do While strFName <> ""    ' Start the loop.
          If strFName <> strFileName Then
-             Debug.Print "Found: " & strFName
+             Debug.Print , "Found: " & strFName
              Kill strPath & strFName
         Else
-            Debug.Print "APP TO LOAD: " & strFName
+            Debug.Print , "APP TO LOAD: " & strFName
         End If
         strFName = Dir    ' Get next entry.
     Loop
@@ -299,9 +302,10 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
 ' Returns:      True if successful
 ' Last Mod:     09/06/2005 Use line numbers and Erl to help debugging
 
-    Debug.Print "KillOldApps"
+    Debug.Print "aeLoaderApp"
+    Debug.Print "strAbsAppName = " & strAbsAppName
 
-    On Error GoTo PROC_ERR        ' Set up error handler.
+    On Error GoTo PROC_ERR
 
     If FileExists(strAbsAppName) Then
         ' Rename the old app file
@@ -310,6 +314,9 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
         ' Rename the update app file
         Name strAbsAppName As Mid(strAbsAppName, 1, _
                 Len(strAbsAppName) - 3) & gstrTheAppExtension
+    Else
+        MsgBox "Update file not find!", vbCritical, "aeLoaderApp: " & gconTHIS_APP_NAME
+        Stop
     End If
 
     Do
@@ -632,7 +639,8 @@ Public Function aeGetTheAppID() As Integer
     If IsNull(gstrAppCmdName) Or gstrAppCmdName = vbNullString Then
         MsgBox "No Command parameter found." & vbCrLf & _
                 "Did you start the loader from a shortcut?", vbCritical, gconTHIS_APP_NAME
-        DoCmd.Quit
+        'Stop
+        'DoCmd.Quit
         Exit Function
     End If
 

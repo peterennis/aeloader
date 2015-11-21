@@ -90,7 +90,7 @@ Inherited: False;
 ---
 Name: Build
 Type: dbLong
-Value: 666
+Value: 700
 Inherited: False;
 ---
 Name: CheckTruncatedNumFields

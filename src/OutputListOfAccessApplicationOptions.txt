@@ -98,7 +98,7 @@
               XP, 2003      Default File Format                        12 
               XP            Row Limit                                  10000 
               XP, 2003      Default Open Mode for Databases            0 
-              XP, 2003      Command-Line Arguments                    GDayClassDemo
+              XP, 2003      Command-Line Arguments                    
               XP, 2003      OLE/DDE Timeout (sec)                      30 
               XP, 2003      Default Record Locking                     0 
               XP, 2003      Refresh Interval (sec)                     60 
@@ -261,4 +261,4 @@
               2007, 2010, 2013            Update Retry Interval (msec)                             250 
               2007, 2010, 2013            Ignore DDE Requests                                      0 
               2007, 2010, 2013            Enable DDE Refresh                                      -1 
-              2007, 2010, 2013            Command-Line Arguments                                  GDayClassDemo
+              2007, 2010, 2013            Command-Line Arguments                                  
