@@ -67,10 +67,10 @@ Private Declare PtrSafe Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 Private Declare PtrSafe Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, _
         ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
 '
-Global Const SW_HIDE = 0
-Global Const SW_SHOWNORMAL = 1
-Global Const SW_SHOWMINIMIZED = 2
-Global Const SW_SHOWMAXIMIZED = 3
+Public Const SW_HIDE = 0
+Public Const SW_SHOWNORMAL = 1
+Public Const SW_SHOWMINIMIZED = 2
+Public Const SW_SHOWMAXIMIZED = 3
 
 Private Declare PtrSafe Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
 
@@ -125,8 +125,9 @@ Public Function StartApp() As Boolean
 
     ' Minimize the Access window
     Debug.Print , "Minimizing the Access window"
-    ShowWindow Application.hWndAccessApp, 2
+    ShowWindow Application.hWndAccessApp, SW_SHOWMINIMIZED
 
+    ' Setup the loader variables
     gstrTheAppExtension = DLookup("gstrAppExt", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
     gstrTheApp = gstrLocalPath & DLookup("gstrAppFileName", "aeLoaderParameters_Table", _
@@ -170,10 +171,10 @@ Public Function StartApp() As Boolean
 
     ' Shutdown the app if it is already open
     ShutDownApplication (gstrTheAppWindowName)
-        
+
     ' Update to new library
     If gstrDbLibName <> "NONE" Then InstallNewLibrary
-    
+
     strTheFile = gstrLocalPath & gstrUpdateAppFile
     'MsgBox "StartApp: strTheFile = " & strTheFile
     Debug.Print , "StartApp: strTheFile = " & strTheFile
@@ -212,7 +213,7 @@ Public Function aeLoaderPassThroughApp(strPath As String, strFileName As String)
 ' Last Mod:
 
     Debug.Print "aeLoaderPassThroughApp"
-    
+
     On Error GoTo PROC_ERR
 
     If FileExists(strPath & strFileName) Then
@@ -225,7 +226,7 @@ Public Function aeLoaderPassThroughApp(strPath As String, strFileName As String)
 
     Do
         OpenNotSecured strPath & strFileName  ', gstrTheWorkgroup
-        
+
         If gblnSPAWN_DEBUG Then
             Dim i As Integer
             i = MsgBox("L6 gblnSPAWN_DEBUG", vbYesNo, "Test Break")
@@ -234,20 +235,20 @@ Public Function aeLoaderPassThroughApp(strPath As String, strFileName As String)
             Else
             End If
         End If
-        
+
         DoEvents
     Loop Until WindowIsOpen(gstrTheAppWindowName)
 
     aeLoaderPassThroughApp = True
-    
+
 PROC_EXIT:
     Exit Function
 
 PROC_ERR:
     'MsgBox Err & " " & Err.Description, vbCritical, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
     Select Case Err
-          Case 75
-          ' Path/File access error: If app is open it takes time to be
+        Case 75
+            ' Path/File access error: If app is open it takes time to be
             ' shut down so try again
             Delay 1
             Resume
@@ -308,7 +309,7 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
 ' Created:      8/2004
 ' Passed in:    Absolute application file name as a string
 ' Returns:      True if successful
-' Last Mod:     09/06/2005 Use line numbers and Erl to help debugging
+' Last Mod:     See changes on GitHub - https://github.com/peterennis/aeloader
 
     Debug.Print "aeLoaderApp"
     Debug.Print , "strAbsAppName = " & strAbsAppName
