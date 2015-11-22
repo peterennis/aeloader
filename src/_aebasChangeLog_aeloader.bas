@@ -18,7 +18,7 @@ Option Explicit
 '''xPublic Const gblnTEST_aeloader As Boolean = False
 '
 Public Const gconTHIS_APP_VERSION As String = "1.2.3"
-Public Const gconTHIS_APP_VERSION_DATE = "November 20, 2015"
+Public Const gconTHIS_APP_VERSION_DATE = "November 21, 2015"
 Public Const gconTHIS_APP_NAME = "adaept db loader"
 
 Public Function aeloader_EXPORT(Optional ByVal varDebug As Variant) As Boolean

@@ -35,6 +35,8 @@ Public gstrTheAppSeparatorChar As String
 Public gstrPassThrough As String
 Public gstrTheAppExtension As String
 Public gstrAppCmdName As String
+Public gstrTheServer As String
+Public gstrTheWorkgroupFile As String
 Public gstrTheWorkgroup As String
 Public gstrUpdateAppFile As String
 Public gstrLoaderUpdateAppFile As String
@@ -71,7 +73,6 @@ Global Const SW_SHOWMINIMIZED = 2
 Global Const SW_SHOWMAXIMIZED = 3
 
 Private Declare PtrSafe Function apiShowWindow Lib "user32" Alias "ShowWindow" (ByVal hWnd As Long, ByVal nCmdShow As Long) As Long
-'
 
 Public Function StartApp() As Boolean
 
@@ -90,12 +91,12 @@ Public Function StartApp() As Boolean
         '
         Dim blnUpdate As Boolean
         Dim cls1 As aeLoaderUpdateSetupClass
-        
+
         Set cls1 = New aeLoaderUpdateSetupClass
-        
+
         ' Setup parameters
         cls1.aeUpdateDebug = True
-        
+
         Dim strThePassThroughAppName As String
         Dim strThePassThroughAppVersion As String
         strThePassThroughAppName = gstrLocalPath & DLookup("gstrAppName", _
@@ -104,10 +105,10 @@ Public Function StartApp() As Boolean
                             "aeLoaderParameters_Table", "ParameterID=" & gintApp)
         blnUpdate = cls1.aeUpdateSetup(strThePassThroughAppName, _
                             strThePassThroughAppVersion, aeWindowsNetworkLogin)
-    
+
         Dim cls2 As aeLoaderUpdateTxtClass
         Set cls2 = New aeLoaderUpdateTxtClass
-        
+
         cls2.aeUpdateDebug = True
         blnUpdate = cls2.blnTheAppLoaderUpdateStatus()
         Debug.Print , "cls2.blnTheAppLoaderUpdateStatus = " & blnUpdate
@@ -121,11 +122,11 @@ Public Function StartApp() As Boolean
         DoCmd.Quit
         Exit Function
     End If
-        
+
     ' Minimize the Access window
+    Debug.Print , "Minimizing the Access window"
     ShowWindow Application.hWndAccessApp, 2
-    
-    ' Shutdown the app if it is already open
+
     gstrTheAppExtension = DLookup("gstrAppExt", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
     gstrTheApp = gstrLocalPath & DLookup("gstrAppFileName", "aeLoaderParameters_Table", _
@@ -137,10 +138,11 @@ Public Function StartApp() As Boolean
                             "ParameterID=" & gintApp)
     gstrUpdateAppFile = DLookup("gstrUpdateAppFile", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-    gstrTheWorkgroup = DLookup("gstrServerPath", "aeLoaderParameters_Table", _
-                            "ParameterID=" & gintApp) & _
-                            DLookup("gstrTheWorkgroupFile", "aeLoaderParameters_Table", _
+    gstrTheServer = DLookup("gstrServerPath", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
+    gstrTheWorkgroupFile = DLookup("gstrTheWorkgroupFile", "aeLoaderParameters_Table", _
+                            "ParameterID=" & gintApp)
+    gstrTheWorkgroup = gstrTheServer & gstrTheWorkgroupFile
     gstrLogonMdb = DLookup("gstrLogonMdb", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
     gstrPasswordMdb = DLookup("gstrPasswordMdb", "aeLoaderParameters_Table", _
@@ -161,7 +163,12 @@ Public Function StartApp() As Boolean
             "gstrPasswordMdb = " & gstrPasswordMdb & vbCrLf & _
             "gstrLocalLibPath = " & gstrLocalLibPath & vbCrLf & _
             "gstrDbLibName = " & gstrDbLibName & vbCrLf & _
+            "gstrPassThrough = " & gstrPassThrough & vbCrLf & _
+            "gstrTheWorkgroupFile = " & gstrTheWorkgroupFile & vbCrLf & _
+            "gstrTheServer = " & gstrTheServer & vbCrLf & _
             "gstrTheWorkgroup = " & gstrTheWorkgroup
+
+    ' Shutdown the app if it is already open
     ShutDownApplication (gstrTheAppWindowName)
         
     ' Update to new library
@@ -315,24 +322,32 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
         Name strAbsAppName As Mid(strAbsAppName, 1, _
                 Len(strAbsAppName) - 3) & gstrTheAppExtension
     Else
-        MsgBox "Update file not find!", vbCritical, "aeLoaderApp: " & gconTHIS_APP_NAME
+        MsgBox "Update file'" & strAbsAppName & "' not found!", vbCritical, "aeLoaderApp: " & gconTHIS_APP_NAME
         Stop
     End If
 
-    Do
-        OpenSecured gstrTheApp, gstrTheWorkgroup, gstrLogonMdb, gstrPasswordMdb
+    Debug.Print , "aeLoaderApp: gstrTheWorkgroupFile = " & gstrTheWorkgroupFile
+    If gstrTheWorkgroupFile <> "OBSOLETE" Then
+        Debug.Print , "aeLoaderApp: Opening database with a secured workgroup"
+        Do
+            OpenSecured gstrTheApp, gstrTheWorkgroup, gstrLogonMdb, gstrPasswordMdb
         
-        If gblnSPAWN_DEBUG Then
-            Dim i As Integer
-            i = MsgBox("L6", vbYesNo, "Test Break")
-            If i = vbYes Then
-                Exit Function
-            Else
+            If gblnSPAWN_DEBUG Then
+                Dim i As Integer
+                i = MsgBox("L6", vbYesNo, "Test Break")
+                If i = vbYes Then
+                    Exit Function
+                Else
+                End If
             End If
-        End If
 
-        DoEvents
-    Loop Until WindowIsOpen(gstrTheAppWindowName)
+            DoEvents
+        Loop Until WindowIsOpen(gstrTheAppWindowName)
+    Else
+        Debug.Print , "aeLoaderApp: Opening normal database"
+        Stop
+    End If
+
     'MsgBox WindowIsOpen("The Window Title")
     'MaximizeTheWindow WindowIsOpen("The Window Title"), "The Window Title"
 
@@ -388,7 +403,6 @@ PROC_EXIT:
 PROC_ERR:
     Select Case Err
         Case 53, 62
-            'ADD FURTHER DESCRIPTION AS DESIRED
             MsgBox "FileExists Error # " & Err.Number & ": " & Err.Description
         Case 68
             strMessage = "FileExists Error # " & Err.Number & ": " & Err.Description & vbCrLf  'Device unavailable
@@ -408,14 +422,15 @@ PROC_ERR:
 End Function
 
 Public Function ShutDownApplication(ByVal strApplicationName As String) As Boolean
-'Ref: http://www.a1vbcode.com/app.asp?ID=479
+' Ref: http://www.a1vbcode.com/app.asp?ID=479
 
     Debug.Print "ShutDownApplication"
 
     Dim hWnd As Long
     Dim Result As Long
     hWnd = FindWindow(vbNullString, strApplicationName)
-    Debug.Print , "hWnd = " & hWnd, "strApplicationName = " & strApplicationName
+    Debug.Print , "hWnd = " & hWnd
+    Debug.Print , "strApplicationName = " & strApplicationName
     If hWnd <> 0 Then
         Result = PostMessage(hWnd, WM_CLOSE, 0&, 0&)
         'MsgBox "The application window was found for shutdown."
@@ -428,7 +443,10 @@ Public Function ShutDownApplication(ByVal strApplicationName As String) As Boole
         'MsgBox "The application window " & _
             strApplicationName & " was not found.", vbInformation, _
             gconTHIS_APP_NAME & ": ShutDownApplication"
+        Debug.Print , "The application window '" & strApplicationName & "' was not found"
+        'Stop
         'DoCmd.Quit
+        ShutDownApplication = False
     End If
 
 End Function
@@ -458,7 +476,6 @@ Private Sub MaximizeTheWindow(hWnd As Long, ByVal strWindowTitle As String)
     lng = SendMessage(hWnd, &H112, &HF030&, 0&)
     
 End Sub
-
 
 '----------------------------------------------------------------------
 'Using a Secured Workgroup
@@ -640,8 +657,8 @@ Public Function aeGetTheAppID() As Integer
     gstrAppCmdName = Command
     If IsNull(gstrAppCmdName) Or gstrAppCmdName = vbNullString Then
         MsgBox "No Command parameter found." & vbCrLf & _
-                "Did you start the loader from a shortcut?", vbCritical, gconTHIS_APP_NAME
-        'Stop
+                "Did you start the loader from a shortcut?", vbCritical, gconTHIS_APP_NAME & ": aeGetTheAppID"
+        Stop
         'DoCmd.Quit
         Exit Function
     End If
@@ -664,26 +681,27 @@ Public Function aeGetTheAppID() As Integer
 End Function
 
 Public Function Comment(strComment As String) As Boolean
-' What:         THIS FUNCTION RETURNS TRUE IF A STRING IS A COMMENT i.e. IF
-'               THE FIRST CHARACTER IN THE FIRST LINE IS ' OR ;
-' Author:       Peter F. Ennis      Created: 11/98       By: Peter F. Ennis
-' Passed in:    Comment as a string
-' Returns:      True
+' What:         This function returns true if a string is a comment i.e. if
+'               the first character in the first line is ' OR ;
+' Author:       Peter F. Ennis
+' Date          11/98
+' Parameter:    String to be verified as a comment
+' Returns:      True if the string is a comment and false otherwise
 ' Last Mod:     7/30/99
 
-On Error GoTo Err_Comment
+    On Error GoTo PROC_ERR
 
     Comment = False
     If ((Mid$(strComment, 1, 1) = "'") Or (Mid$(strComment, 1, 1) = ";")) Then
         Comment = True
     End If
 
-Exit_Comment:
+PROC_EXIT:
     Exit Function
 
-Err_Comment:
+PROC_ERR:
     MsgBox "Comment Error " & Err & ": " & Error$, vbCritical, "aedb"
-    Resume Exit_Comment
+    Resume PROC_EXIT
 
 End Function
 
