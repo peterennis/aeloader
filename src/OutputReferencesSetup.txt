@@ -1,5 +1,5 @@
 >==> The Project References >==>
-              vbaProj.Name = adaept db loader
+              vbaProj.Name = aeloader
               vbaProj.Type = '100'
               Access version = 16.0
               ADO (ActiveX Data Object) version = 10.0

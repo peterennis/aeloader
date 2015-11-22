@@ -1,4 +1,4 @@
-Name: C:\ae\aeloader\aeloader-open.mdb, 12, False;
+Name: C:\ae\aeloader\aeloader - Copy.mdb, 12, False;
 Connect: , 12, False;
 Transactions: True, 1, False;
 Updatable: True, 1, False;
@@ -42,6 +42,5 @@ NavPane View By: 2, 4, False;
 NavPane Sort By: 2, 4, False;
 ProjVer: 140, 3, False;
 Perform Name AutoCorrect: 0, 4, False;
-AppTitle: aeloader-open, 10, False;
+AppTitle: aeloader, 10, False;
 AppIcon: .\adaept64.ico, 10, False;
-StartUpForm: frmStartup, 10, False;

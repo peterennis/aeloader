@@ -39,7 +39,7 @@ REM When the before / after file size are finally the same, the decompile.cmd sc
 
 REM Support for multiple database files within the one directory
 REM Simply unREM the correct LOC to decompile that database file
-SET DBfile=aeloader-open.mdb
+SET DBfile=aeloader.mdb
 SET AccessPath="C:\Program Files (x86)\Microsoft Office\Office16\MSACCESS.EXE"
 
 ECHO.

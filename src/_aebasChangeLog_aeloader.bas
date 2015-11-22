@@ -11,15 +11,15 @@ Option Explicit
 ' Show debug output in immediate window:    aeloader_EXPORT varDebug:="varDebug"
 '                                           aeloader_EXPORT 1
 '
-' Sample constants for settings of aeloader-open
+' Sample constants for settings of aeloader
 '''xPublic Const gstrDATE_aeloader As String = "March 1, 2015"
 '''xPublic Const gstrVERSION_aeloader As String = "0.0.4"
 '''xPublic Const gstrPROJECT_aeloader As String = "aeloader"
 '''xPublic Const gblnTEST_aeloader As Boolean = False
 '
-Public Const gconTHIS_APP_VERSION As String = "1.2.3"
+Public Const gconTHIS_APP_VERSION As String = "1.2.4"
 Public Const gconTHIS_APP_VERSION_DATE = "November 21, 2015"
-Public Const gconTHIS_APP_NAME = "adaept db loader"
+Public Const gconTHIS_APP_NAME = "aeloader"
 
 Public Function aeloader_EXPORT(Optional ByVal varDebug As Variant) As Boolean
 
@@ -56,7 +56,7 @@ End Function
 ' %017 -
 ' %016 -
 ' %015 -
-' %014 -
+' %014 - Check GDayClass for Access 2016
 ' Issues:
 ' #005 -
 ' #004 -

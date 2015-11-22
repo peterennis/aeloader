@@ -1,6 +1,6 @@
 Name: Name
 Type: dbMemo
-Value: C:\ae\aeloader\aeloader-open.mdb
+Value: C:\ae\aeloader\aeloader - Copy.mdb
 Inherited: False;
 ---
 Name: Connect
@@ -220,16 +220,11 @@ Inherited: False;
 ---
 Name: AppTitle
 Type: dbText
-Value: aeloader-open
+Value: aeloader
 Inherited: False;
 ---
 Name: AppIcon
 Type: dbText
 Value: .\adaept64.ico
-Inherited: False;
----
-Name: StartUpForm
-Type: dbText
-Value: frmStartup
 Inherited: False;
 ---

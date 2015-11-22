@@ -44,14 +44,14 @@ Private Declare PtrSafe Function apiIsIconic Lib "user32" Alias "IsIconic" (ByVa
 
 Public Function IsRunning(ByVal strAppName As String, _
         Optional fActivate As Boolean) As Boolean
-    
+
     On Local Error GoTo PROC_ERR
 
     Debug.Print "IsRunning"
     Dim strClassName As String
     Dim lngX As Long
     Dim lngTmp As Long
-    
+
     Const WM_USER = 1024
 
     IsRunning = False
@@ -68,7 +68,7 @@ Public Function IsRunning(ByVal strAppName As String, _
         Case "wordpad":     strClassName = "WordPadClass"
         Case Else:          strClassName = vbNullString
     End Select
-    
+
     Debug.Print , "strClassName = " & strClassName
     If strClassName = "" Then
         mlngH = apiFindWindow(vbNullString, strAppName)
@@ -110,21 +110,21 @@ Public Function GetBounds() As Integer
     On Error GoTo PROC_ERR
 
     Dim i As Integer
-        
+
     i = UBound(malngAccessHandles)
     Debug.Print "GetBounds"
     Debug.Print , "i = " & i
 
     ReDim Preserve malngAccessHandles(i + 1)
     GetBounds = i + 1
-    
+
     If GetBounds = 3 Then
         'MsgBox "3 Apps Opened! - Halt"
         Debug.Print , "3 Apps Opened! - Halt"
         gblnSPAWN_DEBUG = True
         Stop
     End If
-    
+
 PROC_EXIT:
     Exit Function
 

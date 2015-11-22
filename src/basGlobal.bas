@@ -154,7 +154,7 @@ Public Function StartApp() As Boolean
     ' copied across and renamed to adaeptdblib.mda.upd locally.
     gstrLocalLibPath = DLookup("gstrLocalLibPath", "aeLoaderParameters_Table", _
                             "ParameterID=" & gintApp)
-    MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
+    'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName & vbCrLf & _
             "gstrLocalPath = " & gstrLocalPath & vbCrLf & _
             "gstrUpdateAppFile = " & gstrUpdateAppFile & vbCrLf & _
             "gstrTheAppExtension = " & gstrTheAppExtension & vbCrLf & _
@@ -324,7 +324,8 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
                 Len(strAbsAppName) - 3) & gstrTheAppExtension
     Else
         MsgBox "Update file'" & strAbsAppName & "' not found!", vbCritical, "aeLoaderApp: " & gconTHIS_APP_NAME
-        Stop
+        'Stop
+        DoCmd.Quit
     End If
 
     Debug.Print , "aeLoaderApp: gstrTheWorkgroupFile = " & gstrTheWorkgroupFile
@@ -350,8 +351,8 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
         Debug.Print , "aeLoaderApp: gstrTheApp = " & gstrTheApp
         'Stop
         Do
-            MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName, vbInformation, gconTHIS_APP_NAME
-            MsgBox "gstrLocalPath & gstrTheApp = " & gstrLocalPath & gstrTheApp, vbInformation, gconTHIS_APP_NAME
+            'MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName, vbInformation, gconTHIS_APP_NAME
+            'MsgBox "gstrLocalPath & gstrTheApp = " & gstrLocalPath & gstrTheApp, vbInformation, gconTHIS_APP_NAME
             OpenNotSecured gstrLocalPath & gstrTheApp
 
             If gblnSPAWN_DEBUG Then
@@ -607,7 +608,7 @@ Private Sub OpenNotSecured(strTheApp As String)
 
     cmd = cmd & """" & strTheApp & """"
     Debug.Print , "cmd = " & cmd
-    MsgBox cmd, vbInformation, gconTHIS_APP_NAME & ": OpenNotSecured"
+    'MsgBox cmd, vbInformation, gconTHIS_APP_NAME & ": OpenNotSecured"
     '
     Shell pathname:=cmd, windowstyle:=vbMaximizedFocus
     Dim bln As Boolean
@@ -706,8 +707,8 @@ Public Function aeGetTheAppID() As Integer
     If IsNull(gstrAppCmdName) Or gstrAppCmdName = vbNullString Then
         MsgBox "No Command parameter found." & vbCrLf & _
                 "Did you start the loader from a shortcut?", vbCritical, gconTHIS_APP_NAME & ": aeGetTheAppID"
-        Stop
-        'DoCmd.Quit
+        'Stop
+        DoCmd.Quit
         Exit Function
     End If
 
