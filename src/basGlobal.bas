@@ -176,6 +176,7 @@ Public Function StartApp() As Boolean
     
     strTheFile = gstrLocalPath & gstrUpdateAppFile
     'MsgBox "StartApp: strTheFile = " & strTheFile
+    Debug.Print , "StartApp: strTheFile = " & strTheFile
     StartApp = aeLoaderApp(strTheFile)
 
     DoCmd.Restore
@@ -217,8 +218,8 @@ Public Function aeLoaderPassThroughApp(strPath As String, strFileName As String)
     If FileExists(strPath & strFileName) Then
         'MsgBox strPath & strFileName & " FOUND." & vbCrLf & _
             "WRITE CODE TO KILL OLD APPS", vbInformation, "aeLoaderPassThroughApp: " & gconTHIS_APP_NAME
-         Debug.Print ">aeLoaderPassThroughApp: strPath = " & strPath
-         Debug.Print ">aeLoaderPassThroughApp: strFileName = " & strFileName
+         Debug.Print , "aeLoaderPassThroughApp: strPath = " & strPath
+         Debug.Print , "aeLoaderPassThroughApp: strFileName = " & strFileName
         KillOldApps strPath, strFileName
     End If
 
@@ -331,7 +332,7 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
         Debug.Print , "aeLoaderApp: Opening database with a secured workgroup"
         Do
             OpenSecured gstrTheApp, gstrTheWorkgroup, gstrLogonMdb, gstrPasswordMdb
-        
+
             If gblnSPAWN_DEBUG Then
                 Dim i As Integer
                 i = MsgBox("L6", vbYesNo, "Test Break")
@@ -345,7 +346,25 @@ Private Function aeLoaderApp(strAbsAppName As String) As Boolean
         Loop Until WindowIsOpen(gstrTheAppWindowName)
     Else
         Debug.Print , "aeLoaderApp: Opening normal database"
-        Stop
+        Debug.Print , "aeLoaderApp: gstrLocalPath = " & gstrLocalPath
+        Debug.Print , "aeLoaderApp: gstrTheApp = " & gstrTheApp
+        'Stop
+        Do
+            MsgBox "gstrTheAppWindowName = " & gstrTheAppWindowName, vbInformation, gconTHIS_APP_NAME
+            MsgBox "gstrLocalPath & gstrTheApp = " & gstrLocalPath & gstrTheApp, vbInformation, gconTHIS_APP_NAME
+            OpenNotSecured gstrLocalPath & gstrTheApp
+
+            If gblnSPAWN_DEBUG Then
+                Dim j As Integer
+                j = MsgBox("L62", vbYesNo, "Test Break")
+                If j = vbYes Then
+                    Exit Function
+                Else
+                End If
+            End If
+
+            DoEvents
+        Loop Until WindowIsOpen(gstrTheAppWindowName)
     End If
 
     'MsgBox WindowIsOpen("The Window Title")
@@ -502,6 +521,8 @@ Private Sub OpenSecured(strTheApp As String, _
                             Optional varUser As Variant, _
                             Optional varPw As Variant)
     
+    Debug.Print "OpenSecured"
+    
     Dim objAccess As Object
     Dim cmd As String
     
@@ -512,13 +533,18 @@ Private Sub OpenSecured(strTheApp As String, _
         
 ' ******** EXAMPLE ********
 '        cmd = """C:\Program Files\Microsoft Office\Office\MSAccess.exe""" & " " & _
-'                 """C:\DSFRC\Intake\Davis Street Intake PRODUCTION SQL 2000 Front End A2K.mdb""" & " " & _
+'                 """C:\The\Database\SQL 2000 Front End A2K.mdb""" & " " & _
 '                 "/wrkgrp" & " " & _
-'                 "\\Dscc-w2k-1\Intake\DSCC.MDW" & " " & _
+'                 "\\The\Server\TheWorkgroup.MDW" & " " & _
 '                 "/cmd " & _
 '                 """NOSPLASHFORM"""
 '        MsgBox cmd
 ' **************************
+
+' 12.0 = Access 2007
+' 14.0 = Access 2010
+' 15.0 = Access 2013
+' 16.0 = Access 2016
 
     If GetAccessVersion = "9.0" Then        ' Access 2000
         cmd = """C:\Program Files\Microsoft Office\Office\MSAccess.exe""" & " "
@@ -544,22 +570,44 @@ Private Sub OpenSecured(strTheApp As String, _
 
 End Sub
 
+Public Function Is64bit() As Boolean
+    Is64bit = Len(Environ("ProgramW6432")) > 0
+End Function
+
 Private Sub OpenNotSecured(strTheApp As String)
-    
+
+    Debug.Print "OpenNotSecured"
+
     Dim objAccess As Object
     Dim cmd As String
+    Dim str64Bit As String
     
     On Error Resume Next
     Set objAccess = GetObject(, "Access.Application")
+
+    If Is64bit Then
+        str64Bit = " (x86)"
+    Else
+        str64Bit = ""
+    End If
             
     If GetAccessVersion = "9.0" Then        ' Access 2000
-        cmd = """C:\Program Files\Microsoft Office\Office\MSAccess.exe""" & " "
+        cmd = """" & "C:\Program Files" & str64Bit & "\Microsoft Office\Office\MSAccess.exe" & """" & " "
     ElseIf GetAccessVersion = "11.0" Then   ' Access 2003
-        cmd = """C:\Program Files\Microsoft Office\Office11\MSAccess.exe""" & " "
+        cmd = """" & "C:\Program Files" & str64Bit & "\Microsoft Office\Office11\MSAccess.exe" & """" & " "
+    ElseIf GetAccessVersion = "12.0" Then   ' Access 2007
+        cmd = """" & "C:\Program Files" & str64Bit & "\Microsoft Office\Office12\MSAccess.exe" & """" & " "
+    ElseIf GetAccessVersion = "14.0" Then   ' Access 2010
+        cmd = """" & "C:\Program Files" & str64Bit & "\Microsoft Office\Office14\MSAccess.exe" & """" & " "
+    ElseIf GetAccessVersion = "15.0" Then   ' Access 2013
+        cmd = """" & "C:\Program Files" & str64Bit & "\Microsoft Office\Office15\MSAccess.exe" & """" & " "
+    ElseIf GetAccessVersion = "16.0" Then   ' Access 2016
+        cmd = """" & "C:\Program Files" & str64Bit & "\Microsoft Office\Office16\MSAccess.exe" & """" & " "
     End If
 
     cmd = cmd & """" & strTheApp & """"
-    'MsgBox cmd, vbInformation, "OpenNotSecured"
+    Debug.Print , "cmd = " & cmd
+    MsgBox cmd, vbInformation, gconTHIS_APP_NAME & ": OpenNotSecured"
     '
     Shell pathname:=cmd, windowstyle:=vbMaximizedFocus
     Dim bln As Boolean

@@ -57,7 +57,6 @@ End Function
 ' %016 -
 ' %015 -
 ' %014 -
-' %013 - Fix references to OpenSecured to use OpenNotSecured as workgroup is now obsolete
 ' Issues:
 ' #005 -
 ' #004 -
@@ -67,6 +66,8 @@ End Function
 '=============================================================================================================================
 '
 '
+'20151121 v123 -
+    ' FIXED - %013 - Fix references to OpenSecured to use OpenNotSecured as workgroup is now obsolete
 '20151120 v123 -
     ' FIXED - %012 - Use PtrSafe for all Declares and test with x64, VBA7 or greater only will be supported
     ' FIXED - %010 - Use consistent error handler naming to match aegit
