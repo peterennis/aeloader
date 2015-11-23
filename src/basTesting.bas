@@ -17,7 +17,6 @@ Public Sub TEST_aeLoaderUpdate()
 
     gintApp = 6
 
-    ' Call aeLoaderUpdateSetupClass
     Dim blnUpdate As Boolean
     Dim cls1 As aeLoaderUpdateSetupClass
     Set cls1 = New aeLoaderUpdateSetupClass

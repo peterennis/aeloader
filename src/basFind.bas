@@ -2,7 +2,7 @@ Option Compare Database
 Option Explicit
 
 ' Ref   : Modified from http://support.microsoft.com/kb/q185476/
-' What  : Get and array of filenames
+' What  : Get an array of filenames
 ' Who   : Peter F. Ennis
 ' When  : 06/06/2007
 

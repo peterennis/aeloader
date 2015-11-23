@@ -39,13 +39,13 @@ Private Sub MoveSizeCenter()
     Dim intScreenCenterHorizontalPix As Integer
     Dim intScreenCenterVerticalPix As Integer
 
-'    Debug.Print "GetAccesshWnd=" & GetAccesshWnd
-'    AccessMinimize
-'    AccessRestore
-'    AccessMaximize
-'    Debug.Print "IsAccessMaximized=" & IsAccessMaximized
-'    Debug.Print "IsAccessRestored=" & IsAccessRestored
-'    Debug.Print "IsAccessMinimized=" & IsAccessMinimized
+    'Debug.Print "GetAccesshWnd=" & GetAccesshWnd
+    'AccessMinimize
+    'AccessRestore
+    'AccessMaximize
+    'Debug.Print "IsAccessMaximized=" & IsAccessMaximized
+    'Debug.Print "IsAccessRestored=" & IsAccessRestored
+    'Debug.Print "IsAccessMinimized=" & IsAccessMinimized
     intScreenCenterHorizontalPix = aefGetScreenResolution("H") \ 2
     intScreenCenterVerticalPix = aefGetScreenResolution("V") \ 2
     Debug.Print "intScreenCenterHorizontalPix=" & intScreenCenterHorizontalPix
@@ -70,11 +70,11 @@ Private Function GetAccesshWnd()
     Dim hWnd As Long
     Dim hWndAccess As Long
 
-    ' Get the handle to the currently active window.
+    ' Get the handle to the currently active window
     hWnd = apiGetActiveWindow()
     hWndAccess = hWnd
 
-    ' Find the top window (which has no parent window).
+    ' Find the top window (which has no parent window)
     While hWnd <> 0
         hWndAccess = hWnd
         hWnd = apiGetParent(hWnd)
@@ -125,7 +125,7 @@ Private Sub AccessMoveSize(iX As Integer, iY As Integer, iWidth As Integer, iHei
 End Sub
 
 Private Function aefGetScreenResolution(Optional strHorV As Variant) As String
-'Ref: http://www.peterssoftware.com/c_scrres.htm
+' Ref: http://www.peterssoftware.com/c_scrres.htm
 
     ' Return the display height and width
     Dim DisplayHeight As Integer
@@ -204,7 +204,7 @@ Private Function aefPixelsToTwips(lngPixels As Long, strHorV As Variant) As Long
 '       the number of twips corresponding to the given pixels
 
     On Error GoTo PROC_ERR
-    
+
     Dim lngDeviceHandle As Long
     Dim lngPixelsPerInch As Long
     lngDeviceHandle = WM_apiGetDC(0)

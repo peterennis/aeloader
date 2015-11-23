@@ -150,7 +150,7 @@ Public Function blnTheAppLoaderUpdateStatus() As Boolean
     '
     ' Sample Contents:
     '
-    'APP_NAME: DSFRC Intake
+    'APP_NAME: Intake
     'APP_NEW_VERSION: 4.0.1
     'APP_UPDATE_USER: pfe, dbuser:Station-131
     'APP_UPDATE_END:

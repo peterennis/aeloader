@@ -17,8 +17,8 @@ Option Explicit
 '''xPublic Const gstrPROJECT_aeloader As String = "aeloader"
 '''xPublic Const gblnTEST_aeloader As Boolean = False
 '
-Public Const gconTHIS_APP_VERSION As String = "1.2.4"
-Public Const gconTHIS_APP_VERSION_DATE = "November 21, 2015"
+Public Const gconTHIS_APP_VERSION As String = "1.2.5"
+Public Const gconTHIS_APP_VERSION_DATE = "November 22, 2015"
 Public Const gconTHIS_APP_NAME = "aeloader"
 
 Public Function aeloader_EXPORT(Optional ByVal varDebug As Variant) As Boolean
@@ -55,8 +55,7 @@ End Function
 ' %018 -
 ' %017 -
 ' %016 -
-' %015 -
-' %014 - Check GDayClass for Access 2016
+' %015 - Create function GetTheUpdateFile to retrieve the new update from a server or alternate drive
 ' Issues:
 ' #005 -
 ' #004 -
@@ -66,6 +65,8 @@ End Function
 '=============================================================================================================================
 '
 '
+'20151122 v125 -
+    ' FIXED - %014 - Check GDayClass for Access 2016
 '20151121 v123 -
     ' FIXED - %013 - Fix references to OpenSecured to use OpenNotSecured as workgroup is now obsolete
 '20151120 v123 -
