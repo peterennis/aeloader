@@ -76,6 +76,8 @@ Private Declare PtrSafe Function apiShowWindow Lib "user32" Alias "ShowWindow" (
 
 Public Function GetTheUpdateFile() As Boolean
 
+    Debug.Print "GetTheUpdateFile"
+
     On Error GoTo PROC_ERR
 
     Dim blnUpdate As Boolean
@@ -87,10 +89,14 @@ Public Function GetTheUpdateFile() As Boolean
 
     Dim strThePassThroughAppName As String
     Dim strThePassThroughAppVersion As String
+    Debug.Print , "gintApp = " & gintApp
+    gintApp = 6
     strThePassThroughAppName = gstrLocalPath & DLookup("gstrAppName", _
                             "aeLoaderParameters_Table", "ParameterID=" & gintApp)
+    Debug.Print , "strThePassThroughAppName = " & strThePassThroughAppName
     strThePassThroughAppVersion = gstrLocalPath & DLookup("gstrAppFileName", _
                             "aeLoaderParameters_Table", "ParameterID=" & gintApp)
+    Debug.Print , "strThePassThroughAppVersion = " & strThePassThroughAppVersion
     blnUpdate = Setup.aeUpdateSetup(strThePassThroughAppName, _
                             strThePassThroughAppVersion, aeWindowsNetworkLogin)
 
