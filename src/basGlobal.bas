@@ -525,7 +525,7 @@ Private Function WindowIsOpen(ByVal strWindowTitle As String) As Long
     Dim hWnd As Long
     Dim Result As Long
     hWnd = FindWindow(vbNullString, strWindowTitle)
-    Debug.Print , "hwnd = " & hWnd
+    Debug.Print , "hWnd = " & hWnd
     If hWnd <> 0 Then
         WindowIsOpen = hWnd
     Else

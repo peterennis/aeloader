@@ -11,39 +11,36 @@ Option Explicit
 ' Show debug output in immediate window:    aeloader_EXPORT varDebug:="varDebug"
 '                                           aeloader_EXPORT 1
 '
-' Sample constants for settings of aeloader
-'''xPublic Const gstrDATE_aeloader As String = "March 1, 2015"
-'''xPublic Const gstrVERSION_aeloader As String = "0.0.4"
-'''xPublic Const gstrPROJECT_aeloader As String = "aeloader"
-'''xPublic Const gblnTEST_aeloader As Boolean = False
+' Custom Usage:
+' FRONT END SETUP
+Public Const THE_FRONT_END_APP = True
+Public Const THE_SOURCE_FOLDER = ".\src\"                  ' "C:\THE\DATABASE\PATH\src\"
+Public Const THE_XML_FOLDER = ".\src\xml\"                 ' "C:\THE\DATABASE\PATH\src\xml\"
+Public Const THE_XML_DATA_FOLDER = ".\src\xmldata\"        ' "C:\THE\DATABASE\PATH\src\xmldata\"
+'Public Const THE_BACK_END_DB1 = "C:\MY\BACKEND\DATA.accdb"
+'Public Const THE_BACK_END_SOURCE_FOLDER = "NONE"           ' ".\srcbe\"
+'Public Const THE_BACK_END_XML_FOLDER = "NONE"              ' ".\srcbe\xml\"
+'Public Const THE_BACK_END_XML_DATA_FOLDER = "NONE"         ' ".\srcbe\xmldata\"
 '
-Public Const gconTHIS_APP_VERSION As String = "1.2.6"
-Public Const gconTHIS_APP_VERSION_DATE = "November 23, 2015"
+Public Const gconTHIS_APP_VERSION As String = "1.2.7"
+Public Const gconTHIS_APP_VERSION_DATE = "January 1, 2016"
 Public Const gconTHIS_APP_NAME = "aeloader"
 
 Public Function aeloader_EXPORT(Optional ByVal varDebug As Variant) As Boolean
 
-    Dim THE_SOURCE_FOLDER As String
-    Dim THE_XML_FOLDER As String
-    Dim THE_XML_DATA_FOLDER As String
-
-    THE_SOURCE_FOLDER = "C:\ae\aeloader\src\"
-    THE_XML_FOLDER = "C:\ae\aeloader\src\xml"
-    THE_XML_DATA_FOLDER = "C:\ae\aeloader\src\xml"
- 
     On Error GoTo PROC_ERR
  
     If Not IsMissing(varDebug) Then
-         aegitClassTest varDebug:="varDebug", varSrcFldr:=THE_SOURCE_FOLDER, varXmlFldr:=THE_XML_FOLDER
-     Else
-         aegitClassTest varSrcFldr:=THE_SOURCE_FOLDER, varXmlFldr:=THE_XML_FOLDER
-     End If
+        aegitClassTest varDebug:="varDebug", varSrcFldr:=THE_SOURCE_FOLDER, varXmlFldr:=THE_XML_FOLDER, varXmlDataFldr:=THE_XML_DATA_FOLDER, varFrontEndApp:=True
+    Else
+        aegitClassTest varSrcFldr:=THE_SOURCE_FOLDER, varXmlFldr:=THE_XML_FOLDER, varXmlDataFldr:=THE_XML_DATA_FOLDER, varFrontEndApp:=True
+    End If
  
 PROC_EXIT:
      Exit Function
  
 PROC_ERR:
-     MsgBox "Erl=" & Erl & " Err=" & Err & " (" & Err.Description & ") in procedure aeloader_EXPORT"
+     MsgBox "Erl=" & Erl & " Err=" & Err & " (" & Err.Description & ") in procedure aeloader_EXPORT", vbCritical, "ERROR"
      Resume Next
 
 End Function
@@ -54,7 +51,6 @@ End Function
 ' %019 -
 ' %018 -
 ' %017 -
-' %016 -
 ' %015 - Create function GetTheUpdateFile to retrieve the new update from a server or alternate drive
 ' Issues:
 ' #005 -
@@ -65,6 +61,8 @@ End Function
 '=============================================================================================================================
 '
 '
+'20160101 v127 -
+    ' FIXED - %016 - Export with latest aegit v164
 '20151122 v125 -
     ' FIXED - %014 - Check GDayClass for Access 2016
 '20151121 v123 -

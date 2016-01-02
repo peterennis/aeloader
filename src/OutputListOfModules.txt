@@ -1,0 +1,11 @@
+aebasChangeLog_aegit_expClass             False
+aebasTEST_aegit_expClass    False
+aegit_expClass              False
+aeLoaderMoveSizeClass       False
+aeLoaderUpdateSetupClass    False
+aeLoaderUpdateTxtClass      False
+basChangeLog_aeloader       False
+basFind       False
+basGlobal     False
+basIsAppRunning             False
+basTesting    False

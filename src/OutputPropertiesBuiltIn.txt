@@ -49,7 +49,7 @@ Value:
 Inherited: False;
 ---
 Name: Connection
-Type: 
+Type: Unknown typeNum
 Value: 
 Inherited: False; 3251, 'Operation is not supported for this type of object.'
 ---
@@ -90,7 +90,7 @@ Inherited: False;
 ---
 Name: Build
 Type: dbLong
-Value: 700
+Value: 712
 Inherited: False;
 ---
 Name: CheckTruncatedNumFields

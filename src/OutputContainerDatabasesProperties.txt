@@ -5,8 +5,8 @@
               Permissions    0 
               AllPermissions               65536 
               Container     Databases
-              DateCreated   2/24/2015 11:40:20 PM 
-              LastUpdated   2/24/2015 11:40:20 PM 
+              DateCreated   DateCreated
+              LastUpdated   LastUpdated
               Title         aeloader-open
               Author        Peter
 >>>UserDefined
@@ -16,6 +16,6 @@
               Permissions    0 
               AllPermissions               65536 
               Container     Databases
-              DateCreated   2/24/2015 11:40:20 PM 
-              LastUpdated   2/24/2015 11:40:20 PM 
+              DateCreated   DateCreated
+              LastUpdated   LastUpdated
               ReplicateProject            True

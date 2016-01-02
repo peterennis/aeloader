@@ -1,0 +1,10 @@
+aeLoaderParameters_Table    False
+MSysAccessStorage           True
+MSysACEs      True
+MSysNavPaneGroupCategories  True
+MSysNavPaneGroups           True
+MSysNavPaneGroupToObjects   True
+MSysNavPaneObjectIDs        True
+MSysObjects   True
+MSysQueries   True
+MSysRelationships           True

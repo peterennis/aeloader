@@ -1,4 +1,4 @@
-Version =20
+rsion =20
 VersionRequired =20
 Begin Form
     AllowDesignChanges = NotDefault
@@ -11,8 +11,8 @@ Begin Form
     Width =8520
     DatasheetFontHeight =10
     ItemSuffix =3
-    Right =22380
-    Bottom =12585
+    Right =17580
+    Bottom =9705
     DatasheetGridlinesColor =12632256
     RecSrcDt = Begin
         0x18d05a3b8cc3e240
@@ -121,7 +121,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 Option Explicit
 
-Private Sub AddChildWindows(ByVal hwndParent As Long, ByVal Level As Long)
+Private Sub AddChildWindows(ByVal hWndParent As Long, ByVal Level As Long)
 
     On Error GoTo PROC_ERR
 
@@ -131,9 +131,9 @@ Private Sub AddChildWindows(ByVal hwndParent As Long, ByVal Level As Long)
     Dim hWnd As Long
       
     If Level = 0 Then
-        hWnd = hwndParent
+        hWnd = hWndParent
     Else
-        hWnd = GetWindow(hwndParent, GW_CHILD)
+        hWnd = GetWindow(hWndParent, GW_CHILD)
     End If
 
     Do While hWnd <> 0
